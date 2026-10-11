@@ -3,3 +3,54 @@
 @media(max-width:850px){nav{gap:12px}nav a{font-size:11px}.hero{grid-template-columns:1fr;padding-top:50px}.heroart{min-height:320px}.mission{grid-template-columns:1fr;gap:8px}.cards{grid-template-columns:1fr}.concept{min-height:0}.heading{align-items:flex-start;flex-direction:column;gap:8px}.accessgrid{grid-template-columns:1fr}.finish{grid-template-columns:1fr}footer{flex-wrap:wrap}}
 @media(max-width:600px){.topbar{padding:10px 16px;gap:10px;flex-wrap:wrap}.topbar nav{order:3;width:100%;overflow-x:auto;padding:5px 0;gap:17px}.topbar nav a{white-space:nowrap}.outline{margin-left:auto}.hero{padding:40px 22px}.facts{gap:14px}.facts span{font-size:9px}.heroart{min-height:270px}.browser{width:88%}.fakepage{min-height:180px}.mission,.section,.finish{width:calc(100% - 30px)}.mission{padding:22px}.section{margin:65px auto}.prompt{align-items:flex-start;flex-wrap:wrap}.prompt .btn{margin-left:38px}.simsection{width:calc(100% - 16px);padding:16px}.simulator{padding:13px}.simstage{grid-template-columns:1fr 1fr;gap:10px}.node:first-child{grid-column:1;grid-row:1}.node:last-child{grid-column:2;grid-row:1}.lane{grid-column:1/-1;grid-row:2}.urlbox{padding:15px}.url{padding:12px;font-size:14px}.auditfoot{align-items:flex-start;flex-direction:column}.quiz{padding:17px}.quizfoot{align-items:flex-start;flex-direction:column}.quizfoot>div{width:100%}.quizfoot button{flex:1}.finish{padding:23px}footer{padding:22px;align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.slides-section {
+  max-width: 1200px;
+  width: 88%;
+  margin: 80px auto;
+}
+
+.slides-section h2 {
+  margin-bottom: 12px;
+}
+
+.slides-section p {
+  color: var(--muted);
+}
+
+.pdf-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0 12px;
+}
+
+.pdf-open-link {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.slides-section iframe {
+  display: block;
+  width: 100%;
+  height: 700px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .slides-section {
+    width: calc(100% - 32px);
+  }
+
+  .slides-section iframe {
+    height: 500px;
+  }
+}
+

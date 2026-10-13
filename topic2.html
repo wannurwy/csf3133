@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interactive classroom learning lab for CSF3133 Topic 2: Web Design.">
+<title>Topic 2 | CSF3133 Web Explorer</title>
+<link rel="stylesheet" href="topic2.css"><script src="topic2.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="logo">&lt;/&gt;</span><span><b>CSF3133</b><small>WEB-BASED INTERFACE DESIGN</small></span></a>
+  <nav aria-label="Main navigation"><a href="#explore">Explore</a><a href="#designlab">Design Lab</a><a href="#accessibility">Accessibility</a><a href="#quiz">Quiz</a></nav>
+  <button id="theme" class="outline" type="button">◐ Theme</button>
+</header>
+<main id="main">
+<section class="hero">
+ <div><p class="eyebrow">TOPIC 2 · CLASSROOM LEARNING LAB</p><h1>Web Design <em>Studio</em></h1>
+ <p class="lead">Explore how structure, visual choices, accessibility and responsive layouts shape a useful website. Predict, test, discuss and improve.</p>
+ <p class="actions"><a class="btn primary" href="#explore">Start exploring ↘</a><a class="btn" href="#quiz">Jump to quiz</a></p>
+ <div class="facts"><span><b>01</b> Explore principles</span><span><b>02</b> Experiment with design</span><span><b>03</b> Audit accessibility</span></div></div>
+ <div class="heroart" aria-label="Illustration of a website layout"><div class="design-window"><div class="windowbar"><i></i><i></i><i></i><span>web-design.studio</span></div><div class="mock-nav"><b>studio<span>.</span></b><div><i></i><i></i><i></i></div></div><div class="mock-hero"><small>DESIGN WITH PURPOSE</small><h3>Make the web<br>work for everyone.</h3><p>Structure · Clarity · Access</p><div class="mock-button"></div></div><div class="mock-cards"><i></i><i></i><i></i></div></div><span class="float one">◫ Responsive</span><span class="float two">◉ Accessible</span></div>
+</section>
+
+<section class="slides-section" id="lecture-slides">
+ <p class="eyebrow">TOPIC 2 · LECTURE MATERIAL</p><h2>Web Design</h2>
+ <p>Use the lecture slides as the primary reference. Open the PDF in a new tab if you prefer a larger view.</p>
+ <div class="pdf-toolbar"><a href="slides/topic2-web-design.pdf" target="_blank" rel="noopener noreferrer" class="pdf-open-link">Open PDF in new tab ↗</a></div>
+ <iframe src="slides/topic2-web-design.pdf" title="CSF3133 Topic 2 Web Design lecture slides" width="100%" height="700" loading="lazy"></iframe>
+</section>
+
+<section class="mission"><div><small>TODAY'S MISSION</small><h2>Design a website that is clear, useful and inclusive.</h2></div><p>Identify website organisation structures, apply visual design principles, improve readability and navigation, and evaluate accessibility and responsive design.</p></section>
+
+<section class="section" id="explore"><div class="heading"><div><p class="eyebrow">01 · EXPLORE</p><h2>What makes a website work?</h2></div><p>Discuss each concept with a partner. Reveal the example and connect it to a website you use.</p></div>
+<div class="cards">
+ <article class="concept blue"><span class="emoji">🌳</span><small>INFORMATION STRUCTURE</small><h3>Website organization</h3><p>Pages can be arranged hierarchically, linearly or through a more random web of links.</p><button class="reveal" data-target="org">Reveal examples ＋</button><div id="org" class="revealbox" hidden><b>Hierarchical:</b> university site with main sections and subpages. <b>Linear:</b> step-by-step tutorial. <b>Random/web-like:</b> interconnected creative resources. Choose a structure that matches the site's purpose.</div></article>
+ <article class="concept violet"><span class="emoji">◈</span><small>VISUAL COMMUNICATION</small><h3>Design principles</h3><p>Repetition, contrast, proximity and alignment help pages feel organised and easier to scan.</p><button class="reveal" data-target="principles">Reveal examples ＋</button><div id="principles" class="revealbox" hidden><b>Repetition:</b> consistent buttons. <b>Contrast:</b> clear emphasis. <b>Proximity:</b> related items grouped together. <b>Alignment:</b> edges and text follow a visual line.</div></article>
+ <article class="concept mint"><span class="emoji">♿</span><small>INCLUSIVE EXPERIENCE</small><h3>Accessibility</h3><p>Design content and controls so more people can perceive, understand and operate the website.</p><button class="reveal" data-target="a11y">Reveal examples ＋</button><div id="a11y" class="revealbox" hidden>Examples include meaningful alternative text, sufficient text contrast, keyboard access, clear headings and descriptive link labels. Use WCAG as a reference when evaluating a site.</div></article>
+</div>
+<div class="prompt"><div><b>💬 Think–Pair–Share</b><p>Imagine a university website with 15 unrelated menu links, tiny text and low contrast. Which two changes would you make first, and why?</p><div id="promptAnswer" hidden>Possible answers: group navigation into meaningful sections, establish a clear hierarchy, improve text size and contrast, and keep labels descriptive. Explain choices in relation to user needs.</div></div><button class="btn dark" id="showAnswer" type="button">Show a possible answer</button></div>
+</section>
+
+<section class="section simsection" id="designlab"><div class="heading"><div><p class="eyebrow">02 · EXPERIMENT</p><h2>Design lab: change the page</h2></div><p>Change one setting at a time. Observe the effect, then explain which users may benefit.</p></div>
+<div class="labgrid">
+ <div class="demowrap"><div class="toolbar"><b>LIVE PAGE PREVIEW</b><span><button id="contrast" type="button">◐ Contrast</button><button id="textSize" type="button">A+ Text</button></span></div>
+  <div id="demoPage" class="demopage"><header><b>UMT<span>.</span></b><nav aria-label="Example page navigation"><a href="#designlab">Home</a><a href="#designlab">Courses</a><a href="#designlab">Support</a></nav></header><div class="democontent"><small>STUDENT SERVICES</small><h3>Find the support you need.</h3><p>Explore academic guidance, student resources and important announcements from one clear starting point.</p><a class="demoAction" href="#accessibility">Explore services</a><div class="demo-cards"><div><b>Academic support</b><p>Guidance for your studies.</p></div><div><b>Student resources</b><p>Useful links and services.</p></div></div></div></div>
+  <p class="muted tiny pad" id="demoCaption" aria-live="polite">Try contrast and text size. What changed? What remains important to test?</p>
+ </div>
+ <div class="labcontrols"><small>DESIGN CONTROLS</small><h3>Try a layout choice</h3><label for="layoutSelect">Page layout</label><select id="layoutSelect"><option value="balanced">Balanced columns</option><option value="single">Single column</option><option value="compact">Compact cards</option></select>
+ <label for="accentSelect">Accent colour</label><select id="accentSelect"><option value="blue">Blue</option><option value="green">Green</option><option value="purple">Purple</option></select>
+ <div class="question"><b>Discuss</b><p>Which layout is easier to read on a small screen? Which design choice could create an accessibility problem?</p></div><button class="btn" id="resetDesign" type="button">↺ Reset design</button></div>
+</div>
+</section>
+
+<section class="section" id="accessibility"><div class="heading"><div><p class="eyebrow">03 · ACCESSIBILITY</p><h2>Design for everyone</h2></div><p>Use these resources to check your understanding, then audit a real website as a group.</p></div>
+<div class="wcag-feature"><div><span class="wcag-tag">OFFICIAL W3C GUIDANCE</span><h3>Web Content Accessibility Guidelines (WCAG) 2.2</h3><p>WCAG organises accessibility guidance around four principles: content should be <b>Perceivable, Operable, Understandable and Robust (POUR)</b>.</p><div class="actions"><a class="btn primary" href="https://www.w3.org/TR/WCAG/" target="_blank" rel="noopener noreferrer">Read WCAG 2.2 ↗</a><a class="btn" href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noopener noreferrer">WCAG Quick Reference ↗</a><a class="btn" href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">WCAG Overview ↗</a></div></div><div class="pour-grid"><div><b>P</b><strong>Perceivable</strong><small>Users can perceive the information.</small></div><div><b>O</b><strong>Operable</strong><small>Controls and navigation can be operated.</small></div><div><b>U</b><strong>Understandable</strong><small>Information and interactions are clear.</small></div><div><b>R</b><strong>Robust</strong><small>Content works with user agents and assistive technologies.</small></div></div></div>
+<div class="accessgrid"><div class="audit"><small>TEAM CHECKLIST</small><h3>Website accessibility audit</h3><p class="muted">Tick the items your group has checked on a real website. This checklist is a classroom starting point, not a formal WCAG conformance test.</p>
+<label><input type="checkbox" value="Text has sufficient contrast"><span><b>Text contrast</b><small>Text is distinguishable from its background.</small></span></label>
+<label><input type="checkbox" value="Images have useful alternative text"><span><b>Alternative text</b><small>Informative images have meaningful text alternatives.</small></span></label>
+<label><input type="checkbox" value="Keyboard navigation works"><span><b>Keyboard navigation</b><small>Interactive controls can be reached and used by keyboard.</small></span></label>
+<label><input type="checkbox" value="Headings and content are structured"><span><b>Clear structure</b><small>Headings, labels and page regions make sense.</small></span></label>
+<label><input type="checkbox" value="Links and buttons have descriptive labels"><span><b>Descriptive labels</b><small>Link and button purpose is understandable.</small></span></label>
+<div class="auditfoot"><span id="auditCount">0 of 5 checked</span><button id="copyAudit" class="btn dark" type="button">Copy group summary</button></div><p id="auditFeedback" class="feedback" aria-live="polite"></p></div>
+<div class="activity-card"><small>CLASS ACTIVITY</small><h3>Find, explain, recommend</h3><ol><li>Choose a website your group uses regularly.</li><li>Check navigation, text readability, colour contrast and mobile layout.</li><li>Identify two strengths and two issues.</li><li>Recommend improvements and connect them to a WCAG principle where relevant.</li></ol><p class="note"><b>Reminder:</b> A quick visual check cannot confirm full WCAG conformance. Use the official criteria for a more complete evaluation.</p></div></div>
+</section>
+
+<section class="section" id="quiz"><div class="heading"><div><p class="eyebrow">04 · CHECK YOUR UNDERSTANDING</p><h2>Quick-fire quiz</h2></div><p>Answer individually first, then compare your reasoning with a partner.</p></div><div class="quiz"><div class="quizprogress"><span id="quizCount">QUESTION 1 OF 6</span><div><i id="progress"></i></div></div><div id="quizContent"></div><div class="quizfoot"><span id="quizFeedback" aria-live="polite">Choose one answer.</span><div><button id="quizReset" class="btn" type="button">Start over</button><button id="quizNext" class="btn primary" type="button" disabled>Check answer</button></div></div></div></section>
+
+<section class="finish"><div><p class="eyebrow">CLASS REFLECTION</p><h2>One design choice you would improve.<br><em>One question you still have.</em></h2><p class="muted">Share your answer with the class before moving to the next topic.</p></div><div class="reflection"><label for="exitTicket">My exit ticket</label><textarea id="exitTicket" rows="3" placeholder="I would improve… because… / I am still curious about…"></textarea><button class="btn primary" id="copyReflection" type="button">Copy my reflection</button><p id="reflectionFeedback" class="feedback" aria-live="polite"></p></div></section>
+</main>
+<footer><a class="brand" href="index.html"><span class="logo">&lt;/&gt;</span><span><b>CSF3133</b><small>WEB-BASED INTERFACE DESIGN</small></span></a><p>Topic 2 · Web Design</p><a href="#main">Back to top ↑</a></footer>
+</body></html>

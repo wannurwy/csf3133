@@ -8,6 +8,44 @@
 :root{--navy:#06245f;--blue:#0879bf;--sky:#eaf5fb;--ink:#17263c;--muted:#64748b;--line:#dbe5ef;--paper:#fff;--bg:#f5f8fc;--accent:#22a6d5}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
 a{color:var(--blue)}button,input,textarea,select{font:inherit}.topbar{position:sticky;top:0;z-index:20;background:rgba(6,36,95,.97);color:#fff;box-shadow:0 4px 18px #0b245022}.top-inner{max-width:1240px;margin:auto;padding:12px 22px;display:flex;gap:20px;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.04em}.brand small{display:block;font-weight:500;font-size:.75rem;opacity:.75;letter-spacing:0}.top-actions{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:700;cursor:pointer}.btn.secondary{background:#e9f2fa;color:var(--navy)}.btn.outline{background:transparent;border:1px solid #ffffff75;color:#fff}.layout{max-width:1240px;margin:auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;padding:24px 20px}.sidebar{position:sticky;top:82px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.sidebar h3{margin:0 0 10px;font-size:.95rem}.navlink{display:block;text-decoration:none;color:#42536b;padding:9px 11px;border-radius:9px;font-size:.9rem;margin:2px 0}.navlink:hover,.navlink.active{background:var(--sky);color:var(--navy);font-weight:750}.progress-wrap{height:6px;background:#e5edf5;border-radius:8px;overflow:hidden;margin:10px 0}.progress{height:100%;width:0;background:var(--accent);transition:width .2s}.hero{border-radius:22px;background:linear-gradient(120deg,#061d57,#087ebd 65%,#25c4dc);color:#fff;padding:clamp(28px,5vw,58px);min-height:300px;position:relative;overflow:hidden;display:flex;align-items:center}.hero:after{content:"HTML";font-size:clamp(100px,18vw,230px);font-weight:900;position:absolute;right:-12px;bottom:-60px;opacity:.09;letter-spacing:-.09em}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:800;color:#a9eaff}.hero h1{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.05;margin:12px 0}.hero p{font-size:1.1rem;color:#e4f6ff;max-width:600px}.meta{font-size:.9rem;color:#d1eaff}.content{min-width:0}.section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,34px);margin-top:22px;scroll-margin-top:90px;box-shadow:0 6px 22px #15365b08}.section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}.num{width:42px;height:42px;flex:none;border-radius:13px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:800}.section h2{margin:0;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.2}.section .lead{color:var(--muted);margin:6px 0 0}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.card h3{margin:0 0 8px;font-size:1.08rem}.card p{margin:0;color:#526177}.tag{display:inline-block;background:#e6f5fc;color:#075d92;font-size:.75rem;font-weight:800;border-radius:99px;padding:4px 9px;margin-bottom:8px}.code{background:#101b2c;color:#e4f1ff;border-radius:12px;padding:17px;overflow:auto;font: .9rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.code .comment{color:#87bca4}.code .tagcode{color:#8edaff}.callout{border-left:4px solid var(--accent);background:#eff9fd;padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.92rem}th{background:var(--blue);color:white;text-align:left}th,td{padding:12px;border:1px solid var(--line);vertical-align:top}tr:nth-child(even) td{background:#f7fafc}.diagram{display:grid;gap:8px;max-width:720px;margin:18px auto}.diagram .node{padding:14px;text-align:center;border:2px solid #8db2d6;background:#edf7ff;border-radius:10px;font-weight:750}.diagram .arrow{text-align:center;color:var(--blue);font-size:1.4rem}.diagram .row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.demo{border:1px solid #cbd8e6;background:#fbfdff;padding:20px;border-radius:12px;margin-top:14px}.demo h3{margin-top:0}.demo label{display:block;font-weight:650;margin:10px 0 5px}.demo input,.demo textarea,.demo select{width:100%;padding:10px;border:1px solid #c3d1df;border-radius:8px;background:white}.demo input[type=range]{padding:0}.demo .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.result{font-size:.9rem;color:#456078;margin-top:10px;min-height:1.4em}.quiz-q{padding:16px;border:1px solid var(--line);border-radius:12px;margin:12px 0}.quiz-q p{font-weight:750;margin:0 0 10px}.quiz-q label{display:block;padding:6px 0;font-weight:450}.feedback{font-weight:750;margin-top:8px}.footer{padding:30px 10px;text-align:center;color:var(--muted);font-size:.9rem}.image-strip{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.image-strip img{max-width:130px;max-height:130px;object-fit:contain}.slide-img{max-width:100%;border-radius:12px;border:1px solid var(--line)}.mobile-menu{display:none}
+
+/* HTML5 Video Lesson */
+.video-section {
+    width: 100%;
+    max-width: 1150px;
+    margin: 22px auto 0;
+    scroll-margin-top: 90px;
+}
+
+.video-section h2 {
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.video-section > p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+/* Responsive YouTube video */
+.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #071a36;
+}
+
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:260px}}
 @media(max-width:600px){.top-inner{padding:10px 14px}.top-actions .outline{display:none}.layout{padding:14px;gap:14px}.sidebar nav{grid-template-columns:1fr 1fr}.grid2,.grid3{grid-template-columns:1fr}.hero{padding:26px;min-height:250px}.hero:after{font-size:100px;bottom:-20px}.section{padding:19px}.top-actions .btn{padding:8px 10px;font-size:.85rem}}
 @media print{.topbar,.sidebar,.top-actions,.quiz-controls{display:none!important}.layout{display:block;max-width:none;padding:0}.section,.hero{break-inside:avoid;box-shadow:none}.section{border:1px solid #ccc}.hero{color:#111;background:#eef5fb}.hero p,.meta,.eyebrow{color:#333}}
@@ -47,7 +85,7 @@ a{color:var(--blue)}button,input,textarea,select{font:inherit}.topbar{position:s
     <div class="card"><span class="tag">Compatibility</span><h3>Designed for the modern web</h3><p>HTML5 was intended to remain backwards compatible while introducing new elements and functionality.</p></div>
     <div class="card"><span class="tag">Browser support</span><h3>Supported by modern browsers</h3><p>Support varies by feature and browser version. Test the controls you use in your target browsers.</p></div>
   </div>
-  <div class="image-strip" style="margin-top:18px"><img src="assets/image2.png" alt="HTML5 logo"><p>HTML5 adds semantic elements and native browser features that reduce the need for extra plug-ins or custom controls.</p></div>
+  <div class="image-strip" style="margin-top:18px"><img src="images/html5.png" alt="HTML5 logo"><p>HTML5 adds semantic elements and native browser features that reduce the need for extra plug-ins or custom controls.</p></div>
 </section>
 
   

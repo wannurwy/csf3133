@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CSF3133 CSS (Part 1) interactive learning hub">
+<meta name="description" content="CSF3133 CSS Part 1 interactive learning website">
 <title>CSF3133 | CSS Part 1 Learning Hub</title>
 <style>
 :root{--navy:#082b68;--blue:#1769aa;--sky:#e8f5ff;--ink:#172b4d;--muted:#5f7189;--line:#d8e4f2;--bg:#f4f8fc;--white:#fff;--purple:#6d5bd0;--radius:18px}
@@ -41,24 +41,70 @@ table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}th,td{tex
 figure{margin:0}figcaption{color:var(--muted);font-size:13px;margin-top:8px}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.navwrap{align-items:flex-start;flex-direction:column}.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.grid,.grid.three{grid-template-columns:1fr}.hero{padding-top:42px}.section{padding:21px}.section-head{gap:12px}.num{width:38px;height:38px}.sidebar nav{grid-template-columns:1fr 1fr}}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #071a36;
+  border: 1px solid var(--line);
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.video-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 </style>
 </head>
 <body>
 <header class="topbar"><div class="navwrap">
-<a class="brand" href="#top">CSF3133 <small>WEB-BASED DESIGN</small></a>
-<nav aria-label="Main navigation"><a href="#css-basics">CSS Basics</a><a href="#borders">Borders & Padding</a><a href="#images">Images</a><a href="#backgrounds">Backgrounds</a><a href="#effects">CSS3 Effects</a><a href="#practice">Practice</a></nav>
+<a class="brand" href="#top">CSF3133 <small>WEB PROGRAMMING</small></a>
+<nav aria-label="Main navigation"><a href="#video-lesson">Video Lesson</a><a href="#css-basics">CSS Basics</a><a href="#borders">Borders & Padding</a><a href="#images">Images</a><a href="#backgrounds">Backgrounds</a><a href="#effects">CSS3 Effects</a><a href="#practice">Practice</a></nav>
 </div></header>
 <section class="hero" id="top"><div class="hero-inner">
 <div class="eyebrow">Interactive learning hub · Topic 06</div>
 <h1>CSS (Part 1)</h1>
 <p>Learn how Cascading Style Sheets control the appearance of web pages. Explore examples, change properties and see the results instantly.</p>
-<div class="hero-meta"><span class="pill">CSF3133: Web-based Design</span><span class="pill">53-slide lecture content</span><span class="pill">Try-it-yourself demos</span></div>
+<div class="hero-meta"><span class="pill">CSF3133: Web Programming</span><span class="pill">53-slide lecture content</span><span class="pill">Try-it-yourself demos</span></div>
 </div></section>
 <div class="layout">
 <aside class="sidebar"><h3>On this page</h3><nav aria-label="Topic navigation">
-<a href="#objectives">Learning objectives</a><a href="#css-basics">1. What is CSS?</a><a href="#borders">2. Lines, borders & padding</a><a href="#graphics">3. Types of graphics</a><a href="#images">4. Images & accessibility</a><a href="#figure-meter">5. Figure, meter & progress</a><a href="#backgrounds">6. Background images</a><a href="#image-sources">7. Image resources</a><a href="#effects">8. CSS3 visual effects</a><a href="#colour">9. RGBA & HSLA</a><a href="#gradients">10. Gradients</a><a href="#practice">Checkpoint & practice</a>
+<a href="#objectives">Learning objectives</a><a href="#video-lesson">Video lesson</a><a href="#css-basics">1. What is CSS?</a><a href="#borders">2. Lines, borders & padding</a><a href="#graphics">3. Types of graphics</a><a href="#images">4. Images & accessibility</a><a href="#figure-meter">5. Figure, meter & progress</a><a href="#backgrounds">6. Background images</a><a href="#image-sources">7. Image resources</a><a href="#effects">8. CSS3 visual effects</a><a href="#colour">9. RGBA & HSLA</a><a href="#gradients">10. Gradients</a><a href="#practice">Checkpoint & practice</a>
 </nav></aside>
 <main>
+
+<section class="section" id="video-lesson">
+  <div class="section-head">
+    <div class="num">▶</div>
+    <div>
+      <h2>CSS Video Lesson</h2>
+      <p class="lead">Watch this video to reinforce your understanding of CSS concepts.</p>
+    </div>
+  </div>
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/tfzGsCxutWk"
+      title="CSS Part 1 Video Lesson"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p class="video-note">If the video does not play here, <a href="https://www.youtube.com/watch?v=tfzGsCxutWk" target="_blank" rel="noopener noreferrer">watch it on YouTube</a>.</p>
+</section>
+
 <section class="section" id="objectives"><div class="section-head"><div class="num">00</div><div><h2>Learning Objectives</h2><p class="lead">By the end of this topic, you should be able to:</p></div></div>
 <div class="grid">
 <div class="card">Create and format lines and borders on web pages.</div><div class="card">Apply image elements and optimize graphics for web display.</div><div class="card">Configure images as backgrounds and hyperlinks.</div><div class="card">Use CSS3 visual effects: rounded corners, shadows, opacity and gradients.</div><div class="card">Configure RGBA and HSLA colours.</div><div class="card">Use HTML5 figure/figcaption, meter and progress elements.</div><div class="card">Find graphic sources and follow web design guidelines.</div><div class="card">Consider accessibility and loading performance when using images.</div>

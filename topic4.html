@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSF3133 | HTML5 Learning Hub</title>
+<style>
+:root{--navy:#06245f;--blue:#0879bf;--sky:#eaf5fb;--ink:#17263c;--muted:#64748b;--line:#dbe5ef;--paper:#fff;--bg:#f5f8fc;--accent:#22a6d5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--blue)}button,input,textarea,select{font:inherit}.topbar{position:sticky;top:0;z-index:20;background:rgba(6,36,95,.97);color:#fff;box-shadow:0 4px 18px #0b245022}.top-inner{max-width:1240px;margin:auto;padding:12px 22px;display:flex;gap:20px;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.04em}.brand small{display:block;font-weight:500;font-size:.75rem;opacity:.75;letter-spacing:0}.top-actions{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:white;font-weight:700;cursor:pointer}.btn.secondary{background:#e9f2fa;color:var(--navy)}.btn.outline{background:transparent;border:1px solid #ffffff75;color:#fff}.layout{max-width:1240px;margin:auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;padding:24px 20px}.sidebar{position:sticky;top:82px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.sidebar h3{margin:0 0 10px;font-size:.95rem}.navlink{display:block;text-decoration:none;color:#42536b;padding:9px 11px;border-radius:9px;font-size:.9rem;margin:2px 0}.navlink:hover,.navlink.active{background:var(--sky);color:var(--navy);font-weight:750}.progress-wrap{height:6px;background:#e5edf5;border-radius:8px;overflow:hidden;margin:10px 0}.progress{height:100%;width:0;background:var(--accent);transition:width .2s}.hero{border-radius:22px;background:linear-gradient(120deg,#061d57,#087ebd 65%,#25c4dc);color:#fff;padding:clamp(28px,5vw,58px);min-height:300px;position:relative;overflow:hidden;display:flex;align-items:center}.hero:after{content:"HTML";font-size:clamp(100px,18vw,230px);font-weight:900;position:absolute;right:-12px;bottom:-60px;opacity:.09;letter-spacing:-.09em}.hero-content{position:relative;z-index:1;max-width:680px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:800;color:#a9eaff}.hero h1{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.05;margin:12px 0}.hero p{font-size:1.1rem;color:#e4f6ff;max-width:600px}.meta{font-size:.9rem;color:#d1eaff}.content{min-width:0}.section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,34px);margin-top:22px;scroll-margin-top:90px;box-shadow:0 6px 22px #15365b08}.section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}.num{width:42px;height:42px;flex:none;border-radius:13px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:800}.section h2{margin:0;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.2}.section .lead{color:var(--muted);margin:6px 0 0}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.card h3{margin:0 0 8px;font-size:1.08rem}.card p{margin:0;color:#526177}.tag{display:inline-block;background:#e6f5fc;color:#075d92;font-size:.75rem;font-weight:800;border-radius:99px;padding:4px 9px;margin-bottom:8px}.code{background:#101b2c;color:#e4f1ff;border-radius:12px;padding:17px;overflow:auto;font: .9rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.code .comment{color:#87bca4}.code .tagcode{color:#8edaff}.callout{border-left:4px solid var(--accent);background:#eff9fd;padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.92rem}th{background:var(--blue);color:white;text-align:left}th,td{padding:12px;border:1px solid var(--line);vertical-align:top}tr:nth-child(even) td{background:#f7fafc}.diagram{display:grid;gap:8px;max-width:720px;margin:18px auto}.diagram .node{padding:14px;text-align:center;border:2px solid #8db2d6;background:#edf7ff;border-radius:10px;font-weight:750}.diagram .arrow{text-align:center;color:var(--blue);font-size:1.4rem}.diagram .row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.demo{border:1px solid #cbd8e6;background:#fbfdff;padding:20px;border-radius:12px;margin-top:14px}.demo h3{margin-top:0}.demo label{display:block;font-weight:650;margin:10px 0 5px}.demo input,.demo textarea,.demo select{width:100%;padding:10px;border:1px solid #c3d1df;border-radius:8px;background:white}.demo input[type=range]{padding:0}.demo .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.result{font-size:.9rem;color:#456078;margin-top:10px;min-height:1.4em}.quiz-q{padding:16px;border:1px solid var(--line);border-radius:12px;margin:12px 0}.quiz-q p{font-weight:750;margin:0 0 10px}.quiz-q label{display:block;padding:6px 0;font-weight:450}.feedback{font-weight:750;margin-top:8px}.footer{padding:30px 10px;text-align:center;color:var(--muted);font-size:.9rem}.image-strip{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.image-strip img{max-width:130px;max-height:130px;object-fit:contain}.slide-img{max-width:100%;border-radius:12px;border:1px solid var(--line)}.mobile-menu{display:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:260px}}
+@media(max-width:600px){.top-inner{padding:10px 14px}.top-actions .outline{display:none}.layout{padding:14px;gap:14px}.sidebar nav{grid-template-columns:1fr 1fr}.grid2,.grid3{grid-template-columns:1fr}.hero{padding:26px;min-height:250px}.hero:after{font-size:100px;bottom:-20px}.section{padding:19px}.top-actions .btn{padding:8px 10px;font-size:.85rem}}
+@media print{.topbar,.sidebar,.top-actions,.quiz-controls{display:none!important}.layout{display:block;max-width:none;padding:0}.section,.hero{break-inside:avoid;box-shadow:none}.section{border:1px solid #ccc}.hero{color:#111;background:#eef5fb}.hero p,.meta,.eyebrow{color:#333}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="top-inner">
+  <div class="brand">CSF3133 <small>HTML5 · Interactive Learning Hub</small></div>
+  <div class="top-actions"><button class="btn outline" onclick="window.print()">Print / Save PDF</button><button class="btn" onclick="document.querySelector('#practice').scrollIntoView({behavior:'smooth'})">Try the forms</button></div>
+</div></header>
+<div class="layout">
+<aside class="sidebar">
+  <h3>Course contents</h3><div class="progress-wrap"><div class="progress" id="progress"></div></div><small id="progressText">0 of 8 sections viewed</small>
+  <nav id="sideNav">
+    <a class="navlink active" href="#overview">01 · HTML5 overview</a>
+    <a class="navlink" href="#features">02 · New features</a>
+    <a class="navlink" href="#structure">03 · Structural elements</a>
+    <a class="navlink" href="#forms">04 · Forms & controls</a>
+    <a class="navlink" href="#attributes">05 · Form attributes</a>
+    <a class="navlink" href="#input-types">06 · HTML5 input types</a>
+    <a class="navlink" href="#datalist">07 · Datalist & numeric controls</a>
+    <a class="navlink" href="#practice">08 · Practice & quiz</a>
+  </nav>
+  <div class="callout"><strong>Learning tip</strong><br><small>Read a section, try the live examples, then test your understanding with the quiz.</small></div>
+</aside>
+<main class="content">
+<section class="hero" id="overview"><div class="hero-content">
+  <div class="eyebrow">Bachelor of Computer Science · Software Engineering</div>
+  <h1>HTML5</h1>
+  <p>Learn semantic page structure, modern form controls, and practical HTML examples through a hands-on web lesson.</p>
+  <div class="meta">CSF3133 · Prepared by Assoc. Prof. Ts. Dr. Wan Nural Jawahir Hj Wan Yussof</div>
+</div></section>
+
+<section class="section" data-section id="intro">
+  <div class="section-head"><div class="num">01</div><div><h2>HTML5 overview</h2><p class="lead">What HTML5 introduced to web development.</p></div></div>
+  <div class="grid2">
+    <div class="card"><span class="tag">Compatibility</span><h3>Designed for the modern web</h3><p>HTML5 was intended to remain backwards compatible while introducing new elements and functionality.</p></div>
+    <div class="card"><span class="tag">Browser support</span><h3>Supported by modern browsers</h3><p>Support varies by feature and browser version. Test the controls you use in your target browsers.</p></div>
+  </div>
+  <div class="image-strip" style="margin-top:18px"><img src="assets/image2.png" alt="HTML5 logo"><p>HTML5 adds semantic elements and native browser features that reduce the need for extra plug-ins or custom controls.</p></div>
+</section>
+
+<section class="section" data-section id="features">
+  <div class="section-head"><div class="num">02</div><div><h2>New features in HTML5</h2><p class="lead">A quick tour of the features highlighted in the lecture slides.</p></div></div>
+  <div class="grid3">
+    <div class="card"><h3><code>&lt;canvas&gt;</code></h3><p>Provides a drawing surface for graphics, including 2D drawings created with JavaScript.</p></div>
+    <div class="card"><h3><code>&lt;video&gt;</code> &amp; <code>&lt;audio&gt;</code></h3><p>Embed media playback directly in a webpage.</p></div>
+    <div class="card"><h3>Local storage</h3><p>Store small amounts of data in the browser for later use.</p></div>
+    <div class="card"><h3>Semantic elements</h3><p><code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, and <code>&lt;section&gt;</code>.</p></div>
+    <div class="card"><h3>New form controls</h3><p>Email, URL, date, time, search, and numeric inputs.</p></div>
+    <div class="card"><h3>Better user experience</h3><p>Built-in input types and attributes can help users enter valid information.</p></div>
+  </div>
+</section>
+
+<section class="section" data-section id="structure">
+  <div class="section-head"><div class="num">03</div><div><h2>HTML5 structural elements</h2><p class="lead">Use meaningful elements to describe the purpose of each part of a page.</p></div></div>
+  <div class="grid2">
+    <div class="card"><h3><code>&lt;body&gt;</code></h3><p>Contains the page content shown in the browser.</p></div>
+    <div class="card"><h3><code>&lt;header&gt;</code></h3><p>Contains introductory content or headings for a page or section.</p></div>
+    <div class="card"><h3><code>&lt;nav&gt;</code></h3><p>Contains the page's primary navigation links.</p></div>
+    <div class="card"><h3><code>&lt;main&gt;</code></h3><p>Identifies the main, unique content of the page.</p></div>
+    <div class="card"><h3><code>&lt;section&gt;</code> / <code>&lt;article&gt;</code></h3><p>Groups related content; an article is suitable for self-contained content.</p></div>
+    <div class="card"><h3><code>&lt;aside&gt;</code> / <code>&lt;footer&gt;</code></h3><p><code>aside</code> contains related or complementary content. <code>footer</code> contains footer information.</p></div>
+  </div>
+  <div class="diagram" aria-label="Page structure diagram">
+    <div class="node">&lt;body&gt;</div><div class="arrow">↓</div>
+    <div class="node">&lt;header&gt; · Page heading / branding</div><div class="node">&lt;nav&gt; · Main navigation</div><div class="arrow">↓</div>
+    <div class="node">&lt;main&gt; · Main page content</div>
+    <div class="row"><div class="node">&lt;section&gt;<br><small>Related content</small></div><div class="node">&lt;article&gt;<br><small>Self-contained item</small></div><div class="node">&lt;aside&gt;<br><small>Complementary</small></div></div>
+    <div class="arrow">↓</div><div class="node">&lt;footer&gt; · Footer information</div>
+  </div>
+  <h3>Example: semantic page skeleton</h3>
+  <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;&lt;h1&gt;My Website&lt;/h1&gt;&lt;/header&gt;
+  &lt;nav&gt;&lt;a href="#main"&gt;Home&lt;/a&gt;&lt;/nav&gt;
+  &lt;main id="main"&gt;
+    &lt;section&gt;&lt;h2&gt;Welcome&lt;/h2&gt;&lt;p&gt;Main content.&lt;/p&gt;&lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;Copyright information&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  <div class="callout"><strong>Remember:</strong> Use <code>&lt;main&gt;</code> for the page's dominant content, and use headings to make the content hierarchy clear.</div>
+</section>
+
+<section class="section" data-section id="forms">
+  <div class="section-head"><div class="num">04</div><div><h2>Forms &amp; form controls</h2><p class="lead">Forms gather information from a visitor. Controls provide the fields for entering it.</p></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Common form controls</h3><ul><li>Text boxes</li><li>Text areas</li><li>Select lists</li><li>Radio buttons</li><li>Checkboxes</li><li>Buttons</li></ul></div>
+    <div class="card"><h3>HTML5 form controls</h3><ul><li>Email address</li><li>URL</li><li>Date and time</li><li>Number / spinner</li><li>Range slider</li><li>Search</li></ul></div>
+  </div>
+  <h3>How a form is submitted</h3>
+  <div class="diagram"><div class="node">Visitor enters information</div><div class="arrow">↓</div><div class="node">Browser checks built-in constraints</div><div class="arrow">↓</div><div class="node">Form submits to the URL in <code>action</code></div><div class="arrow">↓</div><div class="node">Server processes the submitted data</div></div>
+</section>
+
+<section class="section" data-section id="attributes">
+  <div class="section-head"><div class="num">05</div><div><h2>Form element attributes</h2><p class="lead">Attributes determine where data goes and how each control is identified.</p></div></div>
+  <div class="table-wrap"><table><thead><tr><th>Attribute</th><th>Example / value</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td><code>action</code></td><td><code>action="/submit"</code></td><td>Specifies the URL that receives the submitted form data.</td></tr>
+    <tr><td><code>method</code></td><td><code>get</code> or <code>post</code></td><td><code>GET</code> appends form data to the URL. <code>POST</code> sends it in the request body; use HTTPS and server-side protections for sensitive data.</td></tr>
+    <tr><td><code>id</code></td><td><code>id="email"</code></td><td>Unique identifier on the page; useful for CSS, labels, and scripting.</td></tr>
+    <tr><td><code>name</code></td><td><code>name="email"</code></td><td>Key used when the browser submits a control's value.</td></tr>
+    <tr><td><code>required</code></td><td><code>required</code></td><td>Prevents submission until the required control has a value.</td></tr>
+    <tr><td><code>placeholder</code></td><td><code>placeholder="name@example.com"</code></td><td>Shows a hint inside an empty control; it is not a substitute for a label.</td></tr>
+  </tbody></table></div>
+  <div class="callout"><strong><code>name</code> vs <code>id</code>:</strong> <code>id</code> identifies an element in the document; <code>name</code> identifies the field in submitted form data. They may use the same text, but they serve different purposes.</div>
+  <pre class="code"><code>&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" required&gt;</code></pre>
+</section>
+
+<section class="section" data-section id="input-types">
+  <div class="section-head"><div class="num">06</div><div><h2>HTML5 input types</h2><p class="lead">Choose an input type that matches the information expected.</p></div></div>
+  <div class="grid2">
+    <div class="card"><h3><code>type="email"</code></h3><p>Accepts an email-shaped value and provides browser validation.</p><pre class="code"><code>&lt;input type="email" name="email" required&gt;</code></pre></div>
+    <div class="card"><h3><code>type="url"</code></h3><p>For a website address. Browsers generally expect a valid URL format.</p><pre class="code"><code>&lt;input type="url" name="website"&gt;</code></pre></div>
+    <div class="card"><h3><code>type="tel"</code></h3><p>For a telephone number. It does not automatically validate a specific phone-number format.</p><pre class="code"><code>&lt;input type="tel" name="mobile"
+       placeholder="e.g. 0123456789"></code></pre></div>
+    <div class="card"><h3><code>type="search"</code></h3><p>For search terms. Some browsers add a clear control.</p><pre class="code"><code>&lt;input type="search" name="keyword"&gt;</code></pre></div>
+    <div class="card"><h3><code>type="date"</code></h3><p>Lets the user select a date using a browser date picker when supported.</p><pre class="code"><code>&lt;input type="date" name="myDate"&gt;</code></pre></div>
+    <div class="card"><h3><code>type="number"</code></h3><p>For numeric values, optionally limited by <code>min</code>, <code>max</code>, and <code>step</code>.</p><pre class="code"><code>&lt;input type="number" min="1" max="10"&gt;</code></pre></div>
+  </div>
+  <h3>Try the controls</h3>
+  <div class="demo">
+    <label for="demoEmail">Email address</label><input id="demoEmail" type="email" placeholder="you@example.com" required>
+    <label for="demoUrl">Website URL</label><input id="demoUrl" type="url" placeholder="https://example.com">
+    <label for="demoTel">Telephone number</label><input id="demoTel" type="tel" placeholder="Enter your phone number">
+    <label for="demoSearch">Search term</label><input id="demoSearch" type="search" placeholder="Search something">
+    <label for="demoDate">Choose a date</label><input id="demoDate" type="date">
+    <div class="controls"><button class="btn" onclick="validateDemo()">Check email &amp; URL</button><button class="btn secondary" onclick="resetDemo()">Reset demo</button></div>
+    <div class="result" id="inputResult" aria-live="polite"></div>
+  </div>
+  <h3>Example: newsletter form</h3>
+  <pre class="code"><code>&lt;h1&gt;Join Our Newsletter&lt;/h1&gt;
+&lt;form action="/subscribe" method="post"&gt;
+  &lt;label for="newsletterEmail"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="newsletterEmail"
+         name="email" required&gt;
+  &lt;button type="submit"&gt;Sign Me Up!&lt;/button&gt;
+  &lt;button type="reset"&gt;Reset&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</section>
+
+<section class="section" data-section id="datalist">
+  <div class="section-head"><div class="num">07</div><div><h2>Datalist, slider, spinner &amp; calendar</h2><p class="lead">Offer suggestions or constrain numeric and date input.</p></div></div>
+  <div class="grid2">
+    <div class="card"><span class="tag">Suggestions</span><h3><code>&lt;datalist&gt;</code></h3><p>Provides suggested values while still allowing the user to type a different value.</p>
+      <pre class="code"><code>&lt;label for="colour"&gt;Favourite colour&lt;/label&gt;
+&lt;input list="colours" id="colour" name="colour"&gt;
+&lt;datalist id="colours"&gt;
+  &lt;option value="Red"&gt;
+  &lt;option value="Green"&gt;
+  &lt;option value="Blue"&gt;
+&lt;/datalist&gt;</code></pre>
+    </div>
+    <div class="card"><span class="tag">Slider</span><h3><code>type="range"</code></h3><p>Lets a user select a value along a range.</p><pre class="code"><code>&lt;input type="range" min="1" max="100"&gt;</code></pre></div>
+    <div class="card"><span class="tag">Spinner</span><h3><code>type="number"</code></h3><p>Provides numeric input, often with increment/decrement controls.</p><pre class="code"><code>&lt;input type="number" min="1" max="10"&gt;</code></pre></div>
+    <div class="card"><span class="tag">Calendar</span><h3><code>type="date"</code></h3><p>Provides a date picker in browsers that support it.</p><pre class="code"><code>&lt;input type="date" name="myDate"&gt;</code></pre></div>
+  </div>
+  <div class="demo">
+    <h3>Live control playground</h3>
+    <label for="favColour">Choose your favourite colour</label><input list="colourOptions" id="favColour" placeholder="Start typing a colour"><datalist id="colourOptions"><option value="Red"><option value="Green"><option value="Blue"><option value="Yellow"><option value="Black"></datalist>
+    <label for="rating">Rating: <strong id="ratingValue">5</strong> / 10</label><input type="range" id="rating" min="1" max="10" value="5" oninput="document.getElementById('ratingValue').textContent=this.value">
+    <label for="quantity">Choose a number from 1 to 10</label><input type="number" id="quantity" min="1" max="10" value="2">
+    <label for="playDate">Choose a date</label><input type="date" id="playDate">
+    <div class="controls"><button class="btn" onclick="showPlayground()">Show selections</button><button class="btn secondary" onclick="resetPlayground()">Reset</button></div><div class="result" id="playResult" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section" data-section id="practice">
+  <div class="section-head"><div class="num">08</div><div><h2>Practice: build an HTML5 form</h2><p class="lead">Try a small account-registration form and check your understanding.</p></div></div>
+  <div class="demo">
+    <h3>Register your account</h3><p class="lead">Fields marked * are required. This is a front-end demo; it does not send or store your information.</p>
+    <form id="registerForm">
+      <label for="regName">Name *</label><input id="regName" name="name" required placeholder="First and last name">
+      <label for="regEmail">Email *</label><input id="regEmail" type="email" name="email" required placeholder="you@example.com">
+      <label for="regPhone">Phone number *</label><input id="regPhone" type="tel" name="phone" required placeholder="Your phone number">
+      <label for="regDob">Date of birth</label><input id="regDob" type="date" name="dob">
+      <div class="controls"><button class="btn" type="submit">Register</button><button class="btn secondary" type="reset">Reset</button></div>
+      <div class="result" id="registerResult" aria-live="polite"></div>
+    </form>
+  </div>
+  <h3>Quick knowledge check</h3>
+  <div id="quiz">
+    <div class="quiz-q" data-answer="b"><p>1. Which element contains the main, unique content of a page?</p><label><input type="radio" name="q1" value="a"> <code>&lt;footer&gt;</code></label><label><input type="radio" name="q1" value="b"> <code>&lt;main&gt;</code></label><label><input type="radio" name="q1" value="c"> <code>&lt;nav&gt;</code></label><div class="feedback"></div></div>
+    <div class="quiz-q" data-answer="c"><p>2. Which attribute provides the field name in submitted form data?</p><label><input type="radio" name="q2" value="a"> <code>class</code></label><label><input type="radio" name="q2" value="b"> <code>id</code></label><label><input type="radio" name="q2" value="c"> <code>name</code></label><div class="feedback"></div></div>
+    <div class="quiz-q" data-answer="a"><p>3. Which input type is intended for email addresses?</p><label><input type="radio" name="q3" value="a"> <code>email</code></label><label><input type="radio" name="q3" value="b"> <code>mailbox</code></label><label><input type="radio" name="q3" value="c"> <code>text-email</code></label><div class="feedback"></div></div>
+    <div class="quiz-q" data-answer="b"><p>4. Which element offers suggestions for an input field?</p><label><input type="radio" name="q4" value="a"> <code>&lt;options&gt;</code></label><label><input type="radio" name="q4" value="b"> <code>&lt;datalist&gt;</code></label><label><input type="radio" name="q4" value="c"> <code>&lt;selectlist&gt;</code></label><div class="feedback"></div></div>
+    <div class="quiz-q" data-answer="c"><p>5. What does <code>required</code> do in a browser form?</p><label><input type="radio" name="q5" value="a"> Saves the data to a database</label><label><input type="radio" name="q5" value="b"> Sends an email automatically</label><label><input type="radio" name="q5" value="c"> Stops submission when the field is empty</label><div class="feedback"></div></div>
+  </div>
+  <div class="controls quiz-controls"><button class="btn" onclick="gradeQuiz()">Check answers</button><button class="btn secondary" onclick="resetQuiz()">Try again</button></div><div class="result" id="quizResult" aria-live="polite"></div>
+</section>
+<div class="footer">CSF3133 · HTML5 Learning Hub<br>Based on the supplied lecture slides. Examples are for learning and run locally in your browser.</div>
+</main>
+</div>
+<script>
+const sections=[...document.querySelectorAll('[data-section]')];
+const visited=new Set();
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){visited.add(e.target.id);document.getElementById('progress').style.width=(visited.size/8*100)+'%';document.getElementById('progressText').textContent=visited.size+' of 8 sections viewed';document.querySelectorAll('.navlink').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}})},{threshold:.22});
+sections.forEach(s=>observer.observe(s));
+function validateDemo(){const e=document.getElementById('demoEmail'),u=document.getElementById('demoUrl');let msg=[];if(!e.value)msg.push('Enter an email address.');else if(!e.checkValidity())msg.push('The email format looks invalid.');else msg.push('Email format looks valid.');if(u.value&&!u.checkValidity())msg.push('The URL format looks invalid.');else if(u.value)msg.push('URL format looks valid.');document.getElementById('inputResult').textContent=msg.join(' ');}
+function resetDemo(){['demoEmail','demoUrl','demoTel','demoSearch','demoDate'].forEach(id=>document.getElementById(id).value='');document.getElementById('inputResult').textContent='Demo reset.';}
+function showPlayground(){const c=document.getElementById('favColour').value||'(not selected)',r=document.getElementById('rating').value,n=document.getElementById('quantity').value,d=document.getElementById('playDate').value||'(not selected)';const valid=n!==''&&Number(n)>=1&&Number(n)<=10;document.getElementById('playResult').textContent=`Colour: ${c} · Rating: ${r}/10 · Number: ${n||'(not selected)'}${valid?'':' (enter a value from 1 to 10)'} · Date: ${d}`;}
+function resetPlayground(){document.getElementById('favColour').value='';document.getElementById('rating').value=5;document.getElementById('ratingValue').textContent='5';document.getElementById('quantity').value=2;document.getElementById('playDate').value='';document.getElementById('playResult').textContent='Selections reset.';}
+document.getElementById('registerForm').addEventListener('submit',e=>{e.preventDefault();if(!e.target.reportValidity())return;document.getElementById('registerResult').textContent='Form validated successfully in this demo. No information was sent or saved.';});
+document.getElementById('registerForm').addEventListener('reset',()=>{document.getElementById('registerResult').textContent='';});
+function gradeQuiz(){let score=0;document.querySelectorAll('.quiz-q').forEach((q,i)=>{const chosen=q.querySelector('input:checked'),ok=chosen&&chosen.value===q.dataset.answer;const f=q.querySelector('.feedback');f.textContent=chosen?(ok?'Correct!':'Not quite. Review the section and try again.'):'Please choose an answer.';f.style.color=ok?'#087443':'#b45309';if(ok)score++;});document.getElementById('quizResult').textContent=`Your score: ${score} / 5`;}
+function resetQuiz(){document.querySelectorAll('#quiz input').forEach(i=>i.checked=false);document.querySelectorAll('.feedback').forEach(f=>f.textContent='');document.getElementById('quizResult').textContent='';}
+</script>
+</body>
+</html>

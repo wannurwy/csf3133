@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CSF3133 CSS Part 1 interactive learning website">
+<title>CSF3133 | CSS Part 1 Learning Hub</title>
+<style>
+:root{--navy:#082b68;--blue:#1769aa;--sky:#e8f5ff;--ink:#172b4d;--muted:#5f7189;--line:#d8e4f2;--bg:#f4f8fc;--white:#fff;--purple:#6d5bd0;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:#145da0}button,input,select{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.navwrap{max-width:1240px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:850;color:var(--navy);text-decoration:none;letter-spacing:.2px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.4px}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav a{text-decoration:none;font-size:13px;font-weight:700;padding:7px 10px;border-radius:9px;color:#334b6b}nav a:hover{background:var(--sky);color:var(--navy)}
+.hero{background:linear-gradient(125deg,#071e55,#087db8 65%,#21b6d7);color:white;padding:64px 24px 56px;position:relative;overflow:hidden}
+.hero:after{content:"CSS";position:absolute;right:4%;bottom:-85px;font-size:clamp(130px,26vw,330px);font-weight:950;color:rgba(255,255,255,.08);line-height:1}
+.hero-inner{max-width:1180px;margin:auto;position:relative;z-index:1}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c5f1ff}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.05;margin:12px 0 18px;max-width:800px;letter-spacing:-1.6px}
+.hero p{font-size:18px;max-width:740px;color:#e4f5ff;margin:0 0 25px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap}.pill{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);padding:7px 12px;border-radius:99px;font-size:13px}
+.layout{max-width:1240px;margin:28px auto;padding:0 22px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:82px;background:white;border:1px solid var(--line);border-radius:16px;padding:18px;max-height:calc(100vh - 100px);overflow:auto}
+.sidebar h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
+.sidebar a{display:block;padding:8px 10px;text-decoration:none;border-radius:8px;color:#334b6b;font-size:13px;line-height:1.4}.sidebar a:hover{background:var(--sky);color:var(--navy)}
+main{min-width:0}.section{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3.5vw,38px);margin-bottom:22px;box-shadow:0 8px 26px rgba(23,57,99,.035)}
+.section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}.num{flex-shrink:0;width:44px;height:44px;border-radius:13px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:850}
+h2{font-size:clamp(25px,3vw,34px);line-height:1.2;color:var(--navy);margin:0 0 8px;letter-spacing:-.6px}h3{color:#153a70;margin:0 0 9px;font-size:20px}h4{margin:0 0 6px;color:#183d70}
+.lead{margin:0;color:var(--muted);font-size:16px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{border:1px solid var(--line);border-radius:14px;padding:19px;background:#fff;min-width:0}.card p{margin:8px 0;color:#526782}.tag{display:inline-block;background:#e4f5ff;color:#075985;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.callout{padding:17px 19px;background:#edf6ff;border-left:4px solid #2580ca;border-radius:10px;margin:18px 0;color:#284665}
+pre{overflow:auto;background:#0b1930;color:#e6f1ff;padding:16px;border-radius:11px;font-size:13px;line-height:1.6;margin:12px 0 0}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}details{border-top:1px solid #e3ebf4;padding-top:12px;margin-top:14px}summary{font-weight:750;color:#075985;cursor:pointer}
+.demo{padding:17px;background:#f7faff;border:1px solid #e0eaf5;border-radius:12px;margin-top:12px}.demo label{display:block;font-size:13px;font-weight:750;margin:10px 0 5px}.demo input[type=text],.demo input[type=number],.demo select,.demo input[type=range],.demo input[type=color]{width:100%;max-width:100%}.demo input[type=text],.demo input[type=number],.demo select{padding:9px 10px;border:1px solid #c6d6e8;border-radius:8px;background:white;color:var(--ink)}.demo input[type=range]{accent-color:var(--blue)}
+.btn{border:0;border-radius:9px;padding:9px 14px;background:var(--navy);color:white;font-weight:750;cursor:pointer;margin:8px 6px 0 0}.btn:hover{background:#145da0}.btn.light{background:white;color:var(--navy);border:1px solid #c8d8eb}
+.preview{background:white;border:1px dashed #a8bdd6;border-radius:10px;padding:18px;margin-top:12px;min-height:74px;overflow-wrap:anywhere}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}.swatch{width:34px;height:34px;border-radius:9px;border:2px solid white;box-shadow:0 0 0 1px #ccd8e6}
+.footer{text-align:center;color:var(--muted);padding:28px 20px 45px;font-size:13px}
+.progressbar{height:7px;background:#dce9f7;border-radius:99px;overflow:hidden;margin:15px 0}.progressbar span{display:block;height:100%;width:50%;background:linear-gradient(90deg,#1474c4,#32bad3)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px;vertical-align:top}th{color:var(--navy);background:#f1f7fd}
+figure{margin:0}figcaption{color:var(--muted);font-size:13px;margin-top:8px}
+@media(max-width:920px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.navwrap{align-items:flex-start;flex-direction:column}.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.grid,.grid.three{grid-template-columns:1fr}.hero{padding-top:42px}.section{padding:21px}.section-head{gap:12px}.num{width:38px;height:38px}.sidebar nav{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="navwrap">
+<a class="brand" href="#top">CSF3133 <small>WEB PROGRAMMING</small></a>
+<nav aria-label="Main navigation"><a href="#css-basics">CSS Basics</a><a href="#borders">Borders & Padding</a><a href="#images">Images</a><a href="#backgrounds">Backgrounds</a><a href="#effects">CSS3 Effects</a><a href="#practice">Practice</a></nav>
+</div></header>
+<section class="hero" id="top"><div class="hero-inner">
+<div class="eyebrow">Interactive learning hub · Topic 06</div>
+<h1>CSS (Part 1)</h1>
+<p>Learn how Cascading Style Sheets control the appearance of web pages. Explore examples, change properties and see the results instantly.</p>
+<div class="hero-meta"><span class="pill">CSF3133: Web Programming</span><span class="pill">53-slide lecture content</span><span class="pill">Try-it-yourself demos</span></div>
+</div></section>
+<div class="layout">
+<aside class="sidebar"><h3>On this page</h3><nav aria-label="Topic navigation">
+<a href="#objectives">Learning objectives</a><a href="#css-basics">1. What is CSS?</a><a href="#borders">2. Lines, borders & padding</a><a href="#graphics">3. Types of graphics</a><a href="#images">4. Images & accessibility</a><a href="#figure-meter">5. Figure, meter & progress</a><a href="#backgrounds">6. Background images</a><a href="#image-sources">7. Image resources</a><a href="#effects">8. CSS3 visual effects</a><a href="#colour">9. RGBA & HSLA</a><a href="#gradients">10. Gradients</a><a href="#practice">Checkpoint & practice</a>
+</nav></aside>
+<main>
+<section class="section" id="objectives"><div class="section-head"><div class="num">00</div><div><h2>Learning Objectives</h2><p class="lead">By the end of this topic, you should be able to:</p></div></div>
+<div class="grid">
+<div class="card">Create and format lines and borders on web pages.</div><div class="card">Apply image elements and optimize graphics for web display.</div><div class="card">Configure images as backgrounds and hyperlinks.</div><div class="card">Use CSS3 visual effects: rounded corners, shadows, opacity and gradients.</div><div class="card">Configure RGBA and HSLA colours.</div><div class="card">Use HTML5 figure/figcaption, meter and progress elements.</div><div class="card">Find graphic sources and follow web design guidelines.</div><div class="card">Consider accessibility and loading performance when using images.</div>
+</div></section>
+
+<section class="section" id="css-basics"><div class="section-head"><div class="num">01</div><div><h2>What is CSS?</h2><p class="lead">CSS stands for Cascading Style Sheets. It describes how HTML elements should appear on screen, paper or other media.</p></div></div>
+<div class="grid">
+<div class="card"><span class="tag">Purpose</span><h3>Separate content from presentation</h3><p>HTML defines the structure and content. CSS controls colour, spacing, borders, typography and layout.</p></div>
+<div class="card"><span class="tag">Efficiency</span><h3>Reuse styles</h3><p>An external stylesheet can control the appearance of multiple pages from one CSS file.</p></div>
+</div>
+<h3 style="margin-top:24px">CSS syntax</h3><p>A CSS rule contains a selector and a declaration block. Each declaration is written as a property, a colon, a value and a semicolon.</p>
+<pre><code>h1 {
+  color: blue;
+  font-size: 32px;
+}</code></pre>
+<div class="callout"><strong>Remember:</strong> the selector identifies which HTML element to style. The declaration block is enclosed in curly braces <code>{ }</code>; declarations are separated by semicolons.</div>
+<div class="grid">
+<div class="card"><h3>Try changing a style</h3><p>Edit the values below and apply them to the sample paragraph.</p>
+<div class="demo"><label for="basicColor">Text colour</label><select id="basicColor"><option value="#1769aa">Blue</option><option value="#dc2626">Red</option><option value="#15803d">Green</option><option value="#6d28d9">Purple</option></select>
+<label for="basicSize">Font size: <span id="basicSizeLabel">20</span>px</label><input id="basicSize" type="range" min="12" max="36" value="20">
+<label for="basicAlign">Text alignment</label><select id="basicAlign"><option>center</option><option>left</option><option>right</option></select>
+<div id="basicPreview" class="preview" style="color:#1769aa;font-size:20px;text-align:center">Hello Class! These paragraphs are styled with CSS.</div>
+</div></div>
+<div class="card"><h3>Example: internal CSS</h3><pre><code>&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: blue;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello Class!&lt;/p&gt;
+&lt;/body&gt;</code></pre></div>
+</div>
+</section>
+
+<section class="section" id="borders"><div class="section-head"><div class="num">02</div><div><h2>Lines, Borders & Padding</h2><p class="lead">Use borders to outline elements, horizontal rules to separate content, and padding to create space between content and its border.</p></div></div>
+<div class="grid">
+<div class="card"><span class="tag">Horizontal rule</span><h3>The <code>&lt;hr&gt;</code> element</h3><p>Represents a thematic break, commonly displayed as a horizontal line.</p><pre><code>&lt;p&gt;First topic&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Next topic&lt;/p&gt;</code></pre><hr></div>
+<div class="card"><span class="tag">Border shorthand</span><h3>Three parts</h3><p><code>border</code> can configure width, style and colour.</p><pre><code>h2 {
+  border: 2px solid #ff0000;
+}</code></pre><h4 style="border:2px solid #f00;padding:8px">Heading with Border</h4></div>
+</div>
+<div class="callout"><strong>Block vs inline:</strong> a block element such as <code>h2</code> generally occupies the available line width; an inline element such as <code>a</code> has a border closely around its content. Rendering can vary slightly between browsers and platforms.</div>
+<h3>Border and padding playground</h3><p>Change the controls to see how the border style and padding affect the heading.</p>
+<div class="demo"><div class="grid">
+<div><label for="borderStyle">Border style</label><select id="borderStyle"><option>solid</option><option>dashed</option><option>dotted</option><option>double</option><option>groove</option><option>none</option></select></div>
+<div><label for="borderColor">Border colour</label><input id="borderColor" type="color" value="#e53935"></div>
+<div><label for="borderWidth">Border width: <span id="borderWidthLabel">3</span>px</label><input id="borderWidth" type="range" min="0" max="12" value="3"></div>
+<div><label for="paddingSize">Padding: <span id="paddingLabel">12</span>px</label><input id="paddingSize" type="range" min="0" max="40" value="12"></div>
+</div><div id="borderPreview" class="preview" style="border:3px solid #e53935;padding:12px"><h3 style="margin:0">Heading with Border</h3><p style="margin:4px 0 0">Padding adds space inside the border.</p></div></div>
+<h3 style="margin-top:24px">Padding shorthand</h3>
+<div class="grid three"><div class="card"><h4>One value</h4><code>padding: 10px;</code><p>All four sides.</p></div><div class="card"><h4>Two values</h4><code>padding: 20px 10px;</code><p>Top/bottom, then left/right.</p></div><div class="card"><h4>Four values</h4><code>padding: 30px 10px 5px 20px;</code><p>Top, right, bottom, left (clockwise).</p></div></div>
+</section>
+
+<section class="section" id="graphics"><div class="section-head"><div class="num">03</div><div><h2>Types of Graphics</h2><p class="lead">Choose a format based on the image content, transparency needs, animation and file size.</p></div></div>
+<div class="grid three">
+<div class="card"><span class="tag">GIF</span><h3>GIF</h3><p>Supports simple animation and lossless compression, but is limited to 256 colours per image.</p><div class="swatches"><span class="swatch" style="background:#ff4f81"></span><span class="swatch" style="background:#f9c74f"></span><span class="swatch" style="background:#43aa8b"></span><span class="swatch" style="background:#577590"></span></div><p><strong>Best for:</strong> simple graphics and short animations.</p></div>
+<div class="card"><span class="tag">JPEG / JPG</span><h3>JPEG</h3><p>Uses lossy compression and supports millions of colours. It is well suited to photographs.</p><div class="preview" style="background:linear-gradient(140deg,#b4d6ee,#477fa7,#244566);color:white">Photo-like gradient sample</div><p><strong>Best for:</strong> photographs where small file size matters.</p></div>
+<div class="card"><span class="tag">PNG</span><h3>PNG</h3><p>Uses lossless compression and supports transparency, including varying levels of transparency.</p><div class="preview" style="background:repeating-conic-gradient(#ddd 0% 25%,white 0% 50%) 50%/20px 20px"><span style="display:inline-block;background:#1769aaad;color:white;padding:8px;border-radius:6px">Transparent colour</span></div><p><strong>Best for:</strong> graphics that need crisp edges or transparency.</p></div>
+</div>
+<table><thead><tr><th>Format</th><th>Compression</th><th>Animation</th><th>Common use</th></tr></thead><tbody><tr><td>GIF</td><td>Lossless; 256-colour palette</td><td>Yes</td><td>Simple animations</td></tr><tr><td>JPEG</td><td>Lossy</td><td>No</td><td>Photographs</td></tr><tr><td>PNG</td><td>Lossless</td><td>Not typically used for animation</td><td>Transparency, interface graphics</td></tr></tbody></table>
+</section>
+
+<section class="section" id="images"><div class="section-head"><div class="num">04</div><div><h2>HTML Images & Accessibility</h2><p class="lead">The <code>&lt;img&gt;</code> element displays an image. Its <code>src</code> specifies the file, while <code>alt</code> provides a text alternative.</p></div></div>
+<pre><code>&lt;img src="images/dog.jpg"
+     alt="A dog walking on a path"
+     width="300" height="200"&gt;</code></pre>
+<div class="grid">
+<div class="card"><h3>Image attributes</h3><ul><li><code>src</code>: path to the image file.</li><li><code>alt</code>: meaningful alternative text, not merely a filename.</li><li><code>width</code> and <code>height</code>: display dimensions.</li></ul></div>
+<div class="card"><h3>Image links and thumbnails</h3><pre><code>&lt;a href="large-photo.jpg"&gt;
+  &lt;img src="small-photo.jpg"
+       alt="Country road thumbnail"
+       width="200" height="100"&gt;
+&lt;/a&gt;</code></pre><p>A thumbnail is a small image that links to a larger version.</p></div>
+</div>
+<div class="callout"><strong>Accessibility:</strong> use descriptive alt text for meaningful images. Use <code>alt=""</code> for purely decorative images. Do not rely on colour alone to communicate information, and provide text links if image links are used for navigation.</div>
+<h3>Image optimisation checklist</h3>
+<div class="grid">
+<div class="card"><h4>Reduce file size</h4><p>Compress images while retaining acceptable visual quality.</p></div><div class="card"><h4>Crop to display dimensions</h4><p>Avoid serving unnecessarily large images for small spaces.</p></div><div class="card"><h4>Use clear filenames</h4><p>Use lowercase, short descriptive names, avoid spaces and punctuation, and keep the correct extension.</p></div><div class="card"><h4>Organise image files</h4><p>Keep graphics in a dedicated folder and use correct relative paths such as <code>images/home.gif</code>.</p></div>
+</div>
+<pre><code>&lt;img src="images/home.gif" alt="Home" width="200" height="100"&gt;</code></pre>
+</section>
+
+<section class="section" id="figure-meter"><div class="section-head"><div class="num">05</div><div><h2>Figure, Meter & Progress</h2><p class="lead">HTML includes elements to caption self-contained content and display numeric measurements or progress.</p></div></div>
+<div class="grid">
+<div class="card"><span class="tag">Figure caption</span><h3><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code></h3><figure><div class="preview" style="background:linear-gradient(145deg,#a6d8f0,#eaf8ff 45%,#4b8cae);text-align:center;font-size:44px">🏝️</div><figcaption>Example caption: Island Lighthouse, built in 1870.</figcaption></figure><pre><code>&lt;figure&gt;
+  &lt;img src="lighthouse.jpg"
+       alt="Lighthouse on an island"&gt;
+  &lt;figcaption&gt;Island Lighthouse&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre></div>
+<div class="card"><span class="tag">Numeric gauge</span><h3><code>&lt;meter&gt;</code></h3><p>Displays a value within a known range.</p><label>Example browser share</label><p>Firefox <meter min="0" max="100" value="49">49%</meter> 49%</p><p>Chrome <meter min="0" max="100" value="28">28%</meter> 28%</p><pre><code>&lt;meter value="7" min="0" max="10"&gt;
+  7 out of 10
+&lt;/meter&gt;</code></pre></div>
+<div class="card"><span class="tag">Task progress</span><h3><code>&lt;progress&gt;</code></h3><p>Displays completion progress toward a task.</p><label for="taskProgress">Progress towards your goal</label><progress id="taskProgress" max="100" value="50" style="width:100%">50%</progress><p><button class="btn" id="progressDown" type="button">− 10%</button><button class="btn" id="progressUp" type="button">+ 10%</button><span id="progressText">50%</span></p><pre><code>&lt;progress value="5" max="10"&gt;
+  50%
+&lt;/progress&gt;</code></pre></div>
+<div class="card"><span class="tag">Image map</span><h3>Clickable image areas</h3><p>The <code>&lt;map&gt;</code> element defines a map and <code>&lt;area&gt;</code> defines a clickable region (rectangle, circle or polygon).</p><pre><code>&lt;img src="boat.jpg" usemap="#boat"
+     alt="Fishing boat"&gt;
+&lt;map name="boat"&gt;
+  &lt;area shape="rect"
+        coords="24,188,339,283"
+        href="fishing.html"
+        alt="Fishing information"&gt;
+&lt;/map&gt;</code></pre></div>
+</div>
+</section>
+
+<section class="section" id="backgrounds"><div class="section-head"><div class="num">06</div><div><h2>CSS Background Images</h2><p class="lead">The <code>background-image</code> property places an image behind an element. By default, background images repeat in both directions.</p></div></div>
+<pre><code>body {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}</code></pre>
+<div class="demo"><h3>Background playground</h3><div class="grid">
+<div><label for="bgType">Background style</label><select id="bgType"><option value="linear-gradient(135deg,#e8f5ff,#1769aa)">Blue gradient</option><option value="repeating-linear-gradient(45deg,#dcecff 0 12px,#fff 12px 24px)">Repeat pattern</option><option value="radial-gradient(circle,#fff7d6,#f59e0b)">Radial gradient</option><option value="#e9f7e9">Solid colour</option></select></div>
+<div><label for="bgTextColor">Text colour</label><select id="bgTextColor"><option value="#172b4d">Dark</option><option value="#ffffff">White</option></select></div>
+</div><div id="backgroundPreview" class="preview" style="min-height:130px;background:linear-gradient(135deg,#e8f5ff,#1769aa);display:grid;place-items:center;color:#172b4d;font-size:22px;font-weight:800">Background preview</div></div>
+<div class="grid">
+<div class="card"><h3>Repeat values</h3><ul><li><code>repeat</code>: tiles in both directions.</li><li><code>repeat-x</code>: tiles horizontally.</li><li><code>repeat-y</code>: tiles vertically.</li><li><code>no-repeat</code>: displays once.</li></ul></div>
+<div class="card"><h3>Multiple backgrounds</h3><pre><code>body {
+  background:
+    url("footer.png") no-repeat bottom right,
+    url("gradient.png");
+}</code></pre><p>When multiple backgrounds are used, the first listed image is painted on top of later images.</p></div>
+</div>
+</section>
+
+<section class="section" id="image-sources"><div class="section-head"><div class="num">07</div><div><h2>Image Resources & Web Design Guidelines</h2><p class="lead">Use suitable, licensed graphics and optimise them for speed, clarity and accessibility.</p></div></div>
+<div class="grid">
+<div class="card"><h3>Graphic sources</h3><ul><li>Create images using graphics software.</li><li>Take photographs or scan drawings.</li><li>Use free image libraries such as <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>, <a href="https://pexels.com" target="_blank" rel="noopener">Pexels</a> and <a href="https://pixabay.com" target="_blank" rel="noopener">Pixabay</a>.</li><li>Purchase professional graphics or commission a designer.</li></ul><p>Always check the licence and attribution requirements before reuse.</p></div>
+<div class="card"><h3>Favicon</h3><p>A small square icon associated with a website. It may appear in the browser tab or bookmarks.</p><pre><code>&lt;link rel="icon"
+      href="favicon.ico"
+      type="image/x-icon"&gt;</code></pre></div>
+<div class="card"><h3>CSS sprites</h3><p>A sprite combines multiple small graphics into one image. CSS positions the image to reveal the required portion, reducing separate image requests in traditional implementations.</p></div>
+<div class="card"><h3>Image guidelines</h3><ul><li>Reuse suitable assets where possible.</li><li>Compress and resize images.</li><li>Specify width and height to reduce layout shifts.</li><li>Use lazy loading for off-screen images when appropriate.</li><li>Check brightness, contrast and text readability.</li><li>Provide alt text and do not rely on colour alone.</li></ul></div>
+</div>
+</section>
+
+<section class="section" id="effects"><div class="section-head"><div class="num">08</div><div><h2>CSS3 Visual Effects</h2><p class="lead">Experiment with rounded corners, box shadows, text shadows and opacity.</p></div></div>
+<div class="demo"><div class="grid">
+<div><label for="radiusRange">Border radius: <span id="radiusLabel">16</span>px</label><input id="radiusRange" type="range" min="0" max="60" value="16"></div>
+<div><label for="shadowRange">Shadow blur: <span id="shadowLabel">12</span>px</label><input id="shadowRange" type="range" min="0" max="40" value="12"></div>
+<div><label for="opacityRange">Opacity: <span id="opacityLabel">100</span>%</label><input id="opacityRange" type="range" min="10" max="100" value="100"></div>
+<div><label for="effectColor">Background colour</label><input id="effectColor" type="color" value="#dbeafe"></div>
+</div><div id="effectPreview" class="preview" style="margin:25px 8px 12px;background:#dbeafe;border-radius:16px;box-shadow:5px 5px 12px #828282;opacity:1;text-align:center;padding:28px"><h3 id="effectHeading" style="text-shadow:2px 2px 3px #999;margin:0">CSS3 Visual Effects</h3><p style="margin:8px 0 0">Adjust the controls to see the effect.</p></div></div>
+<div class="grid three" style="margin-top:18px">
+<div class="card"><h4>Rounded corners</h4><pre><code>div {
+  border-radius: 15px;
+}</code></pre></div><div class="card"><h4>Box shadow</h4><pre><code>#wrapper {
+  box-shadow: 5px 5px 5px #828282;
+}</code></pre><p>Optional keyword: <code>inset</code>.</p></div><div class="card"><h4>Opacity</h4><pre><code>h1 {
+  opacity: 0.6;
+}</code></pre><p>0 is fully transparent; 1 is fully opaque. The entire element and its contents are affected.</p></div></div>
+</section>
+
+<section class="section" id="colour"><div class="section-head"><div class="num">09</div><div><h2>RGBA & HSLA Colours</h2><p class="lead">RGBA uses red, green, blue and alpha. HSLA uses hue, saturation, lightness and alpha.</p></div></div>
+<div class="grid">
+<div class="card"><span class="tag">RGBA</span><h3>Red, Green, Blue, Alpha</h3><p>RGB components range from 0 to 255. Alpha ranges from 0 (transparent) to 1 (opaque).</p><pre><code>color: rgba(255, 0, 0, 0.5);</code></pre></div>
+<div class="card"><span class="tag">HSLA</span><h3>Hue, Saturation, Lightness, Alpha</h3><p>Hue ranges from 0–360 degrees. Saturation and lightness are percentages. Alpha ranges from 0–1.</p><pre><code>background: hsla(210, 80%, 50%, 0.7);</code></pre></div>
+</div>
+<div class="demo"><h3>Colour mixer</h3><div class="grid">
+<div><label for="hueRange">Hue: <span id="hueLabel">210</span>°</label><input id="hueRange" type="range" min="0" max="360" value="210"></div>
+<div><label for="satRange">Saturation: <span id="satLabel">80</span>%</label><input id="satRange" type="range" min="0" max="100" value="80"></div>
+<div><label for="lightRange">Lightness: <span id="lightLabel">50</span>%</label><input id="lightRange" type="range" min="0" max="100" value="50"></div>
+<div><label for="alphaRange">Alpha: <span id="alphaLabel">70</span>%</label><input id="alphaRange" type="range" min="0" max="100" value="70"></div>
+</div><div id="colourPreview" class="preview" style="background:hsla(210,80%,50%,.7);color:#102a56">HSLA colour preview</div><pre id="colourCode"><code>background-color: hsla(210, 80%, 50%, 0.7);</code></pre></div>
+</section>
+
+<section class="section" id="gradients"><div class="section-head"><div class="num">10</div><div><h2>CSS3 Gradients</h2><p class="lead">A gradient blends colour shades smoothly. CSS supports linear and radial gradients.</p></div></div>
+<div class="grid">
+<div class="card"><h3>Linear gradient</h3><p>Colours blend along a straight line.</p><pre><code>background-image:
+  linear-gradient(to right, white, #8FA5CE);</code></pre></div>
+<div class="card"><h3>Radial gradient</h3><p>Colours blend outwards from a central point.</p><pre><code>background-image:
+  radial-gradient(circle, white, #8FA5CE);</code></pre></div>
+</div>
+<div class="demo"><label for="gradientType">Gradient type</label><select id="gradientType"><option value="linear-gradient(90deg,#ffffff,#8FA5CE)">Linear — left to right</option><option value="linear-gradient(180deg,#ffffff,#8FA5CE)">Linear — top to bottom</option><option value="radial-gradient(circle,#ffffff,#8FA5CE)">Radial</option><option value="linear-gradient(135deg,#fbc2eb,#a6c1ee)">Pink to blue</option></select><div id="gradientPreview" class="preview" style="height:180px;display:grid;place-items:center;font-size:22px;font-weight:800;background:linear-gradient(90deg,#fff,#8FA5CE)">Gradient preview</div><pre id="gradientCode"><code>background-image: linear-gradient(90deg, #ffffff, #8FA5CE);</code></pre></div>
+</section>
+
+<section class="section" id="practice"><div class="section-head"><div class="num">11</div><div><h2>Checkpoint & Practice</h2><p class="lead">Test your understanding of CSS syntax, borders, images and backgrounds.</p></div></div>
+<div class="card"><h3>Question 1</h3><p>What are the two main parts of a CSS rule?</p><label><input type="radio" name="q1" value="a"> HTML and body</label><br><label><input type="radio" name="q1" value="b"> Selector and declaration block</label><br><label><input type="radio" name="q1" value="c"> Property and HTML tag</label></div>
+<div class="card" style="margin-top:12px"><h3>Question 2</h3><p>Why does this CSS declaration fail to show the border?</p><pre><code>h2 { background-color: #ff0000 border-top: thin solid #000000; }</code></pre><label><input type="radio" name="q2" value="a"> The declarations need a semicolon between them.</label><br><label><input type="radio" name="q2" value="b"> Borders cannot be applied to headings.</label><br><label><input type="radio" name="q2" value="c"> The colour must always be a named colour.</label></div>
+<div class="card" style="margin-top:12px"><h3>Question 3</h3><p>Which image format is usually best for photographs with many colours?</p><label><input type="radio" name="q3" value="a"> GIF</label><br><label><input type="radio" name="q3" value="b"> JPEG</label><br><label><input type="radio" name="q3" value="c"> Plain text</label></div>
+<div class="card" style="margin-top:12px"><h3>Question 4</h3><p>What does an alpha value of 0 mean in RGBA/HSLA?</p><label><input type="radio" name="q4" value="a"> Fully opaque</label><br><label><input type="radio" name="q4" value="b"> Fully transparent</label><br><label><input type="radio" name="q4" value="c"> Maximum saturation</label></div>
+<button type="button" class="btn" id="checkQuiz">Check answers</button><button type="button" class="btn light" id="resetQuiz">Try again</button><p id="quizResult" aria-live="polite"></p>
+<div class="callout"><strong>Discussion prompts from the lecture:</strong><ul><li>Is it reasonable to expect a page to look exactly the same on every browser and platform? Why?</li><li>How should a background image and background colour be configured together?</li><li>How can image links be made accessible to visitors who use screen readers?</li></ul></div>
+</section>
+</main>
+</div>
+<footer class="footer">CSF3133 · CSS (Part 1) · Interactive learning material<br>Prepared for web programming study. Use licensed images and accessible design practices.</footer>
+<script>
+const $ = id => document.getElementById(id);
+function updateBasic(){ $('basicSizeLabel').textContent=$('basicSize').value; Object.assign($('basicPreview').style,{color:$('basicColor').value,fontSize:$('basicSize').value+'px',textAlign:$('basicAlign').value}); }
+['basicColor','basicSize','basicAlign'].forEach(id=>$(id).addEventListener('input',updateBasic));
+function updateBorder(){ $('borderWidthLabel').textContent=$('borderWidth').value;$('paddingLabel').textContent=$('paddingSize').value; $('borderPreview').style.border=$('borderWidth').value+'px '+$('borderStyle').value+' '+$('borderColor').value; $('borderPreview').style.padding=$('paddingSize').value+'px'; }
+['borderStyle','borderColor','borderWidth','paddingSize'].forEach(id=>$(id).addEventListener('input',updateBorder));
+$('progressUp').addEventListener('click',()=>{let p=$('taskProgress');p.value=Math.min(100,Number(p.value)+10);$('progressText').textContent=p.value+'%';});
+$('progressDown').addEventListener('click',()=>{let p=$('taskProgress');p.value=Math.max(0,Number(p.value)-10);$('progressText').textContent=p.value+'%';});
+function updateBackground(){ $('backgroundPreview').style.background=$('bgType').value;$('backgroundPreview').style.color=$('bgTextColor').value; }
+['bgType','bgTextColor'].forEach(id=>$(id).addEventListener('input',updateBackground));
+function updateEffects(){const r=$('radiusRange').value,s=$('shadowRange').value,o=$('opacityRange').value/100,c=$('effectColor').value;$('radiusLabel').textContent=r;$('shadowLabel').textContent=s;$('opacityLabel').textContent=Math.round(o*100);Object.assign($('effectPreview').style,{borderRadius:r+'px',boxShadow:`5px 5px ${s}px #828282`,opacity:o,backgroundColor:c});}
+['radiusRange','shadowRange','opacityRange','effectColor'].forEach(id=>$(id).addEventListener('input',updateEffects));
+function updateColour(){let h=$('hueRange').value,s=$('satRange').value,l=$('lightRange').value,a=$('alphaRange').value/100;$('hueLabel').textContent=h;$('satLabel').textContent=s;$('lightLabel').textContent=l;$('alphaLabel').textContent=Math.round(a*100);let c=`hsla(${h}, ${s}%, ${l}%, ${a})`;$('colourPreview').style.backgroundColor=c;$('colourCode').innerHTML='<code>background-color: '+c+';</code>';}
+['hueRange','satRange','lightRange','alphaRange'].forEach(id=>$(id).addEventListener('input',updateColour));
+function updateGradient(){let g=$('gradientType').value;$('gradientPreview').style.backgroundImage=g;$('gradientCode').innerHTML='<code>background-image: '+g+';</code>';}
+$('gradientType').addEventListener('input',updateGradient);
+$('checkQuiz').addEventListener('click',()=>{let answers={q1:'b',q2:'a',q3:'b',q4:'b'},score=0;Object.keys(answers).forEach(q=>{let checked=document.querySelector('input[name="'+q+'"]:checked');if(checked&&checked.value===answers[q])score++;});$('quizResult').textContent='You scored '+score+' out of 4.'+(score===4?' Excellent work!': ' Review the relevant sections and try again.');});
+$('resetQuiz').addEventListener('click',()=>{document.querySelectorAll('#practice input[type=radio]').forEach(i=>i.checked=false);$('quizResult').textContent='';});
+</script>
+</body>
+</html>

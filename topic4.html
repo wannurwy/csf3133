@@ -788,14 +788,30 @@ document.getElementById("html5ValidationDemo").addEventListener("submit", functi
     <div class="card"><span class="tag">Spinner</span><h3><code>type="number"</code></h3><p>Provides numeric input, often with increment/decrement controls.</p><pre class="code"><code>&lt;input type="number" min="1" max="10"&gt;</code></pre></div>
     <div class="card"><span class="tag">Calendar</span><h3><code>type="date"</code></h3><p>Provides a date picker in browsers that support it.</p><pre class="code"><code>&lt;input type="date" name="myDate"&gt;</code></pre></div>
   </div>
-  <div class="demo">
-    <h3>Live control playground</h3>
-    <label for="favColour">Choose your favourite colour</label><input list="colourOptions" id="favColour" placeholder="Start typing a colour"><datalist id="colourOptions"><option value="Red"><option value="Green"><option value="Blue"><option value="Yellow"><option value="Black"></datalist>
-    <label for="rating">Rating: <strong id="ratingValue">5</strong> / 10</label><input type="range" id="rating" min="1" max="10" value="5" oninput="document.getElementById('ratingValue').textContent=this.value">
-    <label for="quantity">Choose a number from 1 to 10</label><input type="number" id="quantity" min="1" max="10" value="2">
-    <label for="playDate">Choose a date</label><input type="date" id="playDate">
-    <div class="controls"><button class="btn" onclick="showPlayground()">Show selections</button><button class="btn secondary" onclick="resetPlayground()">Reset</button></div><div class="result" id="playResult" aria-live="polite"></div>
-  </div>
+<div class="playground">
+    <h2>Live control playground</h2>
+
+    <label for="favouriteColor">Choose your favourite colour</label>
+
+    <select id="favouriteColor">
+        <option value="#ec4899">Pink</option>
+        <option value="#2563eb">Blue</option>
+        <option value="#22c55e">Green</option>
+        <option value="#f59e0b">Orange</option>
+        <option value="#8b5cf6">Purple</option>
+        <option value="#ef4444">Red</option>
+        <option value="#111827">Black</option>
+    </select>
+
+    <div id="colorPreview" class="color-preview">
+        <h3 id="previewTitle">Hello, HTML5!</h3>
+        <p>Your selected colour will appear here.</p>
+    </div>
+
+    <p id="colorMessage" aria-live="polite">
+        Current colour: Pink
+    </p>
+</div>
 </section>
 
 <section class="section" data-section id="practice">

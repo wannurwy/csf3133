@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CSF3133 CSS Part 2 interactive learning hub">
+<title>CSF3133 | CSS Part 2 Learning Hub</title>
+<style>
+:root{--navy:#102a43;--blue:#1769aa;--sky:#eaf4fb;--ink:#243447;--muted:#627487;--line:#d9e3ec;--paper:#fff;--soft:#f5f8fb;--green:#16794b;--gold:#fff4d6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:#f4f7fa;color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#145f9b}button,input,select{font:inherit}.topbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 12px #102a4310}.topinner{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:800;color:var(--navy);letter-spacing:.02em}.brand small{display:block;font-size:.72rem;color:var(--muted);font-weight:600}.toplinks{display:flex;gap:8px;flex-wrap:wrap}.toplinks a{text-decoration:none;font-size:.86rem;padding:6px 10px;border-radius:8px;color:var(--ink)}.toplinks a:hover{background:var(--sky);color:var(--blue)}
+.hero{background:linear-gradient(120deg,#0b2545,#1769aa 65%,#38a3d4);color:white;padding:62px 22px 56px}.hero-inner{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:800;color:#bfe6ff}.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.08;margin:12px 0}.hero p{max-width:720px;color:#e3f3ff;font-size:1.1rem}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero-meta span{border:1px solid #ffffff55;background:#ffffff12;padding:7px 12px;border-radius:999px;font-size:.85rem}
+.layout{max-width:1180px;margin:28px auto;padding:0 22px;display:grid;grid-template-columns:235px minmax(0,1fr);gap:26px}.sidebar{position:sticky;top:82px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;max-height:calc(100vh - 100px);overflow:auto}.sidebar strong{display:block;margin:2px 8px 10px;color:var(--navy)}.sidebar a{display:block;padding:7px 9px;text-decoration:none;border-radius:7px;color:#43576b;font-size:.9rem}.sidebar a:hover{background:var(--sky);color:var(--blue)}main{min-width:0}.intro{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:20px}.intro h2{margin-top:0}.section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:25px;margin:0 0 20px;box-shadow:0 5px 18px #17324d08}.section-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:14px}.num{flex:0 0 38px;height:38px;border-radius:11px;background:var(--sky);color:var(--blue);font-weight:800;display:grid;place-items:center}.section h2{margin:0;color:var(--navy);font-size:1.45rem}.section h3{margin:22px 0 8px;color:#244d70;font-size:1.08rem}.muted{color:var(--muted)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.tile{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:16px}.tile h3{margin:0 0 6px}.callout{border-left:4px solid var(--blue);background:var(--sky);padding:12px 15px;border-radius:0 9px 9px 0;margin:15px 0}.warning{border-left-color:#c58a16;background:var(--gold)}pre{overflow:auto;background:#102033;color:#e5f2ff;padding:16px;border-radius:10px;font-size:.9rem;line-height:1.55}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.inline-code{background:#eef3f8;padding:2px 5px;border-radius:5px}.demo{border:1px solid #cbd9e5;border-radius:12px;padding:17px;margin:14px 0;background:#fbfdff}.demo-title{font-weight:750;color:var(--navy);margin-bottom:10px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:14px}.field{display:flex;flex-direction:column;gap:4px;font-size:.88rem;color:#4b6074}.field input,.field select{border:1px solid #bdcbd8;border-radius:7px;padding:7px 9px;background:white;min-width:120px}.preview{background:white;border:1px dashed #9bb2c7;border-radius:9px;padding:16px;min-height:74px}.btn{border:0;border-radius:8px;background:var(--blue);color:#fff;padding:9px 14px;cursor:pointer;font-weight:650}.btn.secondary{background:#e8f0f7;color:#244d70}.btn:hover{filter:brightness(.94)}.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.swatch{border:1px solid #ccd6df;border-radius:8px;overflow:hidden;text-align:center;font-size:.76rem;background:white}.swatch i{display:block;height:40px}.swatch span{display:block;padding:5px}.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf4f9;color:var(--navy)}.quiz-q{padding:15px 0;border-top:1px solid var(--line)}.quiz-q:first-child{border-top:0}.quiz-q p{font-weight:700;margin:0 0 8px}.option{display:block;margin:6px 0;font-weight:400}.feedback{font-weight:700;margin-top:10px}.correct{color:var(--green)}.incorrect{color:#b33b32}.footer{max-width:1180px;margin:0 auto;padding:20px 22px 42px;color:var(--muted);font-size:.88rem}.pill{display:inline-block;background:#edf5fb;color:#22577b;border-radius:99px;padding:3px 9px;font-size:.78rem;font-weight:700}.two-code{display:grid;grid-template-columns:1fr 1fr;gap:12px}.small{font-size:.88rem}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.toplinks{display:none}.grid2,.two-code{grid-template-columns:1fr}}
+@media(max-width:520px){.hero{padding:42px 18px}.layout{padding:0 13px;margin:16px auto}.section{padding:18px}.swatches{grid-template-columns:repeat(3,1fr)}.sidebar nav{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner"><div class="brand">CSF3133 <small>WEB PROGRAMMING · LEARNING HUB</small></div><nav class="toplinks"><a href="#objectives">Objectives</a><a href="#colour">Colour</a><a href="#text">Text</a><a href="#selectors">Selectors</a><a href="#cascade">Cascade</a><a href="#practice">Practice</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><div class="eyebrow">Interactive learning hub · Topic 07</div><h1>CSS (Part 2)</h1><p>Learn how to style web pages with colour, text properties and selectors. Compare inline, embedded and external stylesheets, explore the CSS cascade, and practise with interactive examples.</p><div class="hero-meta"><span>CSF3133: Web Programming</span><span>Lecture notes · 47 pages</span><span>Try-it-yourself demos</span></div></div></section>
+<div class="layout">
+<aside class="sidebar"><strong>On this page</strong><nav>
+<a href="#objectives">Learning objectives</a><a href="#overview">1. CSS overview</a><a href="#syntax">2. CSS syntax & colour</a><a href="#colour">3. Colour choices</a><a href="#inline">4. Inline styles</a><a href="#embedded">5. Embedded styles</a><a href="#text">6. Text properties</a><a href="#selectors">7. CSS selectors</a><a href="#span">8. Span element</a><a href="#external">9. External stylesheets</a><a href="#layout">10. Centering content</a><a href="#cascade">11. The cascade</a><a href="#validation">12. CSS validation</a><a href="#practice">Checkpoint & practice</a></nav></aside>
+<main>
+<div class="intro" id="objectives"><span class="pill">Learning objectives</span><h2>By the end of this topic, you should be able to:</h2><div class="grid2"><ul><li>Describe the evolution of style sheets from print media to the Web.</li><li>List advantages of using Cascading Style Sheets.</li><li>Use colour on web pages.</li><li>Apply inline, embedded and external styles.</li></ul><ul><li>Configure element, class, id and contextual selectors.</li><li>Use CSS text properties.</li><li>Utilise the cascade in CSS.</li><li>Validate CSS.</li></ul></div></div>
+
+<section class="section" id="overview"><div class="section-head"><span class="num">01</span><div><h2>Overview of Cascading Style Sheets</h2><div class="muted">What CSS does and why it is useful</div></div></div>
+<p>Style sheets were used in desktop publishing to apply typographical styles and spacing to printed media. CSS brings style-sheet functionality to web developers. It is a flexible, cross-platform, standards-based language developed by the W3C.</p>
+<div class="grid2"><div class="tile"><h3>Greater design control</h3><p>More control over typography and page layout than HTML alone.</p></div><div class="tile"><h3>Separate style from structure</h3><p>Presentation rules can be moved out of the HTML document.</p></div><div class="tile"><h3>Reusable styles</h3><p>One stylesheet can be associated with multiple web pages.</p></div><div class="tile"><h3>Easier maintenance</h3><p>Update presentation in a stylesheet rather than editing many individual pages.</p></div></div>
+<h3>Four stylesheet approaches</h3><div class="tablewrap"><table><tr><th>Type</th><th>Where it is defined</th><th>Typical use</th></tr><tr><td>Inline</td><td>HTML <code>style</code> attribute</td><td>Style one specific element</td></tr><tr><td>Embedded (internal)</td><td><code>&lt;style&gt;</code> element in the document head</td><td>Style one web page</td></tr><tr><td>External</td><td>Separate <code>.css</code> file linked from HTML</td><td>Reuse styles across pages</td></tr><tr><td>Imported</td><td><code>@import</code> rule</td><td>Import rules from another stylesheet</td></tr></table></div>
+</section>
+
+<section class="section" id="syntax"><div class="section-head"><span class="num">02</span><div><h2>CSS syntax and colour</h2><div class="muted">Selectors, declarations, RGB and hexadecimal values</div></div></div>
+<p>A CSS rule describes the styling to apply. Each rule contains a <b>selector</b> and a <b>declaration block</b>. A declaration contains a property and a value.</p>
+<pre><code>body {
+  color: blue;
+  background-color: yellow;
+}</code></pre>
+<p>The same colours can be written using hexadecimal values:</p><pre><code>body {
+  color: #0000FF;
+  background-color: #FFFF00;
+}</code></pre>
+<div class="callout"><b>Remember:</b> write each declaration as <code>property: value;</code>. Separate multiple declarations with semicolons and enclose the declarations in curly braces.</div>
+<h3>Common formatting properties</h3><div class="tablewrap"><table><tr><th>Property</th><th>Purpose</th></tr><tr><td><code>background-color</code></td><td>Sets the background colour.</td></tr><tr><td><code>color</code></td><td>Sets text colour.</td></tr><tr><td><code>font-family</code></td><td>Sets the typeface.</td></tr><tr><td><code>font-size</code></td><td>Sets text size.</td></tr><tr><td><code>font-style</code></td><td>Sets normal or italic text.</td></tr><tr><td><code>font-weight</code></td><td>Sets text boldness.</td></tr><tr><td><code>line-height</code></td><td>Sets line height.</td></tr><tr><td><code>margin</code></td><td>Sets space outside an element.</td></tr><tr><td><code>text-align</code></td><td>Aligns text.</td></tr><tr><td><code>text-decoration</code></td><td>Adds underline, overline or line-through.</td></tr><tr><td><code>width</code></td><td>Sets an element's width.</td></tr></table></div>
+<h3>RGB and hexadecimal colours</h3><p>Monitors display colour using intensities of red, green and blue (RGB). Each RGB value ranges from 0 to 255. Hexadecimal numbers use base 16; each pair ranges from <code>00</code> to <code>FF</code>. Three pairs describe one RGB colour.</p>
+<div class="swatches"><div class="swatch"><i style="background:#000"></i><span>#000000<br>Black</span></div><div class="swatch"><i style="background:#fff"></i><span>#FFFFFF<br>White</span></div><div class="swatch"><i style="background:#f00"></i><span>#FF0000<br>Red</span></div><div class="swatch"><i style="background:#0f0"></i><span>#00FF00<br>Green</span></div><div class="swatch"><i style="background:#00f"></i><span>#0000FF<br>Blue</span></div><div class="swatch"><i style="background:#ccc"></i><span>#CCCCCC<br>Grey</span></div></div>
+</section>
+
+<section class="section" id="colour"><div class="section-head"><span class="num">03</span><div><h2>Making colour choices</h2><div class="muted">Colour schemes and sufficient contrast</div></div></div>
+<ul><li>Choose a monochromatic colour scheme.</li><li>Choose colours from a photograph or another image.</li><li>Begin with a favourite colour and select complementary colours using a colour-scheme tool.</li></ul>
+<p>When selecting text and background colours, ensure sufficient contrast so that text remains easy to read.</p>
+<div class="demo"><div class="demo-title">Colour contrast playground</div><div class="controls"><label class="field">Text colour <input type="color" id="fg" value="#17324d"></label><label class="field">Background colour <input type="color" id="bg" value="#ffffff"></label><button class="btn" onclick="updateContrast()">Apply colours</button></div><div class="preview" id="contrastPreview">Readable text depends on sufficient contrast between foreground and background colours.</div><p class="small muted" id="contrastText">Choose colours and preview the result.</p></div>
+<div class="callout warning"><b>Design reminder:</b> a colour combination that looks attractive may still be difficult to read. Always check text/background contrast.</div>
+</section>
+
+<section class="section" id="inline"><div class="section-head"><span class="num">04</span><div><h2>Configuring colour with inline CSS</h2><div class="muted">Use the style attribute on an HTML element</div></div></div>
+<p>Inline CSS is configured in the body of a web page. It uses the <code>style</code> attribute and applies only to the specific HTML element.</p>
+<pre><code>&lt;h1 style="color:#ff0000"&gt;
+  Heading text is red
+&lt;/h1&gt;</code></pre>
+<p>More than one declaration can be placed in the attribute. Separate declarations with a semicolon.</p>
+<pre><code>&lt;h1 style="color:#FF0000; background-color:#CCCCCC"&gt;
+  Red heading with grey background
+&lt;/h1&gt;</code></pre>
+<div class="demo"><div class="demo-title">Try inline styling</div><div class="controls"><label class="field">Text colour<input type="color" id="inlineColor" value="#ff0000"></label><label class="field">Background<input type="color" id="inlineBg" value="#eeeeee"></label><label class="field">Text<input id="inlineText" value="Heading text is styled inline"></label><button class="btn" onclick="applyInline()">Apply</button></div><div class="preview"><h2 id="inlinePreview" style="color:#ff0000;background:#eeeeee;padding:10px;margin:0">Heading text is styled inline</h2></div></div>
+</section>
+
+<section class="section" id="embedded"><div class="section-head"><span class="num">05</span><div><h2>CSS embedded (internal) styles</h2><div class="muted">Use the style element in the head section</div></div></div>
+<p>Embedded styles are configured in the header section of a web page using the HTML <code>&lt;style&gt;</code> element. The rules apply to the entire web page document.</p>
+<pre><code>&lt;head&gt;
+  &lt;style&gt;
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+<p>The <code>body</code> selector can set global rules. Rules for more specific elements, such as <code>h1</code> and <code>h2</code>, can override those global styles.</p>
+<div class="demo"><div class="demo-title">Embedded stylesheet preview</div><div class="controls"><label class="field">Page background<select id="pageBg"><option value="#172b4d">Navy</option><option value="#ffffff">White</option><option value="#000000">Black</option><option value="#e6e6fa">Lavender</option></select></label><label class="field">Body text<select id="pageText"><option value="#ffffff">White</option><option value="#172b4d">Navy</option><option value="#222222">Black</option></select></label><button class="btn" onclick="applyEmbedded()">Apply</button></div><div class="preview" id="embeddedPreview" style="background:#172b4d;color:white"><h3 style="color:inherit;margin-top:0">Sample page heading</h3><p style="margin-bottom:0">These styles represent global rules applied through an embedded stylesheet.</p></div></div>
+</section>
+
+<section class="section" id="text"><div class="section-head"><span class="num">06</span><div><h2>Configuring text with CSS</h2><div class="muted">Font and text formatting properties</div></div></div>
+<div class="grid2"><div class="tile"><h3>Font properties</h3><ul><li><code>font-weight</code>: boldness</li><li><code>font-style</code>: italic style</li><li><code>font-size</code>: text size</li><li><code>font-family</code>: typeface</li></ul></div><div class="tile"><h3>Other text properties</h3><ul><li><code>line-height</code>: height of text lines</li><li><code>text-align</code>: text alignment</li><li><code>text-indent</code>: first-line indentation</li><li><code>text-decoration</code>: underline, overline, line-through</li><li><code>text-transform</code>: capitalization</li><li><code>text-shadow</code>: text shadow</li></ul></div></div>
+<div class="callout"><b>Accessibility recommendation in the lecture:</b> use <code>em</code> or percentage font sizes so users can enlarge text in browsers.</div>
+<p>Not everyone has the same fonts installed. Configure a list of fonts and include a generic family name.</p><pre><code>p {
+  font-family: Arial, Verdana, sans-serif;
+}</code></pre>
+<div class="demo"><div class="demo-title">Text formatting playground</div><div class="controls"><label class="field">Font family<select id="fontFamily"><option value="Arial, sans-serif">Arial</option><option value="Georgia, serif">Georgia</option><option value="'Courier New', monospace">Courier New</option><option value="Verdana, sans-serif">Verdana</option></select></label><label class="field">Font size<select id="fontSize"><option value="16px">16 px</option><option value="20px">20 px</option><option value="1.5em">1.5 em</option><option value="120%">120%</option></select></label><label class="field">Alignment<select id="textAlign"><option>left</option><option>center</option><option>right</option><option>justify</option></select></label><label class="field">Text style<select id="fontStyle"><option value="normal">Normal</option><option value="italic">Italic</option></select></label><button class="btn" onclick="applyText()">Apply</button></div><div class="preview" id="textPreview">CSS gives you control over the appearance of text. Change the options above to explore font family, size, alignment and style.</div></div>
+</section>
+
+<section class="section" id="selectors"><div class="section-head"><span class="num">07</span><div><h2>CSS selectors</h2><div class="muted">Element, class, ID and descendant selectors</div></div></div>
+<div class="tablewrap"><table><tr><th>Selector type</th><th>Syntax</th><th>What it selects</th></tr><tr><td>HTML element</td><td><code>p</code></td><td>All paragraph elements.</td></tr><tr><td>Class</td><td><code>.classname</code></td><td>Elements assigned that class; can be reused.</td></tr><tr><td>ID</td><td><code>#idname</code></td><td>The element assigned that ID; intended for one element on the page.</td></tr><tr><td>Descendant / contextual</td><td><code>#content p</code></td><td>Paragraph elements located inside the element with ID <code>content</code>.</td></tr></table></div>
+<h3>Class selector</h3><p>A class selector applies a CSS rule to a certain class of elements. It is not tied to one particular HTML element.</p><pre><code>.new {
+  color: red;
+  font-style: italic;
+}
+
+/* HTML */
+&lt;p class="new"&gt;This text is red and italic.&lt;/p&gt;</code></pre>
+<h3>ID selector</h3><p>An ID selector applies a CSS rule to one element on a web page.</p><pre><code>#new {
+  color: red;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+/* HTML */
+&lt;p id="new"&gt;This text is red, large and italic.&lt;/p&gt;</code></pre>
+<h3>Descendant (contextual) selector</h3><p>Specify an element within the context of its container (parent) element. Contextual selectors can reduce the number of classes and IDs needed in the HTML.</p><pre><code>#content p {
+  color: green;
+}</code></pre>
+<div class="demo"><div class="demo-title">Selector playground</div><div class="controls"><label class="field">Choose selector<select id="selectorChoice"><option value="element">Element selector: p</option><option value="class">Class selector: .highlight</option><option value="id">ID selector: #special</option><option value="descendant">Descendant: #content p</option></select></label><button class="btn" onclick="showSelector()">Apply selector</button><button class="btn secondary" onclick="resetSelector()">Reset</button></div><div class="preview" id="selectorPreview"><p>Paragraph outside the content container.</p><div id="content"><p class="highlight" id="special">Paragraph inside #content (also has a class and ID).</p><p>Another paragraph inside #content.</p></div></div><p class="small muted" id="selectorExplanation">Choose a selector to see which elements are affected.</p></div>
+</section>
+
+<section class="section" id="span"><div class="section-head"><span class="num">08</span><div><h2>The span element</h2><div class="muted">Format a section of text within a line</div></div></div>
+<p>The <code>&lt;span&gt;</code> element configures a specially formatted area displayed inline with other content, such as a phrase within a paragraph. It does not add extra space above or below the text.</p>
+<pre><code>&lt;style&gt;
+.companyname {
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25em;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Your needs are important to us at
+  &lt;span class="companyname"&gt;Acme Web Design&lt;/span&gt;.
+  We will work with you to build your Web site.
+&lt;/p&gt;</code></pre>
+<div class="demo"><div class="demo-title">Inline span example</div><p style="margin:0">Your needs are important to us at <span style="font-weight:bold;font-family:Georgia,serif;font-size:1.25em;color:#1769aa">Acme Web Design</span>. We will work with you to build your Web site.</p></div>
+</section>
+
+<section class="section" id="external"><div class="section-head"><span class="num">09</span><div><h2>External style sheets</h2><div class="muted">Keep CSS rules in a separate .css file</div></div></div>
+<p>An external stylesheet is a text file separate from the HTML documents. It has a <code>.css</code> extension, contains CSS rules only, and does not contain HTML tags. Multiple web pages can use the same stylesheet.</p>
+<div class="two-code"><div><span class="pill">color.css</span><pre><code>body {
+  background-color: #0000FF;
+  color: #FFFFFF;
+}</code></pre></div><div><span class="pill">HTML head</span><pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet"
+        href="color.css"&gt;
+&lt;/head&gt;</code></pre></div></div>
+<p>The <code>&lt;link&gt;</code> element is placed in the head section. It associates the external stylesheet with the web page.</p>
+<div class="callout"><b>Example:</b> to use an external stylesheet named <code>mystyles.css</code>, add <code>&lt;link rel="stylesheet" href="mystyles.css"&gt;</code> inside the HTML <code>&lt;head&gt;</code>.</div>
+<h3>Centering page content with CSS</h3><pre><code>#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}</code></pre>
+<p>The automatic left and right margins centre a container with a specified width.</p>
+<div class="demo"><div class="demo-title">Container centering demo</div><div class="controls"><label class="field">Container width <input type="range" min="40" max="100" value="80" id="containerWidth" oninput="updateContainer()"></label><span id="widthValue">80%</span></div><div style="background:#eaf0f5;padding:10px;border-radius:8px"><div id="containerDemo" style="width:80%;margin:0 auto;background:#cce7f8;border:2px solid #1769aa;padding:16px;text-align:center;border-radius:7px">#container — centred content</div></div></div>
+</section>
+
+<section class="section" id="cascade"><div class="section-head"><span class="num">10</span><div><h2>The CSS cascade</h2><div class="muted">How CSS decides which style is applied</div></div></div>
+<p>The cascading order is a set of rules that determines which style is applied to an element when multiple styles conflict.</p>
+<div class="grid2"><div class="tile"><h3>1. Specificity</h3><p>More specific selectors take precedence over less specific selectors. An ID selector has higher specificity than a class selector or an element selector.</p></div><div class="tile"><h3>2. Inheritance</h3><p>Styles applied to a parent can be passed to its children. A child can override an inherited style with its own rule.</p></div><div class="tile"><h3>3. Order of declaration</h3><p>When rules have the same specificity, a later declaration takes precedence over an earlier one.</p></div><div class="tile"><h3>About !important</h3><p>The lecture introduces <code>!important</code> as a way to give a declaration priority. Avoid using it unless absolutely necessary.</p></div></div>
+<h3>Specificity example</h3><pre><code>.container { color: green; }
+#text       { color: red; }
+.text       { color: green; }
+
+/* An element matching #text receives red text
+   because the ID selector is more specific. */</code></pre>
+<h3>Inheritance example</h3><pre><code>body {
+  background-color: yellow;
+  color: black;
+}
+h2 {
+  background-color: green;
+  color: white;
+}</code></pre>
+<h3>Order of declaration example</h3><pre><code>.text { color: blue; }
+.text { color: green; }
+
+/* The later rule wins when specificity is equal. */</code></pre>
+<div class="demo"><div class="demo-title">Cascade explorer</div><p class="muted small">The same paragraph matches an element, class and ID selector. Change which rule is active to observe specificity.</p><div class="controls"><label class="field">Active rule<select id="cascadeRule"><option value="id">ID selector (#message)</option><option value="class">Class selector (.notice)</option><option value="element">Element selector (p)</option><option value="later">Later class declaration</option></select></label><button class="btn" onclick="applyCascade()">Apply rules</button></div><div class="preview"><p id="cascadeSample" class="notice" style="margin:0">This paragraph matches p, .notice and #message. The selected rule is illustrated below.</p></div><p class="small muted" id="cascadeExplain">ID selector has higher specificity than class and element selectors.</p></div>
+</section>
+
+<section class="section" id="validation"><div class="section-head"><span class="num">11</span><div><h2>W3C CSS validation</h2><div class="muted">Check stylesheet syntax</div></div></div>
+<p>CSS validation checks whether a stylesheet follows CSS syntax rules. The lecture concludes by highlighting the W3C CSS Validation test.</p>
+<div class="tile"><h3>W3C CSS Validation Service</h3><p>Use the official validator to check a public stylesheet URL, upload a CSS file, or paste CSS code.</p><a class="btn" href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">Open W3C CSS Validator ↗</a></div>
+<div class="callout">Validation helps identify syntax errors, but it does not guarantee that a page will look identical in every browser or that the design is accessible. Review the page visually as well.</div>
+</section>
+
+<section class="section" id="practice"><div class="section-head"><span class="num">12</span><div><h2>Checkpoint & practice</h2><div class="muted">Test your understanding of CSS Part 2</div></div></div>
+<form id="quizForm">
+<div class="quiz-q"><p>1. Which CSS selector is used to select an element with the class name “new”?</p><label class="option"><input type="radio" name="q1" value="a"> #new</label><label class="option"><input type="radio" name="q1" value="b"> .new</label><label class="option"><input type="radio" name="q1" value="c"> new*</label></div>
+<div class="quiz-q"><p>2. Where are embedded styles normally placed?</p><label class="option"><input type="radio" name="q2" value="a"> In the style attribute of each element</label><label class="option"><input type="radio" name="q2" value="b"> In a separate .css file only</label><label class="option"><input type="radio" name="q2" value="c"> In a &lt;style&gt; element in the head section</label></div>
+<div class="quiz-q"><p>3. Which HTML element associates an external stylesheet with a web page?</p><label class="option"><input type="radio" name="q3" value="a"> &lt;link&gt;</label><label class="option"><input type="radio" name="q3" value="b"> &lt;style-src&gt;</label><label class="option"><input type="radio" name="q3" value="c"> &lt;css&gt;</label></div>
+<div class="quiz-q"><p>4. Which selector has higher specificity: <code>.notice</code> or <code>#notice</code>?</p><label class="option"><input type="radio" name="q4" value="a"> .notice</label><label class="option"><input type="radio" name="q4" value="b"> #notice</label><label class="option"><input type="radio" name="q4" value="c"> They are always equal</label></div>
+<div class="quiz-q"><p>5. What does <code>#content p</code> select?</p><label class="option"><input type="radio" name="q5" value="a"> Every paragraph on the page</label><label class="option"><input type="radio" name="q5" value="b"> The element with ID content</label><label class="option"><input type="radio" name="q5" value="c"> Paragraphs inside the element with ID content</label></div>
+<div class="quiz-q"><p>6. Which declaration centres an 80%-wide container horizontally?</p><label class="option"><input type="radio" name="q6" value="a"> <code>margin-left:auto; margin-right:auto; width:80%;</code></label><label class="option"><input type="radio" name="q6" value="b"> <code>text-align:center;</code></label><label class="option"><input type="radio" name="q6" value="c"> <code>float:center;</code></label></div>
+<div class="quiz-q"><p>7. When two rules have equal specificity, which normally takes precedence?</p><label class="option"><input type="radio" name="q7" value="a"> The first rule</label><label class="option"><input type="radio" name="q7" value="b"> The later rule</label><label class="option"><input type="radio" name="q7" value="c"> The rule with fewer declarations</label></div>
+<div class="quiz-q"><p>8. What is the purpose of the W3C CSS Validator?</p><label class="option"><input type="radio" name="q8" value="a"> To create HTML pages automatically</label><label class="option"><input type="radio" name="q8" value="b"> To compress image files</label><label class="option"><input type="radio" name="q8" value="c"> To check CSS syntax</label></div>
+<button class="btn" type="button" onclick="gradeQuiz()">Check answers</button> <button class="btn secondary" type="reset" onclick="document.getElementById('quizResult').textContent=''">Try again</button><p id="quizResult" class="feedback" aria-live="polite"></p>
+</form>
+<h3>Discussion prompts</h3><ul><li>Why is an external stylesheet useful when a website contains many pages?</li><li>Why should both text colour and background colour be considered when styling a page?</li><li>How does selector specificity affect the final appearance of an element?</li><li>Why should CSS be validated before a website is published?</li></ul>
+</section>
+</main></div>
+<footer class="footer">CSF3133 · Web Programming · CSS (Part 2) · Interactive learning material<br>Prepared from the lecture notes “07 CSS (PART 2)”.</footer>
+<script>
+function updateContrast(){const f=document.getElementById('fg').value,b=document.getElementById('bg').value,p=document.getElementById('contrastPreview');p.style.color=f;p.style.backgroundColor=b;document.getElementById('contrastText').textContent='Preview updated. Check that the text remains easy to read.'}
+function applyInline(){const p=document.getElementById('inlinePreview');p.style.color=document.getElementById('inlineColor').value;p.style.backgroundColor=document.getElementById('inlineBg').value;p.textContent=document.getElementById('inlineText').value||'Heading text is styled inline'}
+function applyEmbedded(){const p=document.getElementById('embeddedPreview');p.style.backgroundColor=document.getElementById('pageBg').value;p.style.color=document.getElementById('pageText').value}
+function applyText(){const p=document.getElementById('textPreview');p.style.fontFamily=document.getElementById('fontFamily').value;p.style.fontSize=document.getElementById('fontSize').value;p.style.textAlign=document.getElementById('textAlign').value;p.style.fontStyle=document.getElementById('fontStyle').value}
+function showSelector(){resetSelector();const c=document.getElementById('selectorChoice').value,box=document.getElementById('selectorPreview'),ex=document.getElementById('selectorExplanation');if(c==='element'){box.querySelectorAll('p').forEach(x=>x.style.color='crimson');ex.textContent='Element selector p affects every paragraph in the preview.'}if(c==='class'){box.querySelectorAll('.highlight').forEach(x=>x.style.background='#fff0b3');ex.textContent='Class selector .highlight affects elements assigned class="highlight".'}if(c==='id'){box.querySelector('#special').style.color='crimson';box.querySelector('#special').style.fontWeight='bold';ex.textContent='ID selector #special targets the element with id="special".'}if(c==='descendant'){box.querySelectorAll('#content p').forEach(x=>x.style.color='green');ex.textContent='Descendant selector #content p affects paragraphs inside the element with id="content".'}}
+function resetSelector(){const box=document.getElementById('selectorPreview');box.querySelectorAll('p').forEach(x=>{x.style.color='';x.style.background='';x.style.fontWeight=''})}
+function updateContainer(){const v=document.getElementById('containerWidth').value;document.getElementById('containerDemo').style.width=v+'%';document.getElementById('widthValue').textContent=v+'%'}
+function applyCascade(){const v=document.getElementById('cascadeRule').value,p=document.getElementById('cascadeSample'),e=document.getElementById('cascadeExplain');p.style.color='';p.style.fontWeight='';p.style.textDecoration='';if(v==='id'){p.style.color='red';e.textContent='ID selector (#message): highest specificity among the three selector types shown.'}if(v==='class'){p.style.color='green';e.textContent='Class selector (.notice): more specific than the element selector, but less specific than an ID selector.'}if(v==='element'){p.style.color='blue';e.textContent='Element selector (p): lower specificity than class and ID selectors.'}if(v==='later'){p.style.color='green';p.style.fontWeight='bold';e.textContent='Order of declaration: the later .notice rule wins when both rules have equal specificity.'}}
+function gradeQuiz(){const ans={q1:'b',q2:'c',q3:'a',q4:'b',q5:'c',q6:'a',q7:'b',q8:'c'};let score=0;for(const [q,a] of Object.entries(ans)){const s=document.querySelector('input[name="'+q+'"]:checked');if(s&&s.value===a)score++}const out=document.getElementById('quizResult');out.textContent='You scored '+score+' out of 8.';out.className='feedback '+(score>=6?'correct':'incorrect')}
+</script>
+</body>
+</html>

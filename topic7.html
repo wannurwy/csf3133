@@ -36,8 +36,8 @@ footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--l
 <header>
  <div class="topline">CSF3133 · Web Programming · Interactive Learning Hub</div>
  <h1>JavaScript (Part 1)</h1>
- <p>Explore how JavaScript brings web pages to life, understand its engine and basic syntax, and practise variables, operators, data conversion, loops and functions.</p>
- <div class="meta"><span class="pill">Lecture notes · 75 slides</span><span class="pill">Concepts + examples</span><span class="pill">Try-it-yourself activities</span></div>
+ <p>Discover how JavaScript makes webpages interactive, then practise its basic syntax, data types, variables, operators, conversions, loops and functions.</p>
+ <div class="meta"><span class="pill">Concepts + examples</span><span class="pill">Concepts + examples</span><span class="pill">Try-it-yourself activities</span></div>
 </header>
 <nav>
  <a href="#objectives">Objectives</a><a href="#ecosystem">Client–server</a><a href="#intro">JavaScript basics</a><a href="#engine">JS engine</a><a href="#first">First program</a><a href="#data">Data types</a><a href="#variables">Variables</a><a href="#dialogs">Dialog boxes</a><a href="#operators">Operators</a><a href="#conversion">Conversion</a><a href="#loops">Loops</a><a href="#functions">Functions</a><a href="#checkpoint">Checkpoint</a>
@@ -55,23 +55,100 @@ footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--l
 </section>
 
 <section class="section" id="ecosystem">
- <div class="section-head"><div class="num">01</div><div><div class="eyebrow">Web foundations</div><h2>Client–server ecosystem</h2><p class="small">How a browser and a web server communicate</p></div></div>
- <p>A client (for example, a computer, tablet or phone) requests a web resource using a URL. The web server processes the request and sends a response through the Internet. The browser then displays the returned web content.</p>
- <div class="steps"><span class="step">1. Client / Browser</span><span class="arrow">→</span><span class="step">2. HTTP request</span><span class="arrow">→</span><span class="step">3. Web server</span><span class="arrow">→</span><span class="step">4. HTTP response</span><span class="arrow">→</span><span class="step">5. Browser renders page</span></div>
- <div class="grid"><div class="tile"><strong>Client</strong><p>Runs the browser and displays the web page to the user.</p></div><div class="tile"><strong>Web server</strong><p>Receives requests and serves web resources or runs server-side scripts.</p></div><div class="tile"><strong>Support server</strong><p>May provide supporting services such as mail or database access.</p></div></div>
+ <div class="section-head"><div class="num">01</div><div><div class="eyebrow">Web foundations</div><h2>Client–server ecosystem</h2><p class="small">Explore how a browser and a web server communicate</p></div></div>
+ <p>A <strong>client</strong> (for example, a computer, tablet or phone) requests a web resource using a URL. The <strong>web server</strong> processes the request and sends a response through the Internet. The browser then displays the returned web content.</p>
+
+ <h3>Simulation: What happens when you visit a website?</h3>
+ <p class="small">Choose an action and move through the steps to see how the client, Internet, web server and database work together.</p>
+ <div class="demo" id="clientServerSimulation">
+  <div class="controls">
+   <label for="csScenario"><strong>Choose an action:</strong></label>
+   <select id="csScenario" onchange="resetClientServerSimulation()">
+    <option value="home">Open the homepage</option>
+    <option value="search">Search for a course</option>
+    <option value="login">Submit a login form</option>
+   </select>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:9px;margin:14px 0" id="csDiagram">
+   <div class="tile" id="csClient"><strong>1. Client / Browser</strong><p class="small">User's device</p><div class="small" id="csClientStatus">Waiting for action</div></div>
+   <div class="tile" id="csInternet"><strong>2. Internet</strong><p class="small">Carries the request and response</p><div class="small" id="csInternetStatus">Waiting</div></div>
+   <div class="tile" id="csServer"><strong>3. Web server</strong><p class="small">Receives and processes requests</p><div class="small" id="csServerStatus">Waiting</div></div>
+   <div class="tile" id="csDatabase"><strong>4. Database</strong><p class="small">Stores or retrieves information when needed</p><div class="small" id="csDatabaseStatus">Waiting</div></div>
+  </div>
+  <div style="background:#10243a;color:#e5f2ff;border-radius:10px;padding:13px 15px;margin:12px 0">
+   <div style="font-size:.75rem;color:#a9c8df;text-transform:uppercase;letter-spacing:.08em">Current communication</div>
+   <div id="csPacket" style="font-family:Consolas,monospace;margin-top:6px;white-space:pre-wrap">No request has been sent yet.</div>
+  </div>
+  <div style="background:#fff;border:1px solid #dbe4ee;border-radius:10px;padding:15px;min-height:125px">
+   <div class="eyebrow" id="csStepCount">Ready to begin</div>
+   <h3 id="csStepTitle" style="margin:5px 0">Your browser is ready</h3>
+   <p id="csStepDescription">Choose an action above, then click Start simulation.</p>
+   <div class="output" id="csStepOutput">The browser has not sent a request.</div>
+  </div>
+  <div class="controls">
+   <button type="button" onclick="startClientServerSimulation()" id="csStart">Start simulation</button>
+   <button type="button" class="secondary" onclick="changeClientServerStep(-1)" id="csPrev" disabled>Previous</button>
+   <button type="button" onclick="changeClientServerStep(1)" id="csNext" disabled>Next step</button>
+   <button type="button" class="secondary" onclick="resetClientServerSimulation()">Reset</button>
+  </div>
+  <p class="small" id="csProgress" aria-live="polite">Tip: A search or login action may require the web server to communicate with a database.</p>
+ </div>
+
+ <h3>Understand the main components</h3>
+ <div class="grid">
+  <div class="tile"><strong>Client</strong><p>A computer, tablet or phone running a web browser. It sends requests and displays the web page to the user.</p></div>
+  <div class="tile"><strong>Internet</strong><p>Connects the client and server, allowing requests and responses to travel between them.</p></div>
+  <div class="tile"><strong>Web server</strong><p>Receives requests and serves web resources or runs server-side scripts.</p></div>
+  <div class="tile"><strong>Support server / Database</strong><p>May provide supporting services such as mail or database access.</p></div>
+ </div>
  <h3>Components of a dynamic website</h3>
- <table><thead><tr><th>Component</th><th>Examples / role</th></tr></thead><tbody><tr><td>Marked-up content</td><td>HTML, XHTML and XML describe content and structure.</td></tr><tr><td>Style sheets</td><td>CSS controls the appearance and presentation.</td></tr><tr><td>Client-side scripting</td><td>JavaScript controls behaviour in the browser.</td></tr><tr><td>Images and objects</td><td>JPEG images and other embedded objects.</td></tr><tr><td>Server-side scripting and database</td><td>Examples in the notes include JSP and MySQL.</td></tr></tbody></table>
+ <table><thead><tr><th>Component</th><th>Examples / role</th></tr></thead><tbody><tr><td>Marked-up content</td><td>HTML, XHTML and XML describe content and structure.</td></tr><tr><td>Style sheets</td><td>CSS controls the appearance and presentation.</td></tr><tr><td>Client-side scripting</td><td>JavaScript controls behaviour in the browser.</td></tr><tr><td>Images and objects</td><td>JPEG images and other embedded objects.</td></tr><tr><td>Server-side scripting and database</td><td>Examples include JSP and MySQL.</td></tr></tbody></table>
 </section>
 
 <section class="section" id="intro">
- <div class="section-head"><div class="num">02</div><div><div class="eyebrow">Introduction</div><h2>What is JavaScript?</h2></div></div>
- <p>JavaScript is a programming language commonly used to make web pages interactive and dynamic. It runs on the client side in the web browser and can respond to actions such as clicks, hovers and form input.</p>
- <div class="grid"><div class="tile"><strong>Programming language</strong><p>Used to create dynamic and interactive web content.</p></div><div class="tile"><strong>Client-side</strong><p>The browser reads and interprets the code on the user's device.</p></div><div class="tile"><strong>Works with HTML and CSS</strong><p>JavaScript can manipulate page content and styling.</p></div><div class="tile"><strong>Scripting language</strong><p>Code is interpreted as it runs; a separate compile step is not required in the basic workflow described in the notes.</p></div></div>
- <h3>Three layers of a web page</h3>
- <table><tr><th>Layer</th><th>Technology</th><th>Responsibility</th></tr><tr><td>Content</td><td>HTML</td><td>Structure and content</td></tr><tr><td>Styles</td><td>CSS</td><td>Appearance and presentation</td></tr><tr><td>Behaviour</td><td>JavaScript</td><td>Response and interaction</td></tr></table>
- <div class="note"><strong>Remember:</strong> HTML provides the content, CSS controls how it looks, and JavaScript controls how it behaves.</div>
- <h3>What JavaScript can and cannot do</h3>
- <p>JavaScript can respond to form elements and links, validate data before submission, change content and styles dynamically, and request resources from a server. The lecture notes also highlight browser and client-computer operations that JavaScript should not directly control, such as launching arbitrary client applications or freely reading and writing local files.</p>
+  <div class="section-head"><div class="num">02</div><div><div class="eyebrow">Introduction</div><h2>What is JavaScript?</h2><p class="small">The language that makes webpages interactive</p></div></div>
+  <p><strong>JavaScript (JS)</strong> is a high-level programming language used to make web pages interactive and dynamic. It allows a webpage to respond when a user clicks a button, enters information, submits a form or performs another action.</p>
+  <div class="grid">
+    <div class="tile"><strong>Programming language</strong><p>JavaScript gives instructions to a computer to perform tasks and solve problems.</p></div>
+    <div class="tile"><strong>Interactive webpages</strong><p>It responds to user actions such as clicking, typing, selecting and submitting.</p></div>
+    <div class="tile"><strong>Works with HTML and CSS</strong><p>It can access webpage elements, change their content and update their appearance.</p></div>
+  </div>
+  <h3>HTML, CSS and JavaScript work together</h3>
+  <p>Think of a webpage as a person: HTML provides the body structure, CSS determines the appearance, and JavaScript makes things happen.</p>
+  <div class="grid">
+    <div class="tile" style="border-top:4px solid #d97706"><strong>HTML — Structure</strong><p>Defines what appears on the webpage, such as headings, paragraphs, images and buttons.</p><span class="small">Example: a button exists on the page.</span></div>
+    <div class="tile" style="border-top:4px solid #2563eb"><strong>CSS — Presentation</strong><p>Controls how the webpage looks, including colours, fonts, spacing and layout.</p><span class="small">Example: the button is blue with rounded corners.</span></div>
+    <div class="tile" style="border-top:4px solid #d4a017"><strong>JavaScript — Behaviour</strong><p>Controls what happens when users interact with the webpage.</p><span class="small">Example: clicking the button displays a message.</span></div>
+  </div>
+  <div class="note"><strong>Easy way to remember:</strong> HTML builds the structure, CSS styles the webpage, and JavaScript adds behaviour and interactivity.</div>
+  <h3>What can JavaScript do?</h3>
+  <div class="grid">
+    <div class="tile"><strong>Display messages</strong><p>Show a welcome message when a button is clicked.</p></div>
+    <div class="tile"><strong>Validate forms</strong><p>Check whether required information has been entered correctly.</p></div>
+    <div class="tile"><strong>Perform calculations</strong><p>Calculate totals, discounts, grades or temperatures.</p></div>
+    <div class="tile"><strong>Update webpage content</strong><p>Change text, images or styles in response to user actions.</p></div>
+  </div>
+  <h3>Simulation: See JavaScript in action</h3>
+  <p class="small">Enter your name and click the button. Notice how the webpage content changes without opening another page.</p>
+  <div class="demo">
+    <div class="controls"><label for="introName">Your name:</label><input id="introName" value="Student" aria-label="Your name"><button type="button" onclick="runIntroSimulation()">Click the button</button><button type="button" class="secondary" onclick="resetIntroSimulation()">Reset</button></div>
+    <div id="introPreview" style="background:#fff;border:1px solid #dbe4ee;border-radius:12px;padding:18px;margin-top:12px">
+      <div style="font-size:.76rem;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Webpage preview</div>
+      <h3 id="introPreviewTitle" style="margin:8px 0;color:#183653">Welcome to my webpage</h3>
+      <p id="introPreviewText">Click the button above to see what JavaScript can do.</p>
+      <span id="introPreviewStatus" style="display:inline-block;background:#eaf3fb;color:#234a6c;padding:5px 10px;border-radius:20px;font-size:.82rem">Waiting for your action</span>
+    </div>
+    <div class="output" id="introCodeOutput" aria-live="polite">JavaScript output will appear here.</div>
+  </div>
+  <h3>Simple JavaScript example</h3>
+  <pre>&lt;button onclick="showMessage()"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+function showMessage() {
+    alert("Welcome to JavaScript!");
+}
+&lt;/script&gt;</pre>
+  <p>When the user clicks the button, the <code>showMessage()</code> function runs and displays an alert message.</p>
 </section>
 
 <section class="section" id="engine">
@@ -79,9 +156,36 @@ footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--l
  <p>JavaScript has evolved through successive versions and standardisation. The lecture notes introduce several engines associated with browsers and platforms.</p>
  <table><thead><tr><th>Engine</th><th>Association described in the notes</th></tr></thead><tbody><tr><td>SpiderMonkey</td><td>The first JavaScript engine; associated with Netscape Navigator and Firefox.</td></tr><tr><td>V8</td><td>Open-source engine used by Google Chrome.</td></tr><tr><td>JavaScriptCore (Nitro)</td><td>Engine developed by Apple for Safari.</td></tr><tr><td>Rhino</td><td>Open-source engine developed entirely in Java.</td></tr><tr><td>KJS</td><td>Originally developed for KDE's Konqueror browser.</td></tr><tr><td>Chakra</td><td>Associated in the notes with Internet Explorer and Microsoft Edge.</td></tr><tr><td>Nashorn</td><td>Open-source engine included as part of OpenJDK.</td></tr></tbody></table>
  <h3>How a JavaScript engine works</h3>
- <p>The lecture diagram presents a simplified processing flow from source code to executable code.</p>
- <div class="steps"><span class="step">JavaScript code</span><span class="arrow">→</span><span class="step">Parser</span><span class="arrow">→</span><span class="step">Abstract Syntax Tree</span><span class="arrow">→</span><span class="step">Interpreter / Bytecode</span><span class="arrow">→</span><span class="step">Optimising compiler</span></div>
- <p class="small">Profiling information can be used to optimise frequently executed code. The engine may de-optimise code when its assumptions no longer hold.</p>
+ <p>A JavaScript engine is a part of the browser that processes and runs JavaScript code. Explore the simplified stages below. Select <strong>Next step</strong> to see what happens at each stage.</p>
+ <div class="demo" id="engineSimulation">
+  <div class="small" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em">Interactive engine simulation</div>
+  <div class="steps" id="engineStageTrack" style="gap:6px">
+   <span class="step" data-stage="0">1. Source code</span><span class="arrow">→</span>
+   <span class="step" data-stage="1">2. Parser</span><span class="arrow">→</span>
+   <span class="step" data-stage="2">3. Syntax tree</span><span class="arrow">→</span>
+   <span class="step" data-stage="3">4. Bytecode</span><span class="arrow">→</span>
+   <span class="step" data-stage="4">5. Optimisation</span>
+  </div>
+  <div style="background:#10243a;color:#e5f2ff;padding:14px 16px;border-radius:10px;margin:12px 0">
+   <div style="font-size:.75rem;color:#a9c8df;text-transform:uppercase;letter-spacing:.08em">Example JavaScript source code</div>
+   <pre style="background:transparent;padding:8px 0 0;margin:0;color:#fff">let total = 2 + 3;
+console.log(total);</pre>
+  </div>
+  <div style="background:#fff;border:1px solid #dbe4ee;border-radius:10px;padding:16px;min-height:132px">
+   <div class="eyebrow" id="engineStageCount">Stage 1 of 5</div>
+   <h3 id="engineStageTitle" style="margin:5px 0">JavaScript source code</h3>
+   <p id="engineStageDescription">The engine receives the JavaScript instructions written by the developer.</p>
+   <div class="output" id="engineStageOutput">Input: let total = 2 + 3;</div>
+  </div>
+  <div class="controls">
+   <button type="button" class="secondary" id="enginePrev" onclick="changeEngineStage(-1)" disabled>Previous</button>
+   <button type="button" id="engineNext" onclick="changeEngineStage(1)">Next step</button>
+   <button type="button" class="secondary" onclick="resetEngineSimulation()">Start again</button>
+  </div>
+  <div class="small" id="engineProgress" aria-live="polite">Step through the stages to follow how the code is processed.</div>
+ </div>
+ <div class="note"><strong>Important:</strong> This is a simplified learning model. Actual JavaScript engines may combine, repeat or rearrange some of these processes.</div>
+ <p class="small">Frequently executed code may be optimised using information gathered while the program runs. If the engine's assumptions are no longer valid, it may return to a less optimised form of execution (de-optimisation).</p>
  <h3>How JavaScript runs while a page loads</h3>
  <ol><li>The browser requests an HTML page from the server.</li><li>The browser reads and renders HTML until it encounters a JavaScript section.</li><li>The JavaScript interpreter processes the script until the closing script tag.</li><li>The browser continues reading and rendering the remaining HTML.</li></ol>
 </section>
@@ -103,7 +207,7 @@ footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--l
 
 <section class="section" id="data">
  <div class="section-head"><div class="num">05</div><div><div class="eyebrow">Values and strings</div><h2>Data types and string literals</h2></div></div>
- <p>The notes group JavaScript data types into primitive and composite (non-primitive) types.</p>
+ <p>JavaScript data types can be grouped into primitive and composite (non-primitive) types.</p>
  <table><tr><th>Group</th><th>Types</th><th>Examples</th></tr><tr><td>Primitive</td><td>Number, String, Boolean, Null, Undefined</td><td><code>25</code>, <code>"Hello"</code>, <code>true</code>, <code>null</code>, <code>undefined</code></td></tr><tr><td>Composite / non-primitive</td><td>Objects, Arrays</td><td><code>{firstName:"Ali"}</code>, <code>["HTML","CSS"]</code></td></tr></table>
  <h3>String literals and quoting</h3><p>A string literal is a sequence of characters enclosed in matching single or double quotation marks. A number enclosed in quotes is a string, not a number. An empty pair of quotes is an empty (null) string.</p>
  <pre>var place1 = "Kuala Terengganu";
@@ -120,7 +224,7 @@ var value  = 8;    // Number</pre>
 
 <section class="section" id="variables">
  <div class="section-head"><div class="num">06</div><div><div class="eyebrow">Storing values</div><h2>Variables and constants</h2></div></div>
- <p>A variable stores a value that can be used by a program. In the lecture examples, variables are declared using <code>var</code>. A variable can be declared first and assigned a value later, or initialised when it is declared.</p>
+ <p>A variable stores a value that can be used by a program. Variables can be declared using <code>var</code>. A variable can be declared first and assigned a value later, or initialised when it is declared.</p>
  <pre>var num1;
 var town;
 var x1;
@@ -133,8 +237,8 @@ x1 = 5.46;
 var length = 16;
 var lastName = "Johnson";
 var cars = ["Saab", "Volvo", "BMW"];</pre>
- <div class="note warning"><strong>Good practice:</strong> Declare variables before using them. The lecture example identifies using <code>x1</code> without a declaration as an error in that example.</div>
- <h3>Undefined and null</h3><p>A declared variable without an assigned value is <code>undefined</code>. The notes show that <code>typeof null</code> returns <code>"object"</code> in JavaScript.</p>
+ <div class="note warning"><strong>Good practice:</strong> Declare variables before using them. Using <code>x1</code> without a declaration as an error in that example.</div>
+ <h3>Undefined and null</h3><p>A declared variable without an assigned value is <code>undefined</code>. In JavaScript, <code>typeof null</code> returns <code>"object"</code> in JavaScript.</p>
  <pre>var x;              // undefined
 x = 5;              // number
 x = "John";         // string
@@ -151,7 +255,7 @@ var currency = 10 * MYR;</pre>
 
 <section class="section" id="dialogs">
  <div class="section-head"><div class="num">07</div><div><div class="eyebrow">User interaction</div><h2>Dialog boxes</h2></div></div>
- <p>Dialog boxes are used to interact with the user. The lecture notes introduce three types:</p>
+ <p>Dialog boxes are used to interact with the user. JavaScript provides three common dialog box types:</p>
  <div class="grid"><div class="tile"><strong>alert()</strong><p>Sends a warning or alert message to the user.</p></div><div class="tile"><strong>prompt()</strong><p>Asks the user to enter information.</p></div><div class="tile"><strong>confirm()</strong><p>Asks the user to confirm an answer or action.</p></div></div>
  <pre>alert("Your credit limit exceeded!");
 var amount = prompt("Enter the amount: ");
@@ -179,7 +283,7 @@ var discount = (amount > 1000) ? 20 : 5;</pre>
 
 <section class="section" id="conversion">
  <div class="section-head"><div class="num">09</div><div><div class="eyebrow">Working with values</div><h2>Data type conversion</h2></div></div>
- <p>The lecture notes introduce functions for converting primitive data types and parsing numeric strings.</p>
+ <p>JavaScript provides functions for converting primitive data types and parsing numeric strings.</p>
  <table><tr><th>Function</th><th>Purpose</th></tr><tr><td><code>String()</code></td><td>Converts a value to a string.</td></tr><tr><td><code>Number()</code></td><td>Converts a value to a number.</td></tr><tr><td><code>Boolean()</code></td><td>Converts a value to a Boolean.</td></tr><tr><td><code>parseInt(string, base)</code></td><td>Parses a string and returns an integer.</td></tr><tr><td><code>parseFloat()</code></td><td>Parses a string and returns a floating-point number.</td></tr><tr><td><code>eval()</code></td><td>Evaluates a string as a JavaScript expression.</td></tr></table>
  <div class="note warning"><strong>Security note:</strong> <code>eval()</code> executes JavaScript code from a string. Avoid using it with untrusted input. The examples here use safer numeric parsing for user-entered values.</div>
  <div class="demo"><h3>Conversion playground</h3><div class="controls"><input id="convertInput" value="85.75" aria-label="Value to convert"><select id="convertType"><option value="int">parseInt()</option><option value="float">parseFloat()</option><option value="number">Number()</option><option value="string">String()</option><option value="boolean">Boolean()</option></select><button onclick="convertValue()">Convert</button></div><div class="output" id="convertOut">Converted value and type will appear here.</div></div>
@@ -242,7 +346,7 @@ function greeting(yourname) {
  <form id="quiz">
   <div class="quiz-q"><p>1. Which technology controls the behaviour of a web page?</p><label><input type="radio" name="q1" value="a"> HTML</label><label><input type="radio" name="q1" value="b"> CSS</label><label><input type="radio" name="q1" value="c"> JavaScript</label></div>
   <div class="quiz-q"><p>2. Where does client-side JavaScript normally run?</p><label><input type="radio" name="q2" value="a"> In the web browser</label><label><input type="radio" name="q2" value="b"> Only in the database</label><label><input type="radio" name="q2" value="c"> In the printer</label></div>
-  <div class="quiz-q"><p>3. Which engine is associated with Google Chrome in the lecture notes?</p><label><input type="radio" name="q3" value="a"> SpiderMonkey</label><label><input type="radio" name="q3" value="b"> V8</label><label><input type="radio" name="q3" value="c"> JavaScriptCore</label></div>
+  <div class="quiz-q"><p>3. Which engine is associated with Google Chrome?</p><label><input type="radio" name="q3" value="a"> SpiderMonkey</label><label><input type="radio" name="q3" value="b"> V8</label><label><input type="radio" name="q3" value="c"> JavaScriptCore</label></div>
   <div class="quiz-q"><p>4. What is the data type of the value "8"?</p><label><input type="radio" name="q4" value="a"> Number</label><label><input type="radio" name="q4" value="b"> String</label><label><input type="radio" name="q4" value="c"> Boolean</label></div>
   <div class="quiz-q"><p>5. Which keyword is used to declare a constant?</p><label><input type="radio" name="q5" value="a"> var</label><label><input type="radio" name="q5" value="b"> let</label><label><input type="radio" name="q5" value="c"> const</label></div>
   <div class="quiz-q"><p>6. Which dialog box asks the user to enter information?</p><label><input type="radio" name="q6" value="a"> alert()</label><label><input type="radio" name="q6" value="b"> prompt()</label><label><input type="radio" name="q6" value="c"> confirm()</label></div>
@@ -255,8 +359,112 @@ function greeting(yourname) {
  <h3>Discussion prompts</h3><ul><li>How does JavaScript improve the interaction between a user and a web page?</li><li>Why should data be validated on the client before it is sent to the server?</li><li>When would you choose a <code>for</code> loop rather than a <code>while</code> loop?</li><li>Why are functions useful when developing a web application?</li></ul>
 </section>
 </main>
-<footer>CSF3133 · Web Programming · JavaScript (Part 1)<br>Prepared from the lecture notes “08 Javascript (Part 1)”.</footer>
+<footer>CSF3133 · Web Programming · JavaScript (Part 1)<br>Learn, practise and experiment with JavaScript.</footer>
 <script>
+const engineStages=[
+ {title:'JavaScript source code',description:'The engine receives the JavaScript instructions written by the developer.',output:'Input: let total = 2 + 3;\\nThe source code is ready to be processed.'},
+ {title:'Parser',description:'The parser checks the code structure and whether the instructions follow JavaScript syntax rules.',output:'Checking the syntax...\\nThe statement is recognised as valid JavaScript.'},
+ {title:'Abstract Syntax Tree (AST)',description:'The code is organised into a tree-like structure. This helps represent the instructions and their relationships.',output:'Variable declaration: total\\nAssignment value: 2 + 3\\nFunction call: console.log(total)'},
+ {title:'Interpreter / Bytecode',description:'The engine converts the program into a form that can be executed, such as bytecode, and begins running the instructions.',output:'2 + 3 is evaluated.\\nThe value 5 is assigned to total.\\nconsole.log(total) is executed.'},
+ {title:'Optimising compiler',description:'The engine may optimise frequently executed code to help it run more efficiently. It can also de-optimise code if its assumptions change.',output:'Execution result: 5\\nFrequently executed code may be optimised.'}
+];
+let engineStageIndex=0;
+function renderEngineStage(){
+ const s=engineStages[engineStageIndex];
+ document.getElementById('engineStageCount').textContent='Stage '+(engineStageIndex+1)+' of '+engineStages.length;
+ document.getElementById('engineStageTitle').textContent=s.title;
+ document.getElementById('engineStageDescription').textContent=s.description;
+ document.getElementById('engineStageOutput').textContent=s.output.replace(/\\\\n/g,'\\n');
+ document.querySelectorAll('#engineStageTrack [data-stage]').forEach((el,i)=>{
+  el.style.background=i===engineStageIndex?'#dbeafe':i<engineStageIndex?'#e8f7ef':'#eaf3fb';
+  el.style.borderColor=i===engineStageIndex?'#2563eb':i<engineStageIndex?'#86c9a8':'#c7dbea';
+  el.style.color=i===engineStageIndex?'#1d4ed8':i<engineStageIndex?'#166534':'#234a6c';
+ });
+ document.getElementById('enginePrev').disabled=engineStageIndex===0;
+ document.getElementById('engineNext').disabled=engineStageIndex===engineStages.length-1;
+ document.getElementById('engineNext').textContent=engineStageIndex===engineStages.length-1?'Completed':'Next step';
+ document.getElementById('engineProgress').textContent=engineStageIndex===engineStages.length-1?'You have completed the simplified JavaScript engine simulation.':'You are viewing stage '+(engineStageIndex+1)+'. Select Next step to continue.';
+}
+function changeEngineStage(direction){
+ engineStageIndex=Math.max(0,Math.min(engineStages.length-1,engineStageIndex+direction));
+ renderEngineStage();
+}
+function resetEngineSimulation(){engineStageIndex=0;renderEngineStage();}
+const csScenarios={
+ home:{request:'GET /index.html',server:'Find and return the homepage file.',database:'No database lookup is needed for this simple static page.',response:'HTTP 200 OK — Homepage HTML, CSS and images returned.',result:'The browser receives the files and displays the homepage.'},
+ search:{request:'GET /search?course=CSF3133',server:'Read the search request and run the server-side search.',database:'Search the course records for CSF3133.',response:'HTTP 200 OK — Matching course information returned.',result:'The browser displays the matching course information.'},
+ login:{request:'POST /login (username and password)',server:'Receive the login details and process the login request securely.',database:'Check the submitted credentials against stored user records.',response:'HTTP 200 OK — Login result returned to the browser (success or failure).',result:'The browser displays the login result to the user.'}
+};
+const csStages=[
+ {title:'1. Client sends a request',desc:'The user enters a URL or performs an action. The browser prepares an HTTP request.',packet:'REQUEST → '+ 'CLIENT / BROWSER',focus:'csClient',out:'The browser creates the request: '},
+ {title:'2. Request travels through the Internet',desc:'The request is sent from the client towards the web server through the Internet.',packet:'REQUEST → INTERNET → WEB SERVER',focus:'csInternet',out:'The request is travelling to the web server.'},
+ {title:'3. Web server processes the request',desc:'The web server receives the request and decides what resource or processing is required.',packet:'WEB SERVER: PROCESS REQUEST',focus:'csServer',out:''},
+ {title:'4. Database / support service (if needed)',desc:'Some requests require information from a database or another supporting service. A simple static page may not need this step.',packet:'WEB SERVER ↔ DATABASE / SUPPORT SERVICE',focus:'csDatabase',out:''},
+ {title:'5. Server sends a response',desc:'After processing the request, the server sends an HTTP response containing the requested resource or result.',packet:'RESPONSE → INTERNET → CLIENT',focus:'csInternet',out:''},
+ {title:'6. Browser displays the result',desc:'The browser receives the response and displays the returned web content to the user.',packet:'RESPONSE → CLIENT / BROWSER → WEBPAGE',focus:'csClient',out:''}
+];
+let csIndex=-1,csStarted=false;
+function resetClientServerSimulation(){
+ csIndex=-1;csStarted=false;
+ ['csClient','csInternet','csServer','csDatabase'].forEach(id=>{const e=document.getElementById(id);e.style.borderColor='';e.style.background='';});
+ ['csClientStatus','csInternetStatus','csServerStatus','csDatabaseStatus'].forEach(id=>document.getElementById(id).textContent='Waiting');
+ document.getElementById('csPacket').textContent='No request has been sent yet.';
+ document.getElementById('csStepCount').textContent='Ready to begin';
+ document.getElementById('csStepTitle').textContent='Your browser is ready';
+ document.getElementById('csStepDescription').textContent='Choose an action above, then click Start simulation.';
+ document.getElementById('csStepOutput').textContent='The browser has not sent a request.';
+ document.getElementById('csStart').disabled=false;
+ document.getElementById('csPrev').disabled=true;document.getElementById('csNext').disabled=true;
+ document.getElementById('csProgress').textContent='Tip: A search or login action may require the web server to communicate with a database.';
+}
+function startClientServerSimulation(){csStarted=true;csIndex=0;document.getElementById('csStart').disabled=true;document.getElementById('csNext').disabled=false;renderClientServerStep();}
+function changeClientServerStep(d){if(!csStarted)return;csIndex=Math.max(0,Math.min(csStages.length-1,csIndex+d));renderClientServerStep();}
+function renderClientServerStep(){
+ const scenario=csScenarios[document.getElementById('csScenario').value],s=csStages[csIndex];
+ ['csClient','csInternet','csServer','csDatabase'].forEach(id=>{const e=document.getElementById(id);e.style.borderColor='';e.style.background='#f7fafc';});
+ document.getElementById(s.focus).style.borderColor='#2563eb';document.getElementById(s.focus).style.background='#eaf3ff';
+ const statuses={csClientStatus:'Waiting',csInternetStatus:'Waiting',csServerStatus:'Waiting',csDatabaseStatus:'Waiting'};
+ if(csIndex>=0)statuses.csClientStatus=csIndex===0?'Preparing request':'Request / response endpoint';
+ if(csIndex>=1)statuses.csInternetStatus=csIndex===1?'Request travelling':'Carrying communication';
+ if(csIndex>=2)statuses.csServerStatus=csIndex===2?'Processing request':'Request processed';
+ if(csIndex>=3)statuses.csDatabaseStatus=csIndex===3?(document.getElementById('csScenario').value==='home'?'Not required for this example':'Looking up information'):'Waiting';
+ if(csIndex>=4)statuses.csInternetStatus='Response travelling';
+ if(csIndex===5)statuses.csClientStatus='Displaying webpage';
+ Object.entries(statuses).forEach(([id,v])=>document.getElementById(id).textContent=v);
+ document.getElementById('csStepCount').textContent='Step '+(csIndex+1)+' of '+csStages.length;
+ document.getElementById('csStepTitle').textContent=s.title;
+ document.getElementById('csStepDescription').textContent=s.desc;
+ let out=s.out;
+ if(csIndex===0)out+=scenario.request;
+ if(csIndex===2)out=scenario.server;
+ if(csIndex===3)out=scenario.database;
+ if(csIndex===4)out=scenario.response;
+ if(csIndex===5)out=scenario.result;
+ document.getElementById('csStepOutput').textContent=out;
+ document.getElementById('csPacket').textContent=(csIndex===0?'HTTP REQUEST: '+scenario.request:s.packet);
+ document.getElementById('csPrev').disabled=csIndex===0;
+ document.getElementById('csNext').disabled=csIndex===csStages.length-1;
+ document.getElementById('csNext').textContent=csIndex===csStages.length-1?'Completed':'Next step';
+ document.getElementById('csProgress').textContent=csIndex===csStages.length-1?'Simulation complete! The browser has displayed the server response.':'Follow the highlighted component, then select Next step.';
+}
+function runIntroSimulation(){
+  const name=document.getElementById('introName').value.trim()||'Student';
+  document.getElementById('introPreviewTitle').textContent='Hello, '+name+'!';
+  document.getElementById('introPreviewText').textContent='You clicked the button. JavaScript responded by changing this webpage content.';
+  document.getElementById('introPreviewStatus').textContent='JavaScript executed successfully';
+  document.getElementById('introPreviewStatus').style.background='#e8f7ef';
+  document.getElementById('introPreviewStatus').style.color='#166534';
+  document.getElementById('introCodeOutput').textContent='Action: button clicked\\nJavaScript: read the name and updated the webpage text.';
+}
+function resetIntroSimulation(){
+  document.getElementById('introName').value='Student';
+  document.getElementById('introPreviewTitle').textContent='Welcome to my webpage';
+  document.getElementById('introPreviewText').textContent='Click the button above to see what JavaScript can do.';
+  document.getElementById('introPreviewStatus').textContent='Waiting for your action';
+  document.getElementById('introPreviewStatus').style.background='#eaf3fb';
+  document.getElementById('introPreviewStatus').style.color='#234a6c';
+  document.getElementById('introCodeOutput').textContent='JavaScript output will appear here.';
+}
 function showType(){const v=document.getElementById('typeChoice').value;let x;if(v==='55')x=55;else if(v==='"Hello World"')x="Hello World";else if(v==='true')x=true;else if(v==='null')x=null;else x=undefined;document.getElementById('typeOut').textContent='Value: '+String(x)+'\\ntypeof: '+typeof x;}
 function calculate(){const a=Number(document.getElementById('opA').value),b=Number(document.getElementById('opB').value),op=document.getElementById('op').value;let r;if(op==='+')r=a+b;else if(op==='-')r=a-b;else if(op==='*')r=a*b;else if(op==='/')r=b===0?'Cannot divide by zero':a/b;else r=b===0?'Cannot divide by zero':a%b;document.getElementById('opOut').textContent='Result = '+r;}
 function convertValue(){const s=document.getElementById('convertInput').value,t=document.getElementById('convertType').value;let v;if(t==='int')v=parseInt(s,10);if(t==='float')v=parseFloat(s);if(t==='number')v=Number(s);if(t==='string')v=String(s);if(t==='boolean')v=Boolean(s);document.getElementById('convertOut').textContent='Converted value: '+String(v)+'\\ntypeof: '+typeof v;}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSF3133 | JavaScript (Part 1) Learning Hub</title>
+<style>
+:root{--navy:#183653;--blue:#2563eb;--cyan:#0891b2;--ink:#243447;--muted:#64748b;--line:#dbe4ee;--paper:#f5f8fc;--white:#fff;--soft:#eaf3fb;--green:#16835d;--orange:#c56b16}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Inter,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(120deg,#142d4b,#1e557a 68%,#0e7490);color:#fff;padding:28px max(5vw,24px) 34px}
+.topline{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#c8e5f4;font-weight:700}
+header h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.12;margin:12px 0}
+header p{max-width:780px;color:#e0edf7;margin:0}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{border:1px solid #ffffff55;background:#ffffff14;border-radius:99px;padding:5px 12px;font-size:.82rem}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,18px);display:flex;gap:8px;overflow-x:auto;white-space:nowrap;box-shadow:0 3px 12px #19324b0b}
+nav a{color:#36516b;text-decoration:none;font-size:.84rem;font-weight:650;padding:7px 10px;border-radius:8px}nav a:hover{background:var(--soft);color:var(--blue)}
+main{width:min(1120px,90%);margin:30px auto 70px}
+.intro{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px 28px;margin-bottom:24px;box-shadow:0 6px 22px #19324b08}
+h2{color:var(--navy);font-size:1.65rem;line-height:1.25;margin:0 0 7px}h3{color:#234a6c;font-size:1.08rem;margin:20px 0 8px}p{margin:8px 0 13px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:.1em;font-size:.75rem;text-transform:uppercase}
+.section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:20px 0;box-shadow:0 5px 20px #19324b07;scroll-margin-top:75px}
+.section-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}.num{flex:0 0 42px;height:42px;border-radius:12px;background:#e4f2fb;color:#17628a;display:grid;place-items:center;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px;margin:15px 0}.tile{background:#f7fafc;border:1px solid var(--line);border-radius:12px;padding:15px}.tile strong{display:block;color:#1e4a6d;margin-bottom:4px}.tile p{font-size:.92rem;margin:0;color:#536579}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.93rem}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf4fa;color:#234a6c}
+pre,code{font-family:Consolas,Monaco,monospace}pre{background:#10243a;color:#e5f2ff;padding:17px 19px;border-radius:12px;overflow:auto;font-size:.9rem;line-height:1.55;margin:12px 0}code{background:#eef3f8;padding:2px 5px;border-radius:4px;color:#164e78}
+.note{border-left:4px solid var(--cyan);background:#eff8fc;padding:12px 15px;border-radius:0 9px 9px 0;margin:14px 0}.warning{border-left-color:var(--orange);background:#fff7ed}
+.demo{border:1px solid #cbd9e7;background:#f8fbfe;border-radius:13px;padding:17px;margin:15px 0}.demo h3{margin-top:0}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:10px 0}
+input,select,button,textarea{font:inherit;border:1px solid #b8c9d9;border-radius:8px;padding:9px 11px;background:#fff;color:var(--ink)}input,textarea{max-width:100%}button{background:var(--blue);color:white;border:0;font-weight:700;cursor:pointer}button:hover{background:#1d4ed8}button.secondary{background:#e6eef6;color:#234a6c}button.secondary:hover{background:#d5e3ef}
+.output{background:#fff;border:1px dashed #9db4c9;border-radius:8px;padding:12px;min-height:42px;margin-top:10px;white-space:pre-wrap}.small{font-size:.88rem;color:var(--muted)}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}.step{background:#eaf3fb;border:1px solid #c7dbea;padding:10px 13px;border-radius:9px;font-weight:650;color:#234a6c}.arrow{color:#6b91ad;font-weight:900}
+.quiz-q{padding:14px 0;border-bottom:1px solid var(--line)}.quiz-q p{font-weight:700;margin:0 0 8px}.quiz-q label{display:block;margin:5px 0;font-size:.94rem}.feedback{font-weight:700;margin-top:12px}
+footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--line);font-size:.88rem}
+@media(max-width:650px){main{width:94%;margin-top:16px}.section,.intro{padding:20px 17px}header{padding:25px 20px}.section-head{gap:10px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="topline">CSF3133 · Web Programming · Interactive Learning Hub</div>
+ <h1>JavaScript (Part 1)</h1>
+ <p>Explore how JavaScript brings web pages to life, understand its engine and basic syntax, and practise variables, operators, data conversion, loops and functions.</p>
+ <div class="meta"><span class="pill">Lecture notes · 75 slides</span><span class="pill">Concepts + examples</span><span class="pill">Try-it-yourself activities</span></div>
+</header>
+<nav>
+ <a href="#objectives">Objectives</a><a href="#ecosystem">Client–server</a><a href="#intro">JavaScript basics</a><a href="#engine">JS engine</a><a href="#first">First program</a><a href="#data">Data types</a><a href="#variables">Variables</a><a href="#dialogs">Dialog boxes</a><a href="#operators">Operators</a><a href="#conversion">Conversion</a><a href="#loops">Loops</a><a href="#functions">Functions</a><a href="#checkpoint">Checkpoint</a>
+</nav>
+<main>
+<section class="intro" id="objectives">
+ <div class="eyebrow">Learning objectives</div><h2>What you should be able to do</h2>
+ <p>By the end of this topic, you should be able to:</p>
+ <div class="grid">
+  <div class="tile"><strong>01 · Explain</strong><p>Describe the client–server ecosystem and the components of a dynamic website.</p></div>
+  <div class="tile"><strong>02 · Recall</strong><p>Recall JavaScript history, development and common JavaScript engines.</p></div>
+  <div class="tile"><strong>03 · Describe</strong><p>Explain JavaScript's basic function, its engine and how the engine works.</p></div>
+  <div class="tile"><strong>04 · Apply</strong><p>Use JavaScript data types, variables, operators, conversions, loops and functions.</p></div>
+ </div>
+</section>
+
+<section class="section" id="ecosystem">
+ <div class="section-head"><div class="num">01</div><div><div class="eyebrow">Web foundations</div><h2>Client–server ecosystem</h2><p class="small">How a browser and a web server communicate</p></div></div>
+ <p>A client (for example, a computer, tablet or phone) requests a web resource using a URL. The web server processes the request and sends a response through the Internet. The browser then displays the returned web content.</p>
+ <div class="steps"><span class="step">1. Client / Browser</span><span class="arrow">→</span><span class="step">2. HTTP request</span><span class="arrow">→</span><span class="step">3. Web server</span><span class="arrow">→</span><span class="step">4. HTTP response</span><span class="arrow">→</span><span class="step">5. Browser renders page</span></div>
+ <div class="grid"><div class="tile"><strong>Client</strong><p>Runs the browser and displays the web page to the user.</p></div><div class="tile"><strong>Web server</strong><p>Receives requests and serves web resources or runs server-side scripts.</p></div><div class="tile"><strong>Support server</strong><p>May provide supporting services such as mail or database access.</p></div></div>
+ <h3>Components of a dynamic website</h3>
+ <table><thead><tr><th>Component</th><th>Examples / role</th></tr></thead><tbody><tr><td>Marked-up content</td><td>HTML, XHTML and XML describe content and structure.</td></tr><tr><td>Style sheets</td><td>CSS controls the appearance and presentation.</td></tr><tr><td>Client-side scripting</td><td>JavaScript controls behaviour in the browser.</td></tr><tr><td>Images and objects</td><td>JPEG images and other embedded objects.</td></tr><tr><td>Server-side scripting and database</td><td>Examples in the notes include JSP and MySQL.</td></tr></tbody></table>
+</section>
+
+<section class="section" id="intro">
+ <div class="section-head"><div class="num">02</div><div><div class="eyebrow">Introduction</div><h2>What is JavaScript?</h2></div></div>
+ <p>JavaScript is a programming language commonly used to make web pages interactive and dynamic. It runs on the client side in the web browser and can respond to actions such as clicks, hovers and form input.</p>
+ <div class="grid"><div class="tile"><strong>Programming language</strong><p>Used to create dynamic and interactive web content.</p></div><div class="tile"><strong>Client-side</strong><p>The browser reads and interprets the code on the user's device.</p></div><div class="tile"><strong>Works with HTML and CSS</strong><p>JavaScript can manipulate page content and styling.</p></div><div class="tile"><strong>Scripting language</strong><p>Code is interpreted as it runs; a separate compile step is not required in the basic workflow described in the notes.</p></div></div>
+ <h3>Three layers of a web page</h3>
+ <table><tr><th>Layer</th><th>Technology</th><th>Responsibility</th></tr><tr><td>Content</td><td>HTML</td><td>Structure and content</td></tr><tr><td>Styles</td><td>CSS</td><td>Appearance and presentation</td></tr><tr><td>Behaviour</td><td>JavaScript</td><td>Response and interaction</td></tr></table>
+ <div class="note"><strong>Remember:</strong> HTML provides the content, CSS controls how it looks, and JavaScript controls how it behaves.</div>
+ <h3>What JavaScript can and cannot do</h3>
+ <p>JavaScript can respond to form elements and links, validate data before submission, change content and styles dynamically, and request resources from a server. The lecture notes also highlight browser and client-computer operations that JavaScript should not directly control, such as launching arbitrary client applications or freely reading and writing local files.</p>
+</section>
+
+<section class="section" id="engine">
+ <div class="section-head"><div class="num">03</div><div><div class="eyebrow">Execution</div><h2>JavaScript history and engine</h2></div></div>
+ <p>JavaScript has evolved through successive versions and standardisation. The lecture notes introduce several engines associated with browsers and platforms.</p>
+ <table><thead><tr><th>Engine</th><th>Association described in the notes</th></tr></thead><tbody><tr><td>SpiderMonkey</td><td>The first JavaScript engine; associated with Netscape Navigator and Firefox.</td></tr><tr><td>V8</td><td>Open-source engine used by Google Chrome.</td></tr><tr><td>JavaScriptCore (Nitro)</td><td>Engine developed by Apple for Safari.</td></tr><tr><td>Rhino</td><td>Open-source engine developed entirely in Java.</td></tr><tr><td>KJS</td><td>Originally developed for KDE's Konqueror browser.</td></tr><tr><td>Chakra</td><td>Associated in the notes with Internet Explorer and Microsoft Edge.</td></tr><tr><td>Nashorn</td><td>Open-source engine included as part of OpenJDK.</td></tr></tbody></table>
+ <h3>How a JavaScript engine works</h3>
+ <p>The lecture diagram presents a simplified processing flow from source code to executable code.</p>
+ <div class="steps"><span class="step">JavaScript code</span><span class="arrow">→</span><span class="step">Parser</span><span class="arrow">→</span><span class="step">Abstract Syntax Tree</span><span class="arrow">→</span><span class="step">Interpreter / Bytecode</span><span class="arrow">→</span><span class="step">Optimising compiler</span></div>
+ <p class="small">Profiling information can be used to optimise frequently executed code. The engine may de-optimise code when its assumptions no longer hold.</p>
+ <h3>How JavaScript runs while a page loads</h3>
+ <ol><li>The browser requests an HTML page from the server.</li><li>The browser reads and renders HTML until it encounters a JavaScript section.</li><li>The JavaScript interpreter processes the script until the closing script tag.</li><li>The browser continues reading and rendering the remaining HTML.</li></ol>
+</section>
+
+<section class="section" id="first">
+ <div class="section-head"><div class="num">04</div><div><div class="eyebrow">Getting started</div><h2>Your first JavaScript program</h2></div></div>
+ <p>JavaScript can be written inside a <code>&lt;script&gt;</code> element in an HTML document or loaded from an external JavaScript file.</p>
+ <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;My First JavaScript&lt;/h2&gt;
+  &lt;script&gt;
+    document.write("Hello Class of CSF3133..");
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+ <div class="demo"><h3>Try the output</h3><p>Click the button to run the same simple output in this learning page.</p><button onclick="document.getElementById('firstOut').textContent='Hello Class of CSF3133..'">Run JavaScript</button><div class="output" id="firstOut">Output will appear here.</div></div>
+</section>
+
+<section class="section" id="data">
+ <div class="section-head"><div class="num">05</div><div><div class="eyebrow">Values and strings</div><h2>Data types and string literals</h2></div></div>
+ <p>The notes group JavaScript data types into primitive and composite (non-primitive) types.</p>
+ <table><tr><th>Group</th><th>Types</th><th>Examples</th></tr><tr><td>Primitive</td><td>Number, String, Boolean, Null, Undefined</td><td><code>25</code>, <code>"Hello"</code>, <code>true</code>, <code>null</code>, <code>undefined</code></td></tr><tr><td>Composite / non-primitive</td><td>Objects, Arrays</td><td><code>{firstName:"Ali"}</code>, <code>["HTML","CSS"]</code></td></tr></table>
+ <h3>String literals and quoting</h3><p>A string literal is a sequence of characters enclosed in matching single or double quotation marks. A number enclosed in quotes is a string, not a number. An empty pair of quotes is an empty (null) string.</p>
+ <pre>var place1 = "Kuala Terengganu";
+var place2 = 'Kuala Terengganu';
+var quote  = "This is 'JavaScript'";
+var number = "8";  // String
+var value  = 8;    // Number</pre>
+ <h3>Escape sequences</h3><p>An escape sequence is a character preceded by a backslash.</p>
+ <table><tr><th>Sequence</th><th>Meaning</th></tr><tr><td><code>\\'</code></td><td>Single quotation mark</td></tr><tr><td><code>\\"</code></td><td>Double quotation mark</td></tr><tr><td><code>\\t</code></td><td>Tab</td></tr><tr><td><code>\\n</code></td><td>Newline</td></tr><tr><td><code>\\r</code></td><td>Return</td></tr><tr><td><code>\\\\</code></td><td>Backslash</td></tr><tr><td><code>\\u263A</code></td><td>Unicode character example</td></tr></table>
+ <div class="demo"><h3>String concatenation</h3><p>Join strings and values using the <code>+</code> operator.</p><div class="controls"><input id="strA" value="CSF" aria-label="First string"><input id="strB" value="3133" aria-label="Second value"><button onclick="document.getElementById('concatOut').textContent=document.getElementById('strA').value + document.getElementById('strB').value">Concatenate</button></div><div class="output" id="concatOut">CSF3133</div></div>
+ <h3>The typeof operator</h3><p><code>typeof</code> returns a string identifying the type of its operand.</p>
+ <div class="demo"><div class="controls"><select id="typeChoice"><option value="55">55 (number)</option><option value='"Hello World"'>"Hello World" (string)</option><option value="true">true (boolean)</option><option value="null">null</option><option value="undefined">undefined</option></select><button onclick="showType()">Check typeof</button></div><div class="output" id="typeOut">Choose a value to inspect its type.</div></div>
+</section>
+
+<section class="section" id="variables">
+ <div class="section-head"><div class="num">06</div><div><div class="eyebrow">Storing values</div><h2>Variables and constants</h2></div></div>
+ <p>A variable stores a value that can be used by a program. In the lecture examples, variables are declared using <code>var</code>. A variable can be declared first and assigned a value later, or initialised when it is declared.</p>
+ <pre>var num1;
+var town;
+var x1;
+
+num1 = 8;
+town = "Kuala Terengganu";
+x1 = 5.46;
+
+// Declaration with initial values
+var length = 16;
+var lastName = "Johnson";
+var cars = ["Saab", "Volvo", "BMW"];</pre>
+ <div class="note warning"><strong>Good practice:</strong> Declare variables before using them. The lecture example identifies using <code>x1</code> without a declaration as an error in that example.</div>
+ <h3>Undefined and null</h3><p>A declared variable without an assigned value is <code>undefined</code>. The notes show that <code>typeof null</code> returns <code>"object"</code> in JavaScript.</p>
+ <pre>var x;              // undefined
+x = 5;              // number
+x = "John";         // string
+
+typeof undefined;   // "undefined"
+typeof null;        // "object"</pre>
+ <h3>Constants</h3><p>A constant is declared using <code>const</code>. Its binding cannot be reassigned during program execution.</p>
+ <pre>const GRAM = 1000;
+const MYR = 5.45;
+var weight = 5 * GRAM;
+var currency = 10 * MYR;</pre>
+ <div class="demo"><h3>Variable playground</h3><div class="controls"><label for="varValue">Assign a value:</label><input id="varValue" value="Kuala Terengganu"><button onclick="let v=document.getElementById('varValue').value;document.getElementById('varOut').textContent='Value: '+v+'\\nType: '+typeof v">Inspect value</button></div><div class="output" id="varOut">Enter a value and inspect it as a string.</div></div>
+</section>
+
+<section class="section" id="dialogs">
+ <div class="section-head"><div class="num">07</div><div><div class="eyebrow">User interaction</div><h2>Dialog boxes</h2></div></div>
+ <p>Dialog boxes are used to interact with the user. The lecture notes introduce three types:</p>
+ <div class="grid"><div class="tile"><strong>alert()</strong><p>Sends a warning or alert message to the user.</p></div><div class="tile"><strong>prompt()</strong><p>Asks the user to enter information.</p></div><div class="tile"><strong>confirm()</strong><p>Asks the user to confirm an answer or action.</p></div></div>
+ <pre>alert("Your credit limit exceeded!");
+var amount = prompt("Enter the amount: ");
+var answer = confirm("Are you sure?");</pre>
+ <div class="demo"><h3>Try dialog boxes</h3><div class="controls"><button onclick="alert('Welcome to CSF3133!')">Try alert()</button><button class="secondary" onclick="let n=prompt('What is your name?'); if(n!==null) alert('Hello, '+n+'!')">Try prompt()</button><button class="secondary" onclick="let ok=confirm('Do you want to continue?'); document.getElementById('confirmOut').textContent=ok?'You selected OK.':'You selected Cancel.'">Try confirm()</button></div><div class="output" id="confirmOut">Your confirm() choice will appear here.</div></div>
+</section>
+
+<section class="section" id="operators">
+ <div class="section-head"><div class="num">08</div><div><div class="eyebrow">Expressions</div><h2>Operators</h2></div></div>
+ <p>Operators manipulate operands. An expression combines values, variables and operators. An assignment statement evaluates the expression on the right-hand side and assigns the result to the variable on the left-hand side.</p>
+ <h3>Arithmetic operators</h3><table><tr><th>Operator</th><th>Operation</th><th>Example</th></tr><tr><td><code>+</code></td><td>Addition</td><td><code>3 + 5</code></td></tr><tr><td><code>-</code></td><td>Subtraction</td><td><code>8 - 2</code></td></tr><tr><td><code>*</code></td><td>Multiplication</td><td><code>4 * 3</code></td></tr><tr><td><code>/</code></td><td>Division</td><td><code>10 / 2</code></td></tr><tr><td><code>%</code></td><td>Modulus (remainder)</td><td><code>10 % 3</code></td></tr></table>
+ <h3>Other operator groups</h3><div class="grid"><div class="tile"><strong>Increment / decrement</strong><p><code>++</code> increases a value by one; <code>--</code> decreases it by one.</p></div><div class="tile"><strong>Concatenation</strong><p>The <code>+</code> operator joins strings when one or both operands are strings.</p></div><div class="tile"><strong>Comparison</strong><p><code>==</code>, <code>===</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> compare values.</p></div><div class="tile"><strong>Logical</strong><p><code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT) combine or reverse conditions.</p></div></div>
+ <h3>Conditional statements</h3><pre>if (condition1) {
+  // statements
+} else if (condition2) {
+  // statements
+} else {
+  // statements
+}
+
+// Conditional (ternary) operator
+var discount = (amount > 1000) ? 20 : 5;</pre>
+ <div class="demo"><h3>Operator playground</h3><div class="controls"><input type="number" id="opA" value="3" aria-label="First number"><select id="op"><option value="+">+</option><option value="-">−</option><option value="*">×</option><option value="/">÷</option><option value="%">%</option></select><input type="number" id="opB" value="5" aria-label="Second number"><button onclick="calculate()">Calculate</button></div><div class="output" id="opOut">Result will appear here.</div></div>
+</section>
+
+<section class="section" id="conversion">
+ <div class="section-head"><div class="num">09</div><div><div class="eyebrow">Working with values</div><h2>Data type conversion</h2></div></div>
+ <p>The lecture notes introduce functions for converting primitive data types and parsing numeric strings.</p>
+ <table><tr><th>Function</th><th>Purpose</th></tr><tr><td><code>String()</code></td><td>Converts a value to a string.</td></tr><tr><td><code>Number()</code></td><td>Converts a value to a number.</td></tr><tr><td><code>Boolean()</code></td><td>Converts a value to a Boolean.</td></tr><tr><td><code>parseInt(string, base)</code></td><td>Parses a string and returns an integer.</td></tr><tr><td><code>parseFloat()</code></td><td>Parses a string and returns a floating-point number.</td></tr><tr><td><code>eval()</code></td><td>Evaluates a string as a JavaScript expression.</td></tr></table>
+ <div class="note warning"><strong>Security note:</strong> <code>eval()</code> executes JavaScript code from a string. Avoid using it with untrusted input. The examples here use safer numeric parsing for user-entered values.</div>
+ <div class="demo"><h3>Conversion playground</h3><div class="controls"><input id="convertInput" value="85.75" aria-label="Value to convert"><select id="convertType"><option value="int">parseInt()</option><option value="float">parseFloat()</option><option value="number">Number()</option><option value="string">String()</option><option value="boolean">Boolean()</option></select><button onclick="convertValue()">Convert</button></div><div class="output" id="convertOut">Converted value and type will appear here.</div></div>
+ <h3>Example: Fahrenheit to Celsius</h3><pre>var fahrenheit = 98.6;
+var celsius = (fahrenheit - 32) * (5 / 9);
+var output = parseFloat(celsius).toFixed(2);</pre>
+ <div class="demo"><div class="controls"><label for="fahrenheit">Temperature (°F):</label><input type="number" id="fahrenheit" value="98.6"><button onclick="let f=Number(document.getElementById('fahrenheit').value);document.getElementById('tempOut').textContent=((f-32)*5/9).toFixed(2)+' °C'">Convert to Celsius</button></div><div class="output" id="tempOut">37.00 °C</div></div>
+</section>
+
+<section class="section" id="loops">
+ <div class="section-head"><div class="num">10</div><div><div class="eyebrow">Repetition</div><h2>Looping</h2></div></div>
+ <p>Loops repeat a block of statements. The lecture introduces three types of looping statements.</p>
+ <div class="grid"><div class="tile"><strong>while</strong><p>Checks the condition before executing the loop body.</p><pre>while (condition) {
+  statements;
+}</pre></div><div class="tile"><strong>for</strong><p>Combines initialisation, condition and update in one statement.</p><pre>for (var i=0; i&lt;5; i++) {
+  statements;
+}</pre></div><div class="tile"><strong>do...while</strong><p>Executes the loop body first, then checks the condition.</p><pre>do {
+  statements;
+} while (condition);</pre></div></div>
+ <div class="demo"><h3>Compare loop output</h3><div class="controls"><label for="loopCount">Repeat count:</label><input type="number" id="loopCount" min="1" max="12" value="5"><select id="loopType"><option value="for">for</option><option value="while">while</option><option value="do">do...while</option></select><button onclick="runLoop()">Run loop</button></div><div class="output" id="loopOut">The repeated values will appear here.</div></div>
+</section>
+
+<section class="section" id="functions">
+ <div class="section-head"><div class="num">11</div><div><div class="eyebrow">Reusable code</div><h2>Functions</h2></div></div>
+ <p>A function is a self-contained unit of a program designed to accomplish a specific task. It can accept input through parameters, execute statements and optionally return a value. Functions can be reused whenever they are needed.</p>
+ <div class="steps"><span class="step">Input / Arguments</span><span class="arrow">→</span><span class="step">Function</span><span class="arrow">→</span><span class="step">Output / Return value</span></div>
+ <h3>Function definition and function call</h3><pre>// Function definition
+function function_name(param1, param2) {
+  statement1;
+  statement2;
+  return value; // optional
+}
+
+// Function call
+var output1 = function_name(value1, value2);</pre>
+ <h3>Simple function</h3><pre>function welcome() {
+  var place = "Pulau Perhentian";
+  alert("Welcome to " + place + "!");
+}
+welcome();</pre>
+ <h3>Function with a parameter and return value</h3><pre>function tempConversion(temp) {
+  var result = (temp - 32) * (5 / 9);
+  return result;
+}
+
+var celsius = tempConversion(98.6);</pre>
+ <h3>Calling a function from an event</h3><p>A function can be called when a user interacts with a page, such as clicking a button or a link.</p>
+ <pre>&lt;button onclick="greeting('Student')"&gt;Welcome&lt;/button&gt;
+
+&lt;script&gt;
+function greeting(yourname) {
+  alert("Welcome to CSF3133 course, " + yourname);
+}
+&lt;/script&gt;</pre>
+ <div class="demo"><h3>Try a function</h3><div class="controls"><input id="studentName" value="Student" aria-label="Your name"><button onclick="greetingDemo()">Call greeting(name)</button></div><div class="output" id="greetingOut">The function result will appear here.</div></div>
+</section>
+
+<section class="section" id="checkpoint">
+ <div class="section-head"><div class="num">12</div><div><div class="eyebrow">Review and practise</div><h2>Knowledge checkpoint</h2><p class="small">Select one answer for each question, then check your answers.</p></div></div>
+ <form id="quiz">
+  <div class="quiz-q"><p>1. Which technology controls the behaviour of a web page?</p><label><input type="radio" name="q1" value="a"> HTML</label><label><input type="radio" name="q1" value="b"> CSS</label><label><input type="radio" name="q1" value="c"> JavaScript</label></div>
+  <div class="quiz-q"><p>2. Where does client-side JavaScript normally run?</p><label><input type="radio" name="q2" value="a"> In the web browser</label><label><input type="radio" name="q2" value="b"> Only in the database</label><label><input type="radio" name="q2" value="c"> In the printer</label></div>
+  <div class="quiz-q"><p>3. Which engine is associated with Google Chrome in the lecture notes?</p><label><input type="radio" name="q3" value="a"> SpiderMonkey</label><label><input type="radio" name="q3" value="b"> V8</label><label><input type="radio" name="q3" value="c"> JavaScriptCore</label></div>
+  <div class="quiz-q"><p>4. What is the data type of the value "8"?</p><label><input type="radio" name="q4" value="a"> Number</label><label><input type="radio" name="q4" value="b"> String</label><label><input type="radio" name="q4" value="c"> Boolean</label></div>
+  <div class="quiz-q"><p>5. Which keyword is used to declare a constant?</p><label><input type="radio" name="q5" value="a"> var</label><label><input type="radio" name="q5" value="b"> let</label><label><input type="radio" name="q5" value="c"> const</label></div>
+  <div class="quiz-q"><p>6. Which dialog box asks the user to enter information?</p><label><input type="radio" name="q6" value="a"> alert()</label><label><input type="radio" name="q6" value="b"> prompt()</label><label><input type="radio" name="q6" value="c"> confirm()</label></div>
+  <div class="quiz-q"><p>7. Which operator returns the remainder after division?</p><label><input type="radio" name="q7" value="a"> /</label><label><input type="radio" name="q7" value="b"> *</label><label><input type="radio" name="q7" value="c"> %</label></div>
+  <div class="quiz-q"><p>8. Which loop checks its condition after executing the loop body?</p><label><input type="radio" name="q8" value="a"> while</label><label><input type="radio" name="q8" value="b"> for</label><label><input type="radio" name="q8" value="c"> do...while</label></div>
+  <div class="quiz-q"><p>9. Which keyword sends a value back from a function?</p><label><input type="radio" name="q9" value="a"> return</label><label><input type="radio" name="q9" value="b"> break</label><label><input type="radio" name="q9" value="c"> prompt</label></div>
+  <div class="quiz-q"><p>10. Which function parses a string into a floating-point number?</p><label><input type="radio" name="q10" value="a"> parseInt()</label><label><input type="radio" name="q10" value="b"> parseFloat()</label><label><input type="radio" name="q10" value="c"> Boolean()</label></div>
+  <div class="controls"><button type="button" onclick="checkQuiz()">Check answers</button><button type="reset" class="secondary" onclick="document.getElementById('quizResult').textContent=''">Try again</button></div><div class="feedback" id="quizResult" aria-live="polite"></div>
+ </form>
+ <h3>Discussion prompts</h3><ul><li>How does JavaScript improve the interaction between a user and a web page?</li><li>Why should data be validated on the client before it is sent to the server?</li><li>When would you choose a <code>for</code> loop rather than a <code>while</code> loop?</li><li>Why are functions useful when developing a web application?</li></ul>
+</section>
+</main>
+<footer>CSF3133 · Web Programming · JavaScript (Part 1)<br>Prepared from the lecture notes “08 Javascript (Part 1)”.</footer>
+<script>
+function showType(){const v=document.getElementById('typeChoice').value;let x;if(v==='55')x=55;else if(v==='"Hello World"')x="Hello World";else if(v==='true')x=true;else if(v==='null')x=null;else x=undefined;document.getElementById('typeOut').textContent='Value: '+String(x)+'\\ntypeof: '+typeof x;}
+function calculate(){const a=Number(document.getElementById('opA').value),b=Number(document.getElementById('opB').value),op=document.getElementById('op').value;let r;if(op==='+')r=a+b;else if(op==='-')r=a-b;else if(op==='*')r=a*b;else if(op==='/')r=b===0?'Cannot divide by zero':a/b;else r=b===0?'Cannot divide by zero':a%b;document.getElementById('opOut').textContent='Result = '+r;}
+function convertValue(){const s=document.getElementById('convertInput').value,t=document.getElementById('convertType').value;let v;if(t==='int')v=parseInt(s,10);if(t==='float')v=parseFloat(s);if(t==='number')v=Number(s);if(t==='string')v=String(s);if(t==='boolean')v=Boolean(s);document.getElementById('convertOut').textContent='Converted value: '+String(v)+'\\ntypeof: '+typeof v;}
+function runLoop(){let n=Math.max(1,Math.min(12,Number(document.getElementById('loopCount').value)||1)),t=document.getElementById('loopType').value,out=[];if(t==='for'){for(let i=1;i<=n;i++)out.push(i);}else if(t==='while'){let i=1;while(i<=n){out.push(i);i++;}}else{let i=1;do{out.push(i);i++;}while(i<=n);}document.getElementById('loopOut').textContent=out.join('  ');}
+function greetingDemo(){const name=document.getElementById('studentName').value.trim()||'Student';document.getElementById('greetingOut').textContent='Welcome to CSF3133 course, '+name+'!';}
+function checkQuiz(){const ans={q1:'c',q2:'a',q3:'b',q4:'b',q5:'c',q6:'b',q7:'c',q8:'c',q9:'a',q10:'b'};let score=0,answered=0;for(const [q,a] of Object.entries(ans)){const s=document.querySelector('input[name="'+q+'"]:checked');if(s){answered++;if(s.value===a)score++;}}const el=document.getElementById('quizResult');el.textContent='You scored '+score+' out of 10. ('+answered+' answered)'+(answered<10?' Complete the unanswered questions and try again.':'');el.style.color=score>=8?'#16835d':'#b45309';}
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical Exercise | Student Dashboard</title>
+<style>
+:root {
+  --navy: #191970;
+  --blue: #2563eb;
+  --ink: #172033;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --surface: #f8fafc;
+  --pale: #eff6ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: #f4f7fb;
+  line-height: 1.6;
+}
+header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.header-inner, main, footer {
+  width: min(960px, calc(100% - 36px));
+  margin: 0 auto;
+}
+.header-inner { padding: 30px 0 26px; }
+.kicker {
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+  font-weight: 700;
+}
+h1 { color: var(--navy); font-size: clamp(27px, 4vw, 38px); line-height: 1.2; margin: 8px 0; }
+.subtitle { color: var(--muted); margin: 0; max-width: 720px; }
+.meta {
+  display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px;
+}
+.meta span {
+  background: var(--pale); color: var(--navy); border-radius: 999px;
+  padding: 6px 12px; font-size: 13px; font-weight: 700;
+}
+main { padding: 26px 0 48px; }
+.panel {
+  background: white; border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px; margin-bottom: 18px;
+}
+h2 { color: var(--navy); font-size: 21px; margin: 0 0 10px; }
+h3 { color: var(--navy); font-size: 17px; margin: 0 0 7px; }
+p { margin: 7px 0; }
+.muted { color: var(--muted); }
+.download-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  margin-top: 16px;
+}
+.file {
+  border: 1px solid var(--line); border-radius: 11px; padding: 15px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.file strong { display: block; color: var(--ink); }
+.file small { color: var(--muted); }
+a.download {
+  display: inline-block; background: var(--navy); color: white;
+  text-decoration: none; border-radius: 8px; padding: 9px 13px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+a.download:hover { background: #30308f; }
+.task {
+  display: grid; grid-template-columns: 42px 1fr; gap: 13px;
+  padding: 16px 0; border-top: 1px solid var(--line);
+}
+.task:first-of-type { border-top: 0; }
+.number {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--pale);
+  color: var(--blue); display: grid; place-items: center; font-weight: 700;
+}
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+code {
+  font-family: Consolas, Monaco, monospace; background: #f1f5f9;
+  border-radius: 4px; padding: 2px 5px; color: #1e3a8a;
+}
+.note {
+  background: var(--pale); border-left: 4px solid var(--blue);
+  padding: 13px 15px; border-radius: 7px; margin-top: 12px;
+}
+footer { color: var(--muted); font-size: 12px; padding: 0 0 28px; }
+@media (max-width: 620px) {
+  .download-grid { grid-template-columns: 1fr; }
+  .file { align-items: flex-start; }
+  .panel { padding: 17px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="kicker">CSF3133 · Web Programming</div>
+    <h1>Practical Activity: Student Profile &amp; Marks Dashboard</h1>
+    <p class="subtitle">Build the functionality of a student dashboard using JavaScript. The HTML structure and CSS design are provided — your task is to write the JavaScript code.</p>
+    <div class="meta">
+      <span>JavaScript (Part 2)</span>
+      <span>Work in pairs</span>
+      <span>Ungraded activity</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Getting Started</h2>
+    <p>Download both starter files below and save them in the same project folder. Then create a new file named <code>script.js</code> in that folder.</p>
+    <div class="download-grid">
+      <div class="file">
+        <div><strong>index.html</strong><small>HTML page structure</small></div>
+        <a class="download" href="index.html" download>Download HTML</a>
+      </div>
+      <div class="file">
+        <div><strong>style.css</strong><small>Dashboard appearance</small></div>
+        <a class="download" href="style.css" download>Download CSS</a>
+      </div>
+    </div>
+    <div class="note"><strong>Important:</strong> Do not create or submit another HTML or CSS file. Your main task is to implement the required functionality in <code>script.js</code>. The provided HTML already contains a script reference to <code>script.js</code>.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Scenario</h2>
+    <p>You are required to develop a web page that displays a student's profile and academic results. The dashboard should show the student's personal information, course marks, average marks and highest marks.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Activity Requirements</h2>
+    <p class="muted">Complete all five tasks using JavaScript.</p>
+
+    <div class="task">
+      <div class="number">1</div>
+      <div>
+        <h3>Create a Student Object</h3>
+        <p>Create a JavaScript object named <code>student</code> with the following properties:</p>
+        <ul><li>Student name</li><li>Matric number</li><li>Programme</li></ul>
+        <p>Use the object to display the student's information in the Student Profile section of the dashboard.</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="number">2</div>
+      <div>
+        <h3>Create an Array of Course Marks</h3>
+        <p>Create an array named <code>courses</code> to store at least four courses. Each course must contain a course name and marks obtained.</p>
+        <p>Use an appropriate JavaScript data structure to organise the course information.</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="number">3</div>
+      <div>
+        <h3>Display the Course Results</h3>
+        <p>Use a loop to retrieve and display all course information from the <code>courses</code> array.</p>
+        <p>Display the results in the HTML table provided in <code>index.html</code>, including the number, course name and marks.</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="number">4</div>
+      <div>
+        <h3>Calculate the Academic Results</h3>
+        <p>Write JavaScript statements to calculate and display:</p>
+        <ul><li><strong>Average Marks:</strong> Calculate the average marks obtained for all courses.</li><li><strong>Highest Marks:</strong> Identify the highest mark among all courses.</li></ul>
+        <p>Display both results in the Academic Summary section of the dashboard.</p>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="number">5</div>
+      <div>
+        <h3>Implement the Dashboard Functionality</h3>
+        <p>Use DOM manipulation to display the student information, course results and calculated academic results on the web page.</p>
+        <p>Ensure that the dashboard displays the correct information when the page is loaded.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Additional Challenges (Optional)</h2>
+    <p>If you have completed all five tasks, try the following challenges:</p>
+    <ol>
+      <li>Use the <code>Date</code> object to display the current date.</li>
+      <li>Use a <code>for...in</code> loop to display all properties of the <code>student</code> object.</li>
+      <li>Implement the <strong>Remove Last Course</strong> button using the <code>pop()</code> method. Update the course table and academic summary after removing the last course.</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Submission &amp; Demonstration</h2>
+    <ol>
+      <li>Save <code>script.js</code> in the same folder as the provided HTML and CSS files.</li>
+      <li>Ensure that all JavaScript functions work correctly in a web browser.</li>
+      <li>Demonstrate your completed dashboard to the lecturer.</li>
+      <li>Be prepared to explain the JavaScript concepts and methods used in your implementation.</li>
+    </ol>
+    <div class="note"><strong>Reminder:</strong> This is an ungraded practical activity. The objective is to practise JavaScript programming and understand how objects, arrays, loops and DOM manipulation work together in a simple web application.</div>
+  </section>
+</main>
+
+<footer>CSF3133 · JavaScript (Part 2) · Practical Activity</footer>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSF3133 | JavaScript (Part 2) Learning Hub</title>
+<style>
+:root{--navy:#183653;--blue:#2563eb;--cyan:#0891b2;--ink:#243447;--muted:#64748b;--line:#dbe4ee;--paper:#f5f8fc;--white:#fff;--soft:#eaf3fb;--green:#16835d;--orange:#c56b16}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Inter,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(120deg,#142d4b,#1e557a 68%,#0e7490);color:#fff;padding:28px max(5vw,24px) 34px}
+.topline{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#c8e5f4;font-weight:700}
+header h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.12;margin:12px 0}
+header p{max-width:780px;color:#e0edf7;margin:0}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.pill{border:1px solid #ffffff55;background:#ffffff14;border-radius:99px;padding:5px 12px;font-size:.82rem}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,18px);display:flex;gap:8px;overflow-x:auto;white-space:nowrap;box-shadow:0 3px 12px #19324b0b}
+nav a{color:#36516b;text-decoration:none;font-size:.84rem;font-weight:650;padding:7px 10px;border-radius:8px}nav a:hover{background:var(--soft);color:var(--blue)}
+main{width:min(1120px,90%);margin:30px auto 70px}
+.intro{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px 28px;margin-bottom:24px;box-shadow:0 6px 22px #19324b08}
+h2{color:var(--navy);font-size:1.65rem;line-height:1.25;margin:0 0 7px}h3{color:#234a6c;font-size:1.08rem;margin:20px 0 8px}p{margin:8px 0 13px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:.1em;font-size:.75rem;text-transform:uppercase}
+.section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:20px 0;box-shadow:0 5px 20px #19324b07;scroll-margin-top:75px}
+.section-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}.num{flex:0 0 42px;height:42px;border-radius:12px;background:#e4f2fb;color:#17628a;display:grid;place-items:center;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px;margin:15px 0}.tile{background:#f7fafc;border:1px solid var(--line);border-radius:12px;padding:15px}.tile strong{display:block;color:#1e4a6d;margin-bottom:4px}.tile p{font-size:.92rem;margin:0;color:#536579}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.93rem}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf4fa;color:#234a6c}
+pre,code{font-family:Consolas,Monaco,monospace}pre{background:#10243a;color:#e5f2ff;padding:17px 19px;border-radius:12px;overflow:auto;font-size:.9rem;line-height:1.55;margin:12px 0}code{background:#eef3f8;padding:2px 5px;border-radius:4px;color:#164e78}
+.note{border-left:4px solid var(--cyan);background:#eff8fc;padding:12px 15px;border-radius:0 9px 9px 0;margin:14px 0}.warning{border-left-color:var(--orange);background:#fff7ed}
+.demo{border:1px solid #cbd9e7;background:#f8fbfe;border-radius:13px;padding:17px;margin:15px 0}.demo h3{margin-top:0}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:10px 0}
+input,select,button,textarea{font:inherit;border:1px solid #b8c9d9;border-radius:8px;padding:9px 11px;background:#fff;color:var(--ink)}input,textarea{max-width:100%}button{background:var(--blue);color:white;border:0;font-weight:700;cursor:pointer}button:hover{background:#1d4ed8}button.secondary{background:#e6eef6;color:#234a6c}button.secondary:hover{background:#d5e3ef}
+.output{background:#fff;border:1px dashed #9db4c9;border-radius:8px;padding:12px;min-height:42px;margin-top:10px;white-space:pre-wrap}.small{font-size:.88rem;color:var(--muted)}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}.step{background:#eaf3fb;border:1px solid #c7dbea;padding:10px 13px;border-radius:9px;font-weight:650;color:#234a6c}.arrow{color:#6b91ad;font-weight:900}
+.quiz-q{padding:14px 0;border-bottom:1px solid var(--line)}.quiz-q p{font-weight:700;margin:0 0 8px}.quiz-q label{display:block;margin:5px 0;font-size:.94rem}.feedback{font-weight:700;margin-top:12px}
+footer{text-align:center;color:#6b7d90;padding:25px;border-top:1px solid var(--line);font-size:.88rem}
+@media(max-width:650px){main{width:94%;margin-top:16px}.section,.intro{padding:20px 17px}header{padding:25px 20px}.section-head{gap:10px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="topline">CSF3133 · Web Programming · Interactive Learning Hub</div>
+ <h1>JavaScript (Part 2)</h1>
+ <p>Explore JavaScript objects and core objects, work with arrays, dates and mathematical operations, and learn how JavaScript can interact with and redirect users from web pages.</p>
+ <div class="meta"><span class="pill">Lecture notes · 54 slides</span><span class="pill">Concepts + examples</span><span class="pill">Try-it-yourself activities</span></div>
+</header>
+<nav>
+ <a href="#objectives">Objectives</a><a href="#objects">JavaScript objects</a><a href="#create">Create objects</a><a href="#constructor">Constructor functions</a><a href="#forin">for...in</a><a href="#core">Core objects</a><a href="#arrays">Arrays</a><a href="#arraymethods">Array methods</a><a href="#date">Date</a><a href="#math">Math</a><a href="#redirect">Redirect</a><a href="#checkpoint">Checkpoint</a>
+</nav>
+<main>
+<section class="intro" id="objectives">
+ <div class="eyebrow">Learning objectives</div><h2>What you should be able to do</h2>
+ <p>By the end of this topic, you should be able to:</p>
+ <div class="grid">
+  <div class="tile"><strong>01 · Describe</strong><p>Describe the use of objects in JavaScript.</p></div>
+  <div class="tile"><strong>02 · Create</strong><p>Create and use JavaScript objects using object constructors and literal notation.</p></div>
+  <div class="tile"><strong>03 · Explain</strong><p>Explain core JavaScript objects and create user-defined objects.</p></div>
+  <div class="tile"><strong>04 · Apply</strong><p>Apply the concept of the Document Object Model (DOM).</p></div>
+  <div class="tile"><strong>05 · Navigate</strong><p>Use JavaScript to redirect users to another page.</p></div>
+ </div>
+</section>
+
+<section class="section" id="objects">
+ <div class="section-head"><div class="num">01</div><div><div class="eyebrow">Object fundamentals</div><h2>JavaScript objects</h2><p class="small">Representing entities through properties and methods</p></div></div>
+ <p>An <strong>object</strong> is a way of modelling something. In JavaScript, an object is a collection of properties and values. Objects can also contain methods (functions associated with the object).</p>
+ <div class="grid">
+  <div class="tile"><strong>Object</strong><p>The entity being represented, such as a car, book or customer.</p></div>
+  <div class="tile"><strong>Properties</strong><p>Describe the object, such as a car's colour, weight or model.</p></div>
+  <div class="tile"><strong>Methods</strong><p>Describe actions the object can perform, such as start() or stop().</p></div>
+ </div>
+ <h3>Real-life example: A car</h3>
+ <div class="demo">
+  <div class="grid">
+   <div class="tile"><strong>Object</strong><p>Car</p></div>
+   <div class="tile"><strong>Properties</strong><p>Colour: blue<br>Weight: 1,200 kg</p></div>
+   <div class="tile"><strong>Methods</strong><p>start()<br>stop()</p></div>
+  </div>
+  <p class="small">Different cars can share the same property names and methods, but their property values may differ.</p>
+ </div>
+ <h3>How do we access object members?</h3>
+ <pre>var mySubject = new String("CSF3133");
+
+mySubject.length;       // property: 7
+mySubject.indexOf("CSF"); // method: 0</pre>
+ <table><tr><th>Object group</th><th>Description</th></tr>
+ <tr><td>User-defined objects</td><td>Custom objects created by the programmer.</td></tr>
+ <tr><td>Built-in objects</td><td>Objects provided by JavaScript itself.</td></tr>
+ <tr><td>Browser objects</td><td>Objects supported by the browser environment.</td></tr>
+ <tr><td>Document objects</td><td>Objects that are part of the DOM and provide a structured interface to HTML and XML documents.</td></tr></table>
+ <div class="note"><strong>Why are objects useful?</strong> They group related data together. For example, a book's ISBN, title, author and publisher can be stored in one <code>book</code> object.</div>
+</section>
+
+<section class="section" id="create">
+ <div class="section-head"><div class="num">02</div><div><div class="eyebrow">Creating objects</div><h2>Object constructor and literal notation</h2><p class="small">Two ways to create an object and assign its properties</p></div></div>
+ <h3>Method 1: Object constructor</h3>
+ <pre>var book = new Object();
+book.ISBN = "9781492055709";
+book.Title = "JavaScript Cookbook";
+book.Author = "Adam D. Scott, Matthew MacDonald, Shelley Powers";
+book.Publisher = "O'Reilly Media, Inc.";</pre>
+ <h3>Method 2: Object literal notation</h3>
+ <pre>var book = {
+  ISBN: "9781492055709",
+  Title: "JavaScript Cookbook",
+  Author: "Adam D. Scott, Matthew MacDonald, Shelley Powers",
+  Publisher: "O'Reilly Media, Inc."
+};</pre>
+ <div class="note">Both examples create a <code>book</code> object with the same four properties. Literal notation places the property names and values inside curly braces.</div>
+ <h3>Try it: Build a book object</h3>
+ <div class="demo">
+  <div class="controls"><label>ISBN <input id="bookISBN" value="9781492055709"></label><label>Title <input id="bookTitle" value="JavaScript Cookbook"></label></div>
+  <div class="controls"><label>Author <input id="bookAuthor" value="Adam D. Scott"></label><label>Publisher <input id="bookPublisher" value="O'Reilly Media"></label></div>
+  <button onclick="showBook()">Create object</button>
+  <div class="output" id="bookOutput">Your object properties will appear here.</div>
+ </div>
+</section>
+
+<section class="section" id="constructor">
+ <div class="section-head"><div class="num">03</div><div><div class="eyebrow">Reusable object patterns</div><h2>Constructor functions</h2><p class="small">Create multiple object instances with the same property structure</p></div></div>
+ <p>A constructor function can be used to create reusable code for objects. It defines the properties that each new object instance will have.</p>
+ <pre>function Customer(code, name, type) {
+  this.code = code;
+  this.name = name;
+  this.type = type;
+}
+
+var cash_customer = new Customer("CSH1001", "Ahmad", "Cash");
+var crd_customer = new Customer("CRD2005", "Ali", "Credit");</pre>
+ <p>The <code>new</code> keyword creates a new instance. The <code>this</code> keyword refers to the object being created.</p>
+ <h3>Interactive customer constructor</h3>
+ <div class="demo">
+  <div class="controls"><label>Customer code <input id="custCode" value="CSH1001"></label><label>Name <input id="custName" value="Ahmad"></label>
+  <label>Type <select id="custType"><option>Cash</option><option>Credit</option></select></label><button onclick="createCustomer()">Create customer</button></div>
+  <div class="output" id="customerOutput">A new customer instance will be displayed here.</div>
+ </div>
+</section>
+
+<section class="section" id="forin">
+ <div class="section-head"><div class="num">04</div><div><div class="eyebrow">Object iteration</div><h2>Display object properties using for...in</h2><p class="small">Read each property name from an object</p></div></div>
+ <pre>var customer = new Customer("CSH1001", "Ahmad", "Cash");
+
+for (var property in customer) {
+  document.write(property + ": " + customer[property] + "&lt;br&gt;");
+}</pre>
+ <p>The <code>for...in</code> loop iterates over the enumerable property keys of an object. Use bracket notation, <code>customer[property]</code>, to access the value using the property name stored in the variable.</p>
+ <div class="demo">
+  <button onclick="runForIn()">Run for...in example</button>
+  <div class="output" id="forInOutput">Click the button to list the properties and values.</div>
+ </div>
+</section>
+
+<section class="section" id="core">
+ <div class="section-head"><div class="num">05</div><div><div class="eyebrow">Built-in objects</div><h2>JavaScript core objects</h2><p class="small">Array, Date and Math</p></div></div>
+ <p>JavaScript provides built-in core objects that help developers work with common data and operations.</p>
+ <div class="grid">
+  <div class="tile"><strong>Array</strong><p>Stores an ordered collection of elements.</p></div>
+  <div class="tile"><strong>Date</strong><p>Provides methods to get and set date and time information.</p></div>
+  <div class="tile"><strong>Math</strong><p>Provides mathematical constants and functions.</p></div>
+ </div>
+</section>
+
+<section class="section" id="arrays">
+ <div class="section-head"><div class="num">06</div><div><div class="eyebrow">Array object</div><h2>Working with arrays</h2><p class="small">Store multiple values in one variable</p></div></div>
+ <p>An <strong>array</strong> is a collection of data or values stored as elements. Each element is accessed using a numeric index. In JavaScript, array indexes start at <strong>0</strong>.</p>
+ <div class="steps"><span class="step">grade[0] = "A"</span><span class="step">grade[1] = "C"</span><span class="step">grade[2] = "B-"</span><span class="step">grade[3] = "C+"</span></div>
+ <h3>Declaring and populating an array</h3>
+ <pre>var grade = new Array();
+grade[0] = "A";
+grade[1] = "C";
+grade[2] = "B-";
+grade[3] = "C+";</pre>
+ <p>An array can also be created using literal notation:</p>
+ <pre>var grade = ["A", "C", "B-", "C+"]; </pre>
+ <h3>Try it: Array index explorer</h3>
+ <div class="demo">
+  <div class="controls"><label>Choose an index <select id="gradeIndex" onchange="showGrade()"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></label><button onclick="showGrade()">Read element</button></div>
+  <div class="output" id="gradeOutput">grade[0] = "A"</div>
+ </div>
+ <h3>Loop through an array</h3>
+ <pre>var csBook = [
+  "Java Programming - A Beginner Guide",
+  "HTML5 and Javascript Project",
+  "Oracle JDeveloper Handbook"
+];
+
+for (var i in csBook) {
+  document.write("Book[" + i + "] = " + csBook[i] + "&lt;br&gt;");
+}</pre>
+ <h3>Array properties</h3>
+ <p>The lecture notes introduce <code>length</code> as an array property. It returns the number of elements in the array.</p>
+ <pre>var csBook = ["Java Programming", "HTML5 and Javascript", "UML"];
+document.write(csBook.length); // 3</pre>
+ <div class="note"><strong>Important:</strong> Setting <code>array.length = 0</code> removes all elements from that array. The array becomes empty.</div>
+ <h3>Two-dimensional arrays</h3>
+ <p>A two-dimensional array can represent data arranged in rows and columns, such as a marks table.</p>
+ <pre>var marking = [
+  [50, 68, 65],
+  [78, 65, 60],
+  [98, 68, 63]
+];
+
+// Access row 1, column 2
+marking[1][2]; // 60</pre>
+ <div class="demo">
+  <h3 style="margin-top:0">Explore the marks array</h3>
+  <div class="controls"><label>Row <select id="markRow"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label><label>Column <select id="markCol"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label><button onclick="showMark()">Get value</button></div>
+  <div class="output" id="markOutput">marking[0][0] = 50</div>
+  <table><tr><th></th><th>Column 0</th><th>Column 1</th><th>Column 2</th></tr><tr><th>Row 0</th><td>50</td><td>68</td><td>65</td></tr><tr><th>Row 1</th><td>78</td><td>65</td><td>60</td></tr><tr><th>Row 2</th><td>98</td><td>68</td><td>63</td></tr></table>
+ </div>
+</section>
+
+<section class="section" id="arraymethods">
+ <div class="section-head"><div class="num">07</div><div><div class="eyebrow">Array methods</div><h2>concat(), pop() and slice()</h2><p class="small">Combine, remove or copy array elements</p></div></div>
+ <table><tr><th>Method</th><th>Purpose</th><th>Example</th></tr>
+ <tr><td><code>concat()</code></td><td>Combines arrays and returns a new array.</td><td><code>a.concat(b)</code></td></tr>
+ <tr><td><code>pop()</code></td><td>Removes and returns the last element.</td><td><code>a.pop()</code></td></tr>
+ <tr><td><code>slice()</code></td><td>Returns a shallow copy of selected elements without changing the original array.</td><td><code>a.slice(1, 3)</code></td></tr></table>
+ <h3>Interactive array workbench</h3>
+ <div class="demo">
+  <p><strong>Original array:</strong> <code id="arrayOriginal">["CSF3133", "CSE3143", "CSE3023"]</code></p>
+  <div class="controls"><button onclick="arrayAction('concat')">concat()</button><button onclick="arrayAction('pop')">pop()</button><button onclick="arrayAction('slice')">slice(1, 3)</button><button class="secondary" onclick="resetArray()">Reset</button></div>
+  <div class="output" id="arrayResult">Choose a method to see what it does.</div>
+ </div>
+ <div class="note">Notice the difference: <code>pop()</code> changes the original array, while <code>slice()</code> returns a selected portion and leaves the original array unchanged. <code>concat()</code> returns a combined array.</div>
+ <h3>Arrays vs objects</h3>
+ <table><tr><th>Arrays</th><th>Objects</th></tr><tr><td>Use numbered indexes.</td><td>Use named properties (keys).</td></tr><tr><td>Useful when elements are accessed by position.</td><td>Useful when values are described by property names.</td></tr><tr><td><code>grades[0]</code></td><td><code>student.name</code></td></tr></table>
+</section>
+
+<section class="section" id="date">
+ <div class="section-head"><div class="num">08</div><div><div class="eyebrow">Date object</div><h2>Working with dates and time</h2><p class="small">Get and manipulate date/time values</p></div></div>
+ <p>The JavaScript <code>Date</code> object provides methods to get and set specific information related to date and time. The current date and time are based on the user's local device.</p>
+ <h3>Creating Date objects</h3>
+ <pre>var now = new Date();
+var date1 = new Date("March 25, 2014 09:45:15");
+var date2 = new Date("March 25, 2014");
+var date3 = new Date(2014, 2, 25, 9, 45, 15);
+var date4 = new Date(1000);</pre>
+ <div class="note warning"><strong>Month numbering:</strong> In the numeric Date constructor, months are zero-based: January is 0, February is 1, and March is 2. This is important when using <code>new Date(year, month, day)</code>.</div>
+ <h3>Common Date methods</h3>
+ <table><tr><th>Method</th><th>Returns</th></tr><tr><td><code>getFullYear()</code></td><td>Four-digit year</td></tr><tr><td><code>getMonth()</code></td><td>Month number (0–11)</td></tr><tr><td><code>getDate()</code></td><td>Day of the month (1–31)</td></tr><tr><td><code>getDay()</code></td><td>Day of the week (0–6)</td></tr><tr><td><code>getHours()</code></td><td>Hour (0–23)</td></tr><tr><td><code>getMinutes()</code></td><td>Minutes (0–59)</td></tr><tr><td><code>getSeconds()</code></td><td>Seconds (0–59)</td></tr><tr><td><code>getTime()</code></td><td>Milliseconds since 1 January 1970</td></tr></table>
+ <h3>Try it: Display the current date and time</h3>
+ <div class="demo"><button onclick="showCurrentDate()">Get current date and time</button><div class="output" id="dateOutput">Click the button to read the current date and time from this device.</div></div>
+ <h3>Calculate days until a target date</h3>
+ <p>The lecture example calculates the number of days remaining until a project milestone date.</p>
+ <pre>var today = new Date();
+var future = new Date("December 16, " + today.getFullYear());
+var different = future.getTime() - today.getTime();
+var days = Math.floor(different / (1000 * 60 * 60 * 24));</pre>
+ <div class="demo">
+  <div class="controls"><label>Target date <input type="date" id="targetDate"></label><button onclick="countDays()">Calculate days</button></div>
+  <div class="output" id="countdownOutput">Choose a target date to calculate the difference.</div>
+ </div>
+</section>
+
+<section class="section" id="math">
+ <div class="section-head"><div class="num">09</div><div><div class="eyebrow">Math object</div><h2>Mathematical operations</h2><p class="small">Use built-in mathematical constants and methods</p></div></div>
+ <p>The <code>Math</code> object allows developers to perform calculations such as square roots, powers, trigonometric functions, logarithms and random number generation.</p>
+ <table><tr><th>Property / method</th><th>Purpose</th><th>Example</th></tr><tr><td><code>Math.PI</code></td><td>Returns the value of π.</td><td><code>Math.PI</code></td></tr><tr><td><code>Math.sqrt(x)</code></td><td>Returns the square root of x.</td><td><code>Math.sqrt(25)</code> → 5</td></tr><tr><td><code>Math.pow(x, y)</code></td><td>Returns x raised to power y.</td><td><code>Math.pow(5, 2)</code> → 25</td></tr><tr><td><code>Math.round(x)</code></td><td>Rounds to the nearest integer.</td><td><code>Math.round(4.6)</code> → 5</td></tr><tr><td><code>Math.floor(x)</code></td><td>Rounds down to an integer.</td><td><code>Math.floor(4.9)</code> → 4</td></tr><tr><td><code>Math.ceil(x)</code></td><td>Rounds up to an integer.</td><td><code>Math.ceil(4.1)</code> → 5</td></tr><tr><td><code>Math.random()</code></td><td>Returns a pseudo-random number from 0 (inclusive) to 1 (exclusive).</td><td><code>Math.random()</code></td></tr></table>
+ <h3>Try it: Math calculator</h3>
+ <div class="demo">
+  <div class="controls"><label>Number <input id="mathNumber" type="number" value="25"></label><label>Operation <select id="mathOperation"><option value="sqrt">Square root</option><option value="square">Power of 2</option><option value="round">Round</option><option value="floor">Floor</option><option value="ceil">Ceiling</option></select></label><button onclick="calculateMath()">Calculate</button></div>
+  <div class="output" id="mathOutput">Result will appear here.</div>
+  <div class="controls"><button class="secondary" onclick="randomNumber()">Generate random number</button><button class="secondary" onclick="showPi()">Show Math.PI</button></div>
+ </div>
+</section>
+
+<section class="section" id="redirect">
+ <div class="section-head"><div class="num">10</div><div><div class="eyebrow">Navigation</div><h2>Redirecting users to another page</h2><p class="small">Use a link or JavaScript to navigate</p></div></div>
+ <h3>Method 1: HTML hyperlink</h3>
+ <pre>&lt;a href="https://epembelajaran.umt.edu.my/oceania/auth/saml/login.php"&gt;
+  E-Pembelajaran Login Page
+&lt;/a&gt;</pre>
+ <p>When the user clicks the link, the browser navigates to the URL specified in the <code>href</code> attribute.</p>
+ <h3>Method 2: JavaScript redirection</h3>
+ <p>JavaScript can change the browser's current location. For example:</p>
+ <pre>window.location.href = "https://example.com";</pre>
+ <div class="demo">
+  <p><strong>Redirection preview (safe simulation)</strong></p>
+  <p class="small">This preview demonstrates the destination without navigating away from this learning page.</p>
+  <div class="controls"><label>Destination URL <input id="redirectUrl" style="min-width:min(420px,100%)" value="https://epembelajaran.umt.edu.my"></label><button onclick="previewRedirect()">Preview redirect</button></div>
+  <div class="output" id="redirectOutput">The destination URL will be shown here.</div>
+ </div>
+ <h3>DOM connection: selecting an HTML element</h3>
+ <p>The lecture objectives include applying the Document Object Model (DOM). The DOM represents the HTML document as objects that JavaScript can access. For example, an element can be selected by its ID and its content can be changed.</p>
+ <pre>&lt;p id="message"&gt;Welcome&lt;/p&gt;
+
+&lt;script&gt;
+  var element = document.getElementById("message");
+  element.textContent = "Welcome to JavaScript!";
+&lt;/script&gt;</pre>
+ <div class="demo">
+  <p id="domMessage">The original message is displayed here.</p>
+  <button onclick="changeDomMessage()">Change message using the DOM</button>
+  <button class="secondary" onclick="resetDomMessage()">Reset</button>
+ </div>
+ <div class="note warning"><strong>Safety note:</strong> The redirect preview does not open an external website. To perform a real redirect in your own project, use <code>window.location.href</code> with the intended destination URL.</div>
+</section>
+
+<section class="section" id="checkpoint">
+ <div class="section-head"><div class="num">11</div><div><div class="eyebrow">Check your understanding</div><h2>Knowledge checkpoint</h2><p class="small">Answer the questions and check your score</p></div></div>
+ <form id="quizForm">
+  <div class="quiz-q"><p>1. Which statement best describes a JavaScript object?</p><label><input type="radio" name="q1" value="a"> A collection of properties and values</label><label><input type="radio" name="q1" value="b"> A loop that repeats instructions</label><label><input type="radio" name="q1" value="c"> A method for styling HTML</label></div>
+  <div class="quiz-q"><p>2. Which keyword is used to create an instance from a constructor function?</p><label><input type="radio" name="q2" value="a"> this</label><label><input type="radio" name="q2" value="b"> new</label><label><input type="radio" name="q2" value="c"> return</label></div>
+  <div class="quiz-q"><p>3. What is the index of the first element in a JavaScript array?</p><label><input type="radio" name="q3" value="a"> 1</label><label><input type="radio" name="q3" value="b"> -1</label><label><input type="radio" name="q3" value="c"> 0</label></div>
+  <div class="quiz-q"><p>4. Which array method removes and returns the last element?</p><label><input type="radio" name="q4" value="a"> slice()</label><label><input type="radio" name="q4" value="b"> pop()</label><label><input type="radio" name="q4" value="c"> concat()</label></div>
+  <div class="quiz-q"><p>5. What does <code>marking[1][2]</code> access?</p><label><input type="radio" name="q5" value="a"> The element at row index 1 and column index 2</label><label><input type="radio" name="q5" value="b"> The element at row index 2 and column index 1</label><label><input type="radio" name="q5" value="c"> The length of the array</label></div>
+  <div class="quiz-q"><p>6. Which method returns the four-digit year from a Date object?</p><label><input type="radio" name="q6" value="a"> getDay()</label><label><input type="radio" name="q6" value="b"> getFullYear()</label><label><input type="radio" name="q6" value="c"> getMonth()</label></div>
+  <div class="quiz-q"><p>7. What is the result of <code>Math.sqrt(25)</code>?</p><label><input type="radio" name="q7" value="a"> 625</label><label><input type="radio" name="q7" value="b"> 10</label><label><input type="radio" name="q7" value="c"> 5</label></div>
+  <div class="quiz-q"><p>8. Which expression can redirect the browser to another URL?</p><label><input type="radio" name="q8" value="a"> window.location.href = "https://example.com"</label><label><input type="radio" name="q8" value="b"> document.title = "https://example.com"</label><label><input type="radio" name="q8" value="c"> Math.random()</label></div>
+  <div class="controls"><button type="button" onclick="checkQuiz()">Check answers</button><button type="reset" class="secondary" onclick="document.getElementById('quizResult').textContent=''">Try again</button></div>
+  <div class="feedback" id="quizResult" aria-live="polite"></div>
+ </form>
+ <h3>Discussion prompts</h3>
+ <ul><li>When would you represent information using an object rather than an array?</li><li>Why is a constructor function useful when creating many objects with similar properties?</li><li>How can a two-dimensional array represent a table of student marks?</li><li>What is the difference between <code>pop()</code> and <code>slice()</code>?</li><li>How can JavaScript use the DOM to change the content of a web page?</li></ul>
+</section>
+</main>
+<footer>CSF3133 · Web Programming · JavaScript (Part 2)<br>Learn, practise and experiment with JavaScript.</footer>
+<script>
+function showBook(){
+ const book={ISBN:document.getElementById('bookISBN').value,Title:document.getElementById('bookTitle').value,Author:document.getElementById('bookAuthor').value,Publisher:document.getElementById('bookPublisher').value};
+ document.getElementById('bookOutput').textContent=JSON.stringify(book,null,2);
+}
+function Customer(code,name,type){this.code=code;this.name=name;this.type=type}
+function createCustomer(){
+ const c=new Customer(document.getElementById('custCode').value,document.getElementById('custName').value,document.getElementById('custType').value);
+ document.getElementById('customerOutput').textContent=Object.entries(c).map(([k,v])=>k+": "+v).join("\\n");
+}
+function runForIn(){
+ const c=new Customer("CSH1001","Ahmad","Cash");
+ let lines=[];for(const property in c){lines.push(property+": "+c[property])}
+ document.getElementById('forInOutput').textContent=lines.join("\\n");
+}
+const grades=["A","C","B-","C+"];
+function showGrade(){const i=Number(document.getElementById('gradeIndex').value);document.getElementById('gradeOutput').textContent=`grade[${i}] = "${grades[i]}"`;}
+const marking=[[50,68,65],[78,65,60],[98,68,63]];
+function showMark(){const r=Number(document.getElementById('markRow').value),c=Number(document.getElementById('markCol').value);document.getElementById('markOutput').textContent=`marking[${r}][${c}] = ${marking[r][c]}`;}
+let workingArray=["CSF3133","CSE3143","CSE3023"];
+function resetArray(){workingArray=["CSF3133","CSE3143","CSE3023"];document.getElementById('arrayOriginal').textContent=JSON.stringify(workingArray);document.getElementById('arrayResult').textContent="Array reset. Choose a method.";}
+function arrayAction(method){
+ let result="";
+ if(method==="concat"){const other=["CSF3410","CSE3113"];result="Second array: "+JSON.stringify(other)+"\\nReturned array: "+JSON.stringify(workingArray.concat(other))+"\\nOriginal array: "+JSON.stringify(workingArray);}
+ if(method==="pop"){const removed=workingArray.pop();result="Removed element: "+removed+"\\nUpdated original array: "+JSON.stringify(workingArray);}
+ if(method==="slice"){result="Returned slice(1, 3): "+JSON.stringify(workingArray.slice(1,3))+"\\nOriginal array (unchanged): "+JSON.stringify(workingArray);}
+ document.getElementById('arrayOriginal').textContent=JSON.stringify(workingArray);
+ document.getElementById('arrayResult').textContent=result;
+}
+function showCurrentDate(){
+ const now=new Date();
+ document.getElementById('dateOutput').textContent="Local date and time: "+now.toString()+"\\nFull year: "+now.getFullYear()+"\\nMonth (0–11): "+now.getMonth()+"\\nDay of month: "+now.getDate()+"\\nTime: "+now.getHours()+":"+String(now.getMinutes()).padStart(2,"0")+":"+String(now.getSeconds()).padStart(2,"0");
+}
+function countDays(){
+ const value=document.getElementById('targetDate').value;
+ if(!value){document.getElementById('countdownOutput').textContent="Please choose a target date.";return;}
+ const now=new Date();now.setHours(0,0,0,0);
+ const target=new Date(value+"T00:00:00");
+ const days=Math.floor((target-now)/(1000*60*60*24));
+ document.getElementById('countdownOutput').textContent=days>0?days+" day(s) remaining.":days===0?"The target date is today.":Math.abs(days)+" day(s) have passed since the target date.";
+}
+function calculateMath(){
+ const n=Number(document.getElementById('mathNumber').value),op=document.getElementById('mathOperation').value;
+ if(document.getElementById('mathNumber').value.trim()===""){document.getElementById('mathOutput').textContent="Enter a number.";return;}
+ let result;
+ if(op==="sqrt")result=Math.sqrt(n);if(op==="square")result=Math.pow(n,2);if(op==="round")result=Math.round(n);if(op==="floor")result=Math.floor(n);if(op==="ceil")result=Math.ceil(n);
+ document.getElementById('mathOutput').textContent=`${op}(${n}) = ${result}`;
+}
+function randomNumber(){document.getElementById('mathOutput').textContent="Math.random() = "+Math.random();}
+function showPi(){document.getElementById('mathOutput').textContent="Math.PI = "+Math.PI+"\\nTo 2 decimal places: "+Math.PI.toFixed(2);}
+function previewRedirect(){
+ const raw=document.getElementById('redirectUrl').value.trim();
+ try{const url=new URL(raw);if(!["http:","https:"].includes(url.protocol))throw new Error();document.getElementById('redirectOutput').textContent="Browser destination preview:\\n"+url.href+"\\n\\nEquivalent JavaScript:\\nwindow.location.href = "+JSON.stringify(url.href)+";";}
+ catch(e){document.getElementById('redirectOutput').textContent="Please enter a valid URL beginning with https:// or http://";}
+}
+function changeDomMessage(){document.getElementById('domMessage').textContent="The paragraph content has been changed using document.getElementById() and textContent.";}
+function resetDomMessage(){document.getElementById('domMessage').textContent="The original message is displayed here.";}
+function checkQuiz(){
+ const answers={q1:"a",q2:"b",q3:"c",q4:"b",q5:"a",q6:"b",q7:"c",q8:"a"};
+ let score=0,unanswered=[];
+ Object.keys(answers).forEach(q=>{const chosen=document.querySelector(`input[name="${q}"]:checked`);if(!chosen)unanswered.push(q);else if(chosen.value===answers[q])score++;});
+ const result=document.getElementById('quizResult');
+ result.textContent=`Your score: ${score} / ${Object.keys(answers).length}.`+(unanswered.length?` Please answer all questions. Unanswered: ${unanswered.length}.`:"");
+ result.style.color=score>=6?"#16835d":"#c56b16";
+}
+</script>
+</body>
+</html>
